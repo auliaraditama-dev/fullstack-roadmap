@@ -1,0 +1,461 @@
+[
+  {
+    "number": 1,
+    "title": "Lingkungan kerja developer",
+    "startPage": 5,
+    "endPage": 6,
+    "summary": "Framework tidak dapat menggantikan pemahaman dasar komputer. Banyak bug pemula sebenarnya adalah masalah path, process, port, permission, environment, atau toolchain.",
+    "part": "Fondasi developer dan cara berpikir",
+    "accent": "blue"
+  },
+  {
+    "number": 2,
+    "title": "Git dan GitHub",
+    "startPage": 7,
+    "endPage": 8,
+    "summary": "Git menyimpan sejarah perubahan; GitHub menyediakan remote hosting, review, issue, automation, dan kolaborasi. Git bukan sekadar tempat upload ZIP.",
+    "part": "Fondasi developer dan cara berpikir",
+    "accent": "blue"
+  },
+  {
+    "number": 3,
+    "title": "Fundamental programming dengan PHP",
+    "startPage": 9,
+    "endPage": 10,
+    "summary": "PHP dipakai sebagai bahasa pertama agar fondasi programming langsung tersambung ke backend dan Laravel. Tujuannya memahami program tanpa framework.",
+    "part": "Fondasi developer dan cara berpikir",
+    "accent": "blue"
+  },
+  {
+    "number": 4,
+    "title": "Algoritma, problem solving, dan struktur data",
+    "startPage": 11,
+    "endPage": 12,
+    "summary": "Developer aplikasi tidak harus memulai dari algoritma kompetitif. Yang lebih penting adalah memecah requirement, memilih representasi data, dan memahami biaya operasi secara intuitif.",
+    "part": "Fondasi developer dan cara berpikir",
+    "accent": "blue"
+  },
+  {
+    "number": 5,
+    "title": "OOP dan clean code dasar",
+    "startPage": 13,
+    "endPage": 15,
+    "summary": "OOP membantu memodelkan data dan perilaku, tetapi class bukan tujuan. Clean code berarti kode yang mudah dipahami, diuji, diubah, dan aman - bukan sekadar pendek.",
+    "part": "Fondasi developer dan cara berpikir",
+    "accent": "blue"
+  },
+  {
+    "number": 6,
+    "title": "HTML semantik",
+    "startPage": 16,
+    "endPage": 17,
+    "summary": "HTML mendefinisikan struktur dan makna dokumen. Halaman yang baik tetap mempunyai urutan masuk akal tanpa CSS dan dapat dinavigasi dengan keyboard serta teknologi bantu.",
+    "part": "Web fundamental",
+    "accent": "cyan"
+  },
+  {
+    "number": 7,
+    "title": "CSS modern dan responsive design",
+    "startPage": 18,
+    "endPage": 19,
+    "summary": "CSS adalah sistem layout dan presentasi yang responsif terhadap ukuran layar, zoom, panjang teks, preferensi user, dan keadaan UI.",
+    "part": "Web fundamental",
+    "accent": "cyan"
+  },
+  {
+    "number": 8,
+    "title": "JavaScript fundamental",
+    "startPage": 20,
+    "endPage": 21,
+    "summary": "JavaScript adalah runtime utama browser. Vue dan TypeScript akan jauh lebih mudah jika function, object, array, scope, event, Promise, dan async/await sudah dipahami.",
+    "part": "Web fundamental",
+    "accent": "cyan"
+  },
+  {
+    "number": 9,
+    "title": "Browser, DOM, DevTools, dan debugging",
+    "startPage": 22,
+    "endPage": 23,
+    "summary": "Browser adalah runtime lengkap: DOM, CSSOM, network, storage, JavaScript engine, cache, security model, dan DevTools. Developer yang bisa membaca DevTools lebih cepat menemukan bug daripada menebak-nebak.",
+    "part": "Web fundamental",
+    "accent": "cyan"
+  },
+  {
+    "number": 10,
+    "title": "HTTP, URL, JSON, cookie, session, CORS, caching",
+    "startPage": 24,
+    "endPage": 25,
+    "summary": "Aplikasi web adalah pertukaran request-response. Memahami HTTP membuat routing, API, authentication, browser security, dan debugging jauh lebih masuk akal.",
+    "part": "Web fundamental",
+    "accent": "cyan"
+  },
+  {
+    "number": 11,
+    "title": "Accessibility, SEO, performance, dan UX",
+    "startPage": 26,
+    "endPage": 28,
+    "summary": "engineering Website yang berhasil tidak hanya \"bagus di layar saya\". Ia harus dapat digunakan, ditemukan, cepat, dan memberikan state yang jelas saat data loading, kosong, gagal, atau berhasil.",
+    "part": "Web fundamental",
+    "accent": "cyan"
+  },
+  {
+    "number": 12,
+    "title": "Database relasional dan SQL",
+    "startPage": 29,
+    "endPage": 30,
+    "summary": "Database relasional menyimpan fakta dalam tabel yang dihubungkan constraint. ORM berguna, tetapi SQL tetap perlu dipahami agar query benar, cepat, dan konsisten.",
+    "part": "Data, PHP web, dan Laravel",
+    "accent": "emerald"
+  },
+  {
+    "number": 13,
+    "title": "PHP untuk web tanpa framework",
+    "startPage": 31,
+    "endPage": 32,
+    "summary": "Sebelum Laravel, bangun satu aplikasi PHP sederhana agar request, validation, session, PDO, redirect, upload, dan rendering tidak menjadi \"magic\" framework.",
+    "part": "Data, PHP web, dan Laravel",
+    "accent": "emerald"
+  },
+  {
+    "number": 14,
+    "title": "Composer, dependency, namespace, autoload",
+    "startPage": 33,
+    "endPage": 34,
+    "summary": "Composer mengelola dependency PHP dan autoloading. Memahami lockfile dan semantic versioning mencegah lingkungan development dan production berbeda secara tidak sengaja.",
+    "part": "Data, PHP web, dan Laravel",
+    "accent": "emerald"
+  },
+  {
+    "number": 15,
+    "title": "Laravel 13 - fondasi sampai fitur backend utama",
+    "startPage": 35,
+    "endPage": 37,
+    "summary": "Laravel dipelajari setelah HTTP, PHP, SQL, dan OOP dasar. Framework mempercepat kerja dengan konvensi, container, ORM, validation, auth, queue, cache, storage, dan testing.",
+    "part": "Data, PHP web, dan Laravel",
+    "accent": "emerald"
+  },
+  {
+    "number": 16,
+    "title": "Arsitektur Laravel yang sehat",
+    "startPage": 38,
+    "endPage": 40,
+    "summary": "Arsitektur yang baik mengikuti kompleksitas proyek. Aplikasi kecil tidak perlu repository/service/interface di setiap tempat. Tambahkan lapisan saat ada business flow yang benar-benar perlu dipisah atau diuji.",
+    "part": "Data, PHP web, dan Laravel",
+    "accent": "emerald"
+  },
+  {
+    "number": 17,
+    "title": "Node.js, npm, dan Vite untuk tooling",
+    "startPage": 41,
+    "endPage": 42,
+    "summary": "Pada jalur ini Node.js terutama dipakai untuk toolchain frontend. Gunakan rilis LTS yang masih didukung untuk proyek stabil, dan pisahkan secret backend dari variable yang masuk bundle browser.",
+    "part": "Frontend modern",
+    "accent": "amber"
+  },
+  {
+    "number": 18,
+    "title": "TypeScript",
+    "startPage": 43,
+    "endPage": 44,
+    "summary": "TypeScript menambahkan static type checking di atas JavaScript. Ia membantu menemukan mismatch sebelum runtime, tetapi tidak memvalidasi data eksternal secara otomatis.",
+    "part": "Frontend modern",
+    "accent": "amber"
+  },
+  {
+    "number": 19,
+    "title": "Vue 3",
+    "startPage": 45,
+    "endPage": 46,
+    "summary": "Vue membangun UI berbasis component dan reactivity di atas HTML, CSS, JavaScript. Mulai dari local state dan component kecil sebelum menambah global store.",
+    "part": "Frontend modern",
+    "accent": "amber"
+  },
+  {
+    "number": 20,
+    "title": "Laravel + Vue + Inertia",
+    "startPage": 47,
+    "endPage": 48,
+    "summary": "Inertia memungkinkan routing/controller Laravel mengirim page props ke Vue tanpa memisahkan frontend menjadi SPA API deployment sejak awal. Authorization tetap berada di server.",
+    "part": "Frontend modern",
+    "accent": "amber"
+  },
+  {
+    "number": 21,
+    "title": "State management dan data fetching",
+    "startPage": 49,
+    "endPage": 50,
+    "summary": "Global state bukan default. Pisahkan UI state lokal, shared client state, dan server state. Setiap cache atau optimistic update harus memiliki aturan invalidation dan recovery.",
+    "part": "Frontend modern",
+    "accent": "amber"
+  },
+  {
+    "number": 22,
+    "title": "Testing strategy",
+    "startPage": 51,
+    "endPage": 52,
+    "summary": "Testing memberi kepercayaan saat kode berubah. Targetnya bukan coverage 100%, tetapi perlindungan terhadap aturan penting, jalur kritis, boundary, dan bug yang pernah terjadi.",
+    "part": "Quality engineering",
+    "accent": "rose"
+  },
+  {
+    "number": 23,
+    "title": "Web security wajib dan OWASP mindset",
+    "startPage": 53,
+    "endPage": 54,
+    "summary": "Keamanan adalah proses desain, implementasi, konfigurasi, update, monitoring, dan recovery. OWASP Top 10:2025 menekankan broken access control, misconfiguration, software supply chain, cryptographic failures, injection, insecure design, authentication, integrity, logging/alerting, dan exceptional conditions.",
+    "part": "Quality engineering",
+    "accent": "rose"
+  },
+  {
+    "number": 24,
+    "title": "Performance engineering",
+    "startPage": 55,
+    "endPage": 55,
+    "summary": "Optimasi harus dimulai dari pengukuran. Bottleneck paling sering berada pada network, query/database, image/assets, pekerjaan synchronous berat, atau kode yang mengulang pekerjaan.",
+    "part": "Quality engineering",
+    "accent": "rose"
+  },
+  {
+    "number": 25,
+    "title": "Observability dan debugging production",
+    "startPage": 56,
+    "endPage": 57,
+    "summary": "Production debugging membutuhkan log, metrics, error tracking, health check, dan runbook. Tanpa observability, tim hanya menerima laporan \"website error\" tanpa konteks.",
+    "part": "Quality engineering",
+    "accent": "rose"
+  },
+  {
+    "number": 26,
+    "title": "Linux dan server dasar",
+    "startPage": 58,
+    "endPage": 59,
+    "summary": "Sebagian besar server production berbasis Linux. Kamu tidak perlu menjadi sysadmin penuh, tetapi harus mampu menavigasi filesystem, process, permission, network, service, log, dan resource usage.",
+    "part": "Production engineering",
+    "accent": "violet"
+  },
+  {
+    "number": 27,
+    "title": "DNS, domain, HTTPS, web server",
+    "startPage": 60,
+    "endPage": 60,
+    "summary": "Saat user membuka domain, DNS memetakan nama ke alamat, TLS mengamankan koneksi, web server/reverse proxy menerima request, lalu meneruskannya ke runtime aplikasi.",
+    "part": "Production engineering",
+    "accent": "violet"
+  },
+  {
+    "number": 28,
+    "title": "Deployment Laravel",
+    "startPage": 61,
+    "endPage": 62,
+    "summary": "Deploy adalah perubahan production yang harus dapat diverifikasi dan dibalik. Jangan mengandalkan \"upload file lalu semoga jalan\".",
+    "part": "Production engineering",
+    "accent": "violet"
+  },
+  {
+    "number": 29,
+    "title": "Docker",
+    "startPage": 63,
+    "endPage": 64,
+    "summary": "Docker memaketkan runtime dan dependency, bukan menggantikan pemahaman aplikasi, database, Linux, atau network. Pelajari setelah aplikasi bisa berjalan tanpa Docker.",
+    "part": "Production engineering",
+    "accent": "violet"
+  },
+  {
+    "number": 30,
+    "title": "CI/CD",
+    "startPage": 65,
+    "endPage": 66,
+    "summary": "CI menguji perubahan secara otomatis; CD menyiapkan atau menjalankan delivery/deployment. Pipeline adalah gerbang kualitas, bukan sekadar badge.",
+    "part": "Production engineering",
+    "accent": "violet"
+  },
+  {
+    "number": 31,
+    "title": "Backup dan disaster recovery",
+    "startPage": 67,
+    "endPage": 68,
+    "summary": "Backup yang tidak pernah diuji restore belum terbukti berguna. Recovery harus mempertimbangkan database, uploaded files, config, secret, dan prosedur operasional.",
+    "part": "Production engineering",
+    "accent": "violet"
+  },
+  {
+    "number": 32,
+    "title": "Fondasi Go",
+    "startPage": 69,
+    "endPage": 70,
+    "summary": "Go dipelajari setelah backend fundamental agar kamu mempelajari bahasa dan ekosistem baru, bukan sekaligus belajar HTTP, database, dan arsitektur dari nol.",
+    "part": "Go untuk backend specialization",
+    "accent": "indigo"
+  },
+  {
+    "number": 33,
+    "title": "Concurrency Go",
+    "startPage": 71,
+    "endPage": 72,
+    "summary": "Concurrency kuat, tetapi tidak berarti setiap function menjadi goroutine. Mulai dari goroutine, channel, synchronization, context, timeout, dan race awareness setelah code synchronous sudah benar.",
+    "part": "Go untuk backend specialization",
+    "accent": "indigo"
+  },
+  {
+    "number": 34,
+    "title": "Backend Go",
+    "startPage": 73,
+    "endPage": 74,
+    "summary": "Standard library Go cukup kuat untuk HTTP server, JSON, context, database/sql, testing, logging, dan graceful shutdown. Framework dapat ditambahkan setelah kebutuhan jelas.",
+    "part": "Go untuk backend specialization",
+    "accent": "indigo"
+  },
+  {
+    "number": 35,
+    "title": "Laravel vs Go: memilih berdasarkan kebutuhan",
+    "startPage": 75,
+    "endPage": 76,
+    "summary": "Tidak ada kebutuhan memigrasikan Laravel ke Go hanya karena benchmark. Pilih berdasarkan requirement, produktivitas tim, latency, concurrency, operasi, dan bottleneck nyata.",
+    "part": "Go untuk backend specialization",
+    "accent": "indigo"
+  },
+  {
+    "number": 36,
+    "title": "Project utama: Portal Gampong bertumbuh 15 level",
+    "startPage": 77,
+    "endPage": 78,
+    "summary": "Gunakan satu proyek nyata yang tumbuh seiring kemampuan. Setiap level menambah satu lapisan teknologi tanpa menghapus fondasi yang sudah dipahami.",
+    "part": "Proyek terpadu, roadmap, debugging, portfolio",
+    "accent": "orange"
+  },
+  {
+    "number": 37,
+    "title": "Roadmap 26 minggu",
+    "startPage": 79,
+    "endPage": 80,
+    "summary": "Roadmap adalah urutan belajar, bukan deadline kaku. Jika checkpoint belum tercapai, ulangi minggu tersebut daripada menumpuk kebingungan.",
+    "part": "Proyek terpadu, roadmap, debugging, portfolio",
+    "accent": "orange"
+  },
+  {
+    "number": 38,
+    "title": "Rutinitas belajar mingguan",
+    "startPage": 81,
+    "endPage": 81,
+    "summary": "Konsistensi mengalahkan marathon sporadis. Gunakan siklus konsep -> latihan -> fitur -> debug/test -> refactor -> checkpoint -> review.",
+    "part": "Proyek terpadu, roadmap, debugging, portfolio",
+    "accent": "orange"
+  },
+  {
+    "number": 39,
+    "title": "Sistem checkpoint dan asesmen diri",
+    "startPage": 82,
+    "endPage": 82,
+    "summary": "Checkpoint mencegah ilusi kompetensi. Kamu naik level jika bisa menjelaskan, membangun, memodifikasi, debug, test, dan mendokumentasikan.",
+    "part": "Proyek terpadu, roadmap, debugging, portfolio",
+    "accent": "orange"
+  },
+  {
+    "number": 40,
+    "title": "Debugging framework",
+    "startPage": 83,
+    "endPage": 83,
+    "summary": "Debugging sistematis lebih cepat daripada mengubah banyak file. Tujuannya mengecilkan ruang kemungkinan sampai menemukan fakta yang bertentangan dengan harapan.",
+    "part": "Proyek terpadu, roadmap, debugging, portfolio",
+    "accent": "orange"
+  },
+  {
+    "number": 41,
+    "title": "Clean code dan refactoring",
+    "startPage": 84,
+    "endPage": 84,
+    "summary": "Refactoring memperbaiki struktur tanpa mengubah behavior. Lakukan dengan target konkret: readability, testability, duplication, coupling, atau bug-prone flow.",
+    "part": "Proyek terpadu, roadmap, debugging, portfolio",
+    "accent": "orange"
+  },
+  {
+    "number": 42,
+    "title": "Materi lanjutan setelah roadmap inti",
+    "startPage": 85,
+    "endPage": 85,
+    "summary": "Setelah stack utama bisa sampai production, materi lanjutan dipilih berdasarkan masalah nyata. Jangan mempelajari semuanya sekaligus.",
+    "part": "Proyek terpadu, roadmap, debugging, portfolio",
+    "accent": "orange"
+  },
+  {
+    "number": 43,
+    "title": "Yang tidak perlu dipelajari sekaligus",
+    "startPage": 86,
+    "endPage": 86,
+    "summary": "React, Vue, Next, Nuxt, Laravel, Go, Rust, Python, Docker, Kubernetes, dan cloud bukan daftar checklist serentak. Kedalaman pada satu stack sampai production lebih bernilai daripada mengenal banyak nama tanpa dapat menyelesaikan aplikasi.",
+    "part": "Proyek terpadu, roadmap, debugging, portfolio",
+    "accent": "orange"
+  },
+  {
+    "number": 44,
+    "title": "Portfolio yang menunjukkan kemampuan nyata",
+    "startPage": 87,
+    "endPage": 88,
+    "summary": "Portfolio teknis terbaik menunjukkan problem, keputusan, implementasi, quality, dan operasi - bukan hanya screenshot UI.",
+    "part": "Proyek terpadu, roadmap, debugging, portfolio",
+    "accent": "orange"
+  },
+  {
+    "number": 45,
+    "title": "AI-assisted development yang bertanggung jawab",
+    "startPage": 89,
+    "endPage": 89,
+    "summary": "AI dapat mempercepat ide, boilerplate, review, dokumentasi, dan debugging, tetapi output harus diperlakukan seperti code dari sumber eksternal: diverifikasi, diuji, dan dinilai keamanan serta lisensinya.",
+    "part": "Materi era digital 2026",
+    "accent": "pink"
+  },
+  {
+    "number": 46,
+    "title": "Software supply chain dan dependency hygiene",
+    "startPage": 90,
+    "endPage": 90,
+    "summary": "Aplikasi modern bergantung pada banyak package, image, action CI, dan layanan. Risiko tidak hanya datang dari kode sendiri tetapi juga rantai supply software.",
+    "part": "Materi era digital 2026",
+    "accent": "pink"
+  },
+  {
+    "number": 47,
+    "title": "Privacy, data minimization, dan secure-by-design",
+    "startPage": 91,
+    "endPage": 91,
+    "summary": "Era digital membuat aplikasi mengumpulkan banyak data. Prinsip aman adalah mengumpulkan hanya yang diperlukan, membatasi akses, melindungi transit/storage, dan menetapkan retensi.",
+    "part": "Materi era digital 2026",
+    "accent": "pink"
+  },
+  {
+    "number": 48,
+    "title": "Cloud fundamentals tanpa vendor lock-in awal",
+    "startPage": 92,
+    "endPage": 92,
+    "summary": "Cloud adalah model penyediaan compute, storage, database, network, observability, dan managed service. Pelajari konsep dulu sebelum menghafal nama produk vendor.",
+    "part": "Materi era digital 2026",
+    "accent": "pink"
+  },
+  {
+    "number": 49,
+    "title": "API economy, integrations, webhooks, dan interoperabilitas",
+    "startPage": 93,
+    "endPage": 93,
+    "summary": "idempotency Aplikasi modern jarang berdiri sendiri. Integration perlu timeout, retry, signature verification, idempotency, mapping error, rate limit, dan observability.",
+    "part": "Materi era digital 2026",
+    "accent": "pink"
+  },
+  {
+    "number": 50,
+    "title": "Dokumentasi, kolaborasi remote, dan engineering workflow",
+    "startPage": 94,
+    "endPage": 94,
+    "summary": "communication Kemampuan teknis perlu dapat ditransfer ke tim. README, issue, PR, ADR, runbook, dan incident note mengurangi knowledge silo.",
+    "part": "Materi era digital 2026",
+    "accent": "pink"
+  },
+  {
+    "number": 51,
+    "title": "Karier belajar berkelanjutan di era teknologi cepat",
+    "startPage": 95,
+    "endPage": 101,
+    "summary": "berubah Framework berubah cepat; kemampuan menjaga skill tetap relevan berasal dari cara membaca dokumentasi, membangun project, mengevaluasi sumber, dan membuat loop belajar sendiri.",
+    "part": "Materi era digital 2026",
+    "accent": "pink"
+  }
+]

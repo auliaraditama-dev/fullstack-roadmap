@@ -8,6 +8,9 @@ const weeks=await readJSON('src/data/weeks.json');
 const pages=await readJSON('src/data/source-pages.json');
 const quizzes=await readJSON('src/data/quizzes.json');
 const explanations=await readJSON('src/data/explanations.json');
+const sourceLibrary=await readJSON('src/data/source-library.json');
+const fullstackChapters=await readJSON('src/data/fullstack-chapters.json');
+const fullstackWeeks=await readJSON('src/data/fullstack-weeks.json');
 const fail=(message)=>{throw new Error(message)};
 const nonEmpty=(value)=>typeof value==='string'&&value.trim().length>0;
 const stringArray=(value,{min=0,max=Infinity}={})=>Array.isArray(value)&&value.length>=min&&value.length<=max&&value.every(nonEmpty);
@@ -56,4 +59,13 @@ for(const quiz of quizzes){
 const covered=new Set();
 for(const lesson of lessons)for(let page=lesson.sourcePages[0];page<=lesson.sourcePages[1];page++)covered.add(page);
 for(let page=5;page<=59;page++)if(!covered.has(page))fail(`Halaman PDF belum terpetakan: ${page}`);
-console.log(`Content validation: ${lessons.length} unit, ${explanations.length} penjelasan mudah, ${parts.length} bagian, ${weeks.length} minggu, ${pages.length} halaman sumber, ${quizzes.length} quiz valid.`);
+if(!Array.isArray(sourceLibrary)||sourceLibrary.length!==3)fail('Library sumber harus memuat 3 PDF');
+if(sourceLibrary.reduce((sum,item)=>sum+item.pageCount,0)!==186)fail('Total sumber harus 186 halaman');
+for(const source of sourceLibrary){
+  if(!nonEmpty(source.id)||!nonEmpty(source.title)||!nonEmpty(source.file)||!Array.isArray(source.pages)||source.pages.length!==source.pageCount)fail(`Sumber PDF invalid: ${source?.id??'unknown'}`);
+  for(let i=0;i<source.pages.length;i++)if(source.pages[i]?.page!==i+1||typeof source.pages[i]?.text!=='string')fail(`Halaman library invalid: ${source.id} halaman ${i+1}`);
+}
+if(!Array.isArray(fullstackChapters)||fullstackChapters.length!==51)fail('Buku Lengkap harus memiliki 51 bab');
+if(!fullstackChapters.every((item,index)=>item.number===index+1&&nonEmpty(item.title)&&Number.isInteger(item.startPage)&&Number.isInteger(item.endPage)))fail('Metadata 51 bab tidak valid');
+if(!Array.isArray(fullstackWeeks)||fullstackWeeks.length!==26||!fullstackWeeks.every((item,index)=>item.number===index+1&&nonEmpty(item.focus)&&nonEmpty(item.output)))fail('Roadmap 26 minggu tidak valid');
+console.log(`Content validation: ${lessons.length} unit lama, ${fullstackChapters.length} bab 2026, ${fullstackWeeks.length} minggu roadmap, ${sourceLibrary.reduce((sum,item)=>sum+item.pageCount,0)} halaman dari 3 PDF, ${quizzes.length} quiz valid.`);

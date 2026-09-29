@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from 'vue';
 import LucideIcon from './LucideIcon.vue';
 import { storageError } from '../lib/db';
+import { modalConfirm } from '../lib/dialog';
 import {
   clearOffline,
   downloadModule,
@@ -101,7 +102,13 @@ async function remove(id: string) {
 }
 
 async function clear() {
-  if (!confirm('Hapus semua materi offline? Catatan dan progress tetap tersimpan.')) return;
+  if (!await modalConfirm({
+    title: 'Hapus materi offline?',
+    message: 'Semua salinan materi offline akan dihapus. Catatan dan progress belajar tetap tersimpan.',
+    confirmLabel: 'Hapus materi',
+    cancelLabel: 'Batal',
+    variant: 'danger',
+  })) return;
   try {
     await clearOffline();
     await refresh();

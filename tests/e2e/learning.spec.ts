@@ -14,8 +14,8 @@ test('alur belajar, notes, bookmark, quiz, dan persistensi', async ({ page }) =>
   page.on('pageerror', (error) => errors.push(error.message));
 
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Belajar Go + Vue + PostgreSQL');
-  await page.getByRole('link', { name: 'Mulai Bab 1', exact: true }).click();
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Belajar full-stack 2026');
+  await page.getByRole('link', { name: 'Mulai track fundamental', exact: true }).click();
   await expect(page).toHaveURL(new RegExp(lesson));
 
   await page.getByRole('heading', { name: 'Catatan pribadi', exact: true }).scrollIntoViewIfNeeded();
@@ -247,6 +247,26 @@ test('draft tidak hilang ketika tab lain menyimpan progress', async ({ page, con
   await other.close();
 });
 
+
+
+test('dialog konfirmasi memakai modal aplikasi, bukan browser confirm', async ({ page }) => {
+  await page.goto('/offline/');
+  await page.getByRole('button', { name: 'Hapus materi offline', exact: true }).click();
+  const modal = page.getByRole('dialog');
+  await expect(modal.getByRole('heading', { name: 'Hapus materi offline?' })).toBeVisible();
+  await expect(modal.getByRole('button', { name: 'Hapus materi' })).toBeVisible();
+  await modal.getByRole('button', { name: 'Batal' }).click();
+  await expect(modal).toBeHidden();
+});
+
+test('materi 2026 dan tiga sumber PDF tersedia', async ({ page }) => {
+  await page.goto('/materi-2026/');
+  await expect(page.locator('.chapter-card')).toHaveCount(51);
+  await page.goto('/roadmap-26-minggu/');
+  await expect(page.locator('.week-card')).toHaveCount(26);
+  await page.goto('/referensi/');
+  await expect(page.locator('.source-library-card')).toHaveCount(3);
+});
 test('homepage responsif dan dock mobile membuka pencarian', async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 800 });
   await page.goto('/');

@@ -18,6 +18,9 @@ const levels=JSON.parse(await readFile('src/data/levels.json','utf8'));
 const portalLevels=JSON.parse(await readFile('src/data/portal-levels.json','utf8'));
 const explanations=JSON.parse(await readFile('src/data/explanations.json','utf8'));
 const pages=JSON.parse(await readFile('src/data/source-pages.json','utf8'));
+const sourceLibrary=JSON.parse(await readFile('src/data/source-library.json','utf8'));
+const fullstackChapters=JSON.parse(await readFile('src/data/fullstack-chapters.json','utf8'));
+const fullstackWeeks=JSON.parse(await readFile('src/data/fullstack-weeks.json','utf8'));
 const manifest=JSON.parse(await readFile('public/manifest.webmanifest','utf8'));
 
 const expectedRuntime={astro:'7.3.5','@astrojs/vue':'7.0.3',vue:'3.5.43',idb:'8.0.3',zod:'4.6.5'};
@@ -34,6 +37,12 @@ assert(levels.length===12,'Task Tracker 12 milestone tersedia');
 assert(portalLevels.length===15,'Portal Gampong lama tetap tersedia');
 assert(pages.length===59,'transkripsi 59 halaman tersedia');
 assert(explanations.length===26,'26 penjelasan mudah tersedia');
+assert(sourceLibrary.length===3,'3 PDF sumber terintegrasi');
+assert(sourceLibrary.reduce((sum,item)=>sum+item.pageCount,0)===186,'186 halaman sumber tersedia');
+assert(fullstackChapters.length===51,'51 bab Full-Stack Developer 2026 tersedia');
+assert(fullstackWeeks.length===26,'roadmap 26 minggu tersedia');
+assert(await exists('public/sources/Buku_Lengkap_FullStack_Developer_2026_Full_Materi.pdf'),'PDF Buku Lengkap 2026 tersedia');
+assert(await exists('public/sources/Roadmap_Belajar_FullStack_2026_Lengkap.pdf'),'PDF Roadmap 2026 tersedia');
 assert(new Set(explanations.map((item)=>item.id)).size===26,'ID penjelasan mudah unik');
 assert(explanations.every((item)=>lessons.some((lesson)=>lesson.id===item.id)),'setiap penjelasan terhubung ke lesson');
 assert(explanations.every((item)=>item.summary&&item.mentalModel&&item.why&&item.bridge&&item.steps?.length>=3&&item.mistakes?.length>=2&&item.check?.length>=2),'penjelasan mudah memiliki struktur belajar lengkap');
@@ -75,7 +84,7 @@ assert(layout.includes('aria-label="Navigasi cepat"')&&layout.includes('id="dock
 const lessonPage=await readFile('src/pages/belajar/[bagian]/[bab].astro','utf8');
 assert(lessonPage.includes('LearningGuide')&&lessonPage.includes('penjelasan-mudah'),'lesson memakai lapisan penjelasan mudah');
 const e2e=await readFile('tests/e2e/learning.spec.ts','utf8');
-assert(e2e.includes('Mulai Bab 1')&&!e2e.includes('Mulai dari awal'),'E2E homepage sinkron dengan CTA saat ini');
+assert(e2e.includes('Mulai track fundamental')&&!e2e.includes('Mulai dari awal'),'E2E homepage sinkron dengan CTA saat ini');
 assert(e2e.includes('lesson responsive 320px')||e2e.includes('for (const width of [320'),'E2E mencakup viewport mobile kecil');
 const learningCss=await readFile('src/styles/learning.css','utf8');
 assert(learningCss.includes('@media (max-width:480px)')&&learningCss.includes('@media (max-width:820px)'),'learning guide responsif mobile/tablet');
@@ -91,6 +100,11 @@ assert(taskMain.includes('APP_ENV')&&taskMain.includes('DATABASE_URL wajib diisi
 assert(taskFrontend.includes('import.meta.env.VITE_API_URL'),'Task Tracker frontend mendukung API URL environment');
 const clientScript=await readFile('src/scripts/client.ts','utf8');
 assert(clientScript.includes('pre:not(.pdf-page-text):not(.source-page)'),'toolbar kode tidak salah menandai transkripsi PDF sebagai kode');
+assert(!/\b(?:alert|confirm|prompt)\s*\(/.test(clientScript),'client tidak memakai browser alert/confirm/prompt native');
+const personalVue=await readFile('src/components/Personal.vue','utf8');
+const offlineVue=await readFile('src/components/OfflineManager.vue','utf8');
+assert(!/\b(?:alert|confirm|prompt)\s*\(/.test(personalVue+offlineVue),'Vue tidak memakai browser alert/confirm/prompt native');
+assert(await exists('src/components/DialogHost.vue')&&await exists('src/lib/dialog.ts'),'modal notification system tersedia');
 
 const systemCss=await readFile('src/styles/system.css','utf8');
 const uiSystem=await readFile('src/scripts/ui-system.ts','utf8');
@@ -103,6 +117,7 @@ assert(systemCss.includes('--code:#f7f9ff')&&systemCss.includes('--code:#0b1020'
 assert(systemCss.includes(':root[data-theme=light] .astro-code')&&systemCss.includes('var(--shiki-light'),'syntax highlighting light mode dipaksa memakai token Shiki light');
 assert(systemCss.includes(':root[data-theme=dark] .astro-code')&&systemCss.includes('var(--shiki-dark'),'syntax highlighting dark mode memakai token Shiki dark');
 assert(systemCss.includes('.roadmap-tone-6')&&systemCss.includes('.feature-card--offline'),'visual system colorful mencakup roadmap dan feature board');
+assert(systemCss.includes('.app-dialog__panel')&&systemCss.includes('.chapter-grid')&&systemCss.includes('.source-library-grid'),'modal dan UI full materi memakai visual system');
 assert(uiSystem.includes("setAttribute('role', 'listbox')")&&uiSystem.includes("setAttribute('role', 'option')"),'custom select mempertahankan semantic listbox/option');
 assert(uiSystem.includes("event.key === 'Escape'")&&uiSystem.includes("event.key === 'ArrowDown'")&&uiSystem.includes("event.key === 'ArrowUp'"),'dropdown mendukung Escape dan keyboard navigation');
 assert(uiSystem.includes('availableBelow')&&uiSystem.includes('availableAbove'),'dropdown memposisikan panel berdasarkan viewport');

@@ -1,0 +1,132 @@
+[
+  {
+    "number": 1,
+    "focus": "Environment, terminal, Git",
+    "output": "Repo belajar + CLI drills"
+  },
+  {
+    "number": 2,
+    "focus": "PHP variables, condition, loop",
+    "output": "20 latihan logika"
+  },
+  {
+    "number": 3,
+    "focus": "Function, array, error",
+    "output": "CLI mini apps"
+  },
+  {
+    "number": 4,
+    "focus": "OOP + algoritma dasar",
+    "output": "Mini inventory CLI"
+  },
+  {
+    "number": 5,
+    "focus": "HTML semantic",
+    "output": "Landing page"
+  },
+  {
+    "number": 6,
+    "focus": "CSS responsive",
+    "output": "Responsive redesign"
+  },
+  {
+    "number": 7,
+    "focus": "JavaScript fundamental",
+    "output": "Interactive UI"
+  },
+  {
+    "number": 8,
+    "focus": "DOM, fetch, DevTools",
+    "output": "Frontend mini project"
+  },
+  {
+    "number": 9,
+    "focus": "HTTP + JSON",
+    "output": "Request lab"
+  },
+  {
+    "number": 10,
+    "focus": "SQL CRUD",
+    "output": "Database exercises"
+  },
+  {
+    "number": 11,
+    "focus": "JOIN + schema design",
+    "output": "Mini schema gampong"
+  },
+  {
+    "number": 12,
+    "focus": "PHP web + PDO",
+    "output": "Mini blog"
+  },
+  {
+    "number": 13,
+    "focus": "Laravel routing/controller/Blade",
+    "output": "News app"
+  },
+  {
+    "number": 14,
+    "focus": "Migration/Eloquent/relationship",
+    "output": "Data model app"
+  },
+  {
+    "number": 15,
+    "focus": "Validation/auth/policy",
+    "output": "Protected CRUD"
+  },
+  {
+    "number": 16,
+    "focus": "Upload/mail/logging",
+    "output": "Admin module"
+  },
+  {
+    "number": 17,
+    "focus": "Queue/cache/API/testing",
+    "output": "Backend checkpoint"
+  },
+  {
+    "number": 18,
+    "focus": "Node/Vite + TypeScript",
+    "output": "TS exercises"
+  },
+  {
+    "number": 19,
+    "focus": "Vue component/reactivity",
+    "output": "Vue mini app"
+  },
+  {
+    "number": 20,
+    "focus": "Vue form/composable",
+    "output": "Dashboard UI"
+  },
+  {
+    "number": 21,
+    "focus": "Laravel + Vue/Inertia",
+    "output": "Full-stack module"
+  },
+  {
+    "number": 22,
+    "focus": "API integration/testing",
+    "output": "Full-stack checkpoint"
+  },
+  {
+    "number": 23,
+    "focus": "Security audit",
+    "output": "Fix security checklist"
+  },
+  {
+    "number": 24,
+    "focus": "Linux + deployment",
+    "output": "Staging deployment"
+  },
+  {
+    "number": 25,
+    "focus": "Docker + CI/CD + backup",
+    "output": "Automated pipeline"
+  },
+  {
+    "number": 26,
+    "focus": "Go fundamental + reflection",
+    "output": "Go API mini project + portfolio"
+  }
+]

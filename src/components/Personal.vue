@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import LucideIcon from './LucideIcon.vue';
+import { modalConfirm } from '../lib/dialog';
 import levels from '../data/levels.json';
 import {
   readData,
@@ -117,7 +118,13 @@ async function confirmImport() {
 }
 
 async function clear() {
-  if (!confirm('Hapus seluruh progress, quiz, bookmark, dan catatan? Export cadangan sebelum melanjutkan.')) return;
+  if (!await modalConfirm({
+    title: 'Hapus seluruh data belajar?',
+    message: 'Progress, quiz, bookmark, catatan, dan milestone lokal akan dihapus. Export cadangan terlebih dahulu jika masih diperlukan.',
+    confirmLabel: 'Hapus semua data',
+    cancelLabel: 'Batal',
+    variant: 'danger',
+  })) return;
   try {
     await replaceData(emptyData());
     await load();

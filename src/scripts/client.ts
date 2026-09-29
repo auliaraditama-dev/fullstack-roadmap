@@ -1,6 +1,7 @@
 import './ui-system';
 import { readData, updateData } from '../lib/db';
 import { iconPaths, type IconName } from '../lib/icons';
+import { modalAlert } from '../lib/dialog';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const theme = document.querySelector<HTMLSelectElement>('#theme');
@@ -275,7 +276,12 @@ document.querySelectorAll<HTMLInputElement>('[data-exercise]').forEach((input) =
       data.exercises[input.dataset.exercise!] = input.checked;
     }).catch(() => {
       input.checked = !input.checked;
-      alert('Latihan belum tersimpan. Periksa izin penyimpanan browser.');
+      void modalAlert({
+        title: 'Latihan belum tersimpan',
+        message: 'Periksa izin penyimpanan browser, lalu coba kembali.',
+        confirmLabel: 'Mengerti',
+        variant: 'warning',
+      });
     });
   });
 });

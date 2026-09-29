@@ -13,7 +13,9 @@ export const headerNavigation: NavigationItem[] = [
 ];
 
 export const learningNavigation: NavigationItem[] = [
-  { href: '/minggu/', label: 'Rencana 8 minggu', icon: 'calendar' },
+  { href: '/materi-2026/', label: 'Full Materi 2026', icon: 'library' },
+  { href: '/roadmap-26-minggu/', label: 'Roadmap 26 minggu', icon: 'calendar' },
+  { href: '/minggu/', label: 'Track Go 8 minggu', icon: 'route' },
   { href: '/project/', label: 'Project', icon: 'folder-kanban' },
   { href: '/latihan/', label: 'Latihan', icon: 'list-checks' },
   { href: '/quiz/', label: 'Quiz', icon: 'circle-help' },

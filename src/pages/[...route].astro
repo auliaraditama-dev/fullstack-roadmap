@@ -10,7 +10,9 @@ import glossary from '../data/glossary.json';
 import levels from '../data/levels.json';
 import portalLevels from '../data/portal-levels.json';
 import quizzes from '../data/quizzes.json';
-import sourcePages from '../data/source-pages.json';
+import sourceLibrary from '../data/source-library.json';
+import fullstackChapters from '../data/fullstack-chapters.json';
+import fullstackWeeks from '../data/fullstack-weeks.json';
 import weeks from '../data/weeks.json';
 import { catalog, parts, summaries } from '../lib/catalog';
 
@@ -30,6 +32,9 @@ const route = Astro.params.route!;
 const part = parts.find((item) => route === `belajar/${item.id}`);
 const week = weeks.find((item) => route === `minggu/${item.number}`);
 const quiz = quizzes.find((item) => route === `quiz/${item.id}`);
+const sourceDocument = sourceLibrary.find((item) => route === `sumber/${item.id}`);
+const fullstackParts = Array.from(new Set(fullstackChapters.map((item) => item.part)));
+const totalSourcePages = sourceLibrary.reduce((sum, item) => sum + item.pageCount, 0);
 
 const titles: Record<string, string> = {
   belajar: 'Kurikulum lengkap',
@@ -52,12 +57,17 @@ const titles: Record<string, string> = {
   debugging: 'Debugging framework',
   lanjutan: 'Track lanjutan',
   'belajar-dengan-ai': 'Belajar dengan AI secara benar',
+  'materi-2026': 'Full Materi Full-Stack Developer 2026',
+  'roadmap-26-minggu': 'Roadmap 26 Minggu',
   'sumber/go-vue-postgresql': 'Transkripsi PDF Go + Vue + PostgreSQL',
+  'sumber/fullstack-developer-2026': 'Transkripsi Buku Lengkap Full-Stack Developer 2026',
+  'sumber/roadmap-fullstack-2026': 'Transkripsi Roadmap Full-Stack Developer 2026',
 };
 
 const title = part?.title
   ?? (week ? `Minggu ${week.number}: ${week.title}` : undefined)
   ?? (quiz ? `Quiz: ${quiz.title}` : undefined)
+  ?? sourceDocument?.title
   ?? titles[route]
   ?? 'Materi';
 
@@ -384,18 +394,82 @@ const cheats = [
   )}
   {route === 'offline' && <OfflineManager client:load />}
 
+  {route === 'materi-2026' && (
+    <>
+      <section class="curriculum-hero curriculum-hero--violet">
+        <div>
+          <span class="source-chip">51 BAB · 9 BAGIAN · 101 HALAMAN</span>
+          <h2>Full Materi Full-Stack Developer 2026</h2>
+          <p>Jalur lengkap dari fondasi developer sampai PHP, Laravel, Vue 3, TypeScript, quality engineering, production, Go, AI-assisted development, supply chain, privacy, cloud, integrasi, dan portfolio.</p>
+        </div>
+        <a class="button primary" href="/sumber/fullstack-developer-2026/">Baca sumber 101 halaman</a>
+      </section>
+      {fullstackParts.map((part, partIndex) => (
+        <section class={`curriculum-part curriculum-part--${(partIndex % 6) + 1}`}>
+          <div class="section-heading section-heading--strong">
+            <div>
+              <span class="section-number">{String(partIndex + 1).padStart(2, '0')}</span>
+              <h2>{part}</h2>
+            </div>
+          </div>
+          <div class="chapter-grid">
+            {fullstackChapters.filter((chapter) => chapter.part === part).map((chapter) => (
+              <a class="chapter-card" href={`/sumber/fullstack-developer-2026/#halaman-${chapter.startPage}`}>
+                <span class="chapter-card__number">{String(chapter.number).padStart(2, '0')}</span>
+                <div>
+                  <h3>{chapter.title}</h3>
+                  <p>{chapter.summary}</p>
+                  <small>Halaman {chapter.startPage}{chapter.endPage > chapter.startPage ? `–${chapter.endPage}` : ''}</small>
+                </div>
+                <LucideIcon name="arrow-up-right" size={17} />
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
+    </>
+  )}
+
+  {route === 'roadmap-26-minggu' && (
+    <>
+      <p class="intro">Roadmap 26 minggu dari buku lengkap. Ini urutan belajar, bukan deadline kaku: lanjut setelah output dan checkpoint minggu tersebut benar-benar tercapai.</p>
+      <div class="week-board">
+        {fullstackWeeks.map((item) => (
+          <article class={`week-card week-card--${((item.number - 1) % 6) + 1}`}>
+            <span class="week-card__number">M{String(item.number).padStart(2, '0')}</span>
+            <h2>{item.focus}</h2>
+            <p>{item.output}</p>
+          </article>
+        ))}
+      </div>
+      <div class="source-cta">
+        <div><strong>Sumber roadmap lengkap</strong><p>Detail checkpoint, rutinitas, debugging, refactoring, portfolio, dan referensi tetap tersedia pada PDF/transkripsi.</p></div>
+        <a class="button" href="/sumber/fullstack-developer-2026/#halaman-79">Buka Bab 37</a>
+      </div>
+    </>
+  )}
+
   {route === 'referensi' && (
     <>
-      <p class="intro">Sumber utama platform adalah PDF 59 halaman yang Anda lampirkan. Kurikulum, jadwal, latihan inti, Task Tracker, dan cheat sheet diturunkan dari dokumen tersebut.</p>
-      <h2>Dokumen sumber</h2>
-      <ul>
-        <li><a href="/sumber/go-vue-postgresql/">Transkripsi lengkap — 59 halaman</a></li>
-        <li><a href="/sources/Belajar_FullStack_Go_Vue_PostgreSQL_Dari_Fundamental_Color_Syntax.pdf">PDF asli</a></li>
-      </ul>
-      <h2>Stack platform</h2>
-      <p>Website pembelajaran menggunakan Astro + Vue + TypeScript. Materi pembelajaran berfokus pada Go, Vue 3, PostgreSQL, Git, Docker, Postman/Insomnia, DBeaver, dan Browser DevTools sesuai PDF.</p>
+      <p class="intro">Platform menggabungkan tiga PDF yang Anda lampirkan: roadmap Go + Vue + PostgreSQL, Roadmap Full-Stack Developer 2026, dan Buku Lengkap Full-Stack Developer 2026. Total <strong>{totalSourcePages} halaman</strong> tersedia sebagai sumber asli dan transkripsi per halaman.</p>
+      <div class="source-library-grid">
+        {sourceLibrary.map((source) => (
+          <article class={`source-library-card source-library-card--${source.accent}`}>
+            <span class="source-chip">{source.pageCount} HALAMAN</span>
+            <h2>{source.shortTitle}</h2>
+            <p>{source.description}</p>
+            <div class="toolbar">
+              <a class="button primary" href={`/sumber/${source.id}/`}>Baca transkripsi</a>
+              <a class="button" href={source.file} target="_blank" rel="noopener noreferrer">PDF asli</a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <h2>Jalur materi digital</h2>
+      <p><a class="inline-icon-link" href="/materi-2026/"><span>51 bab Full-Stack Developer 2026</span><LucideIcon name="arrow-right" size={15} /></a></p>
+      <p><a class="inline-icon-link" href="/roadmap-26-minggu/"><span>Roadmap praktik 26 minggu</span><LucideIcon name="arrow-right" size={15} /></a></p>
       <h2>Prinsip sumber</h2>
-      <p>Konten yang berasal dari PDF diberi referensi halaman. Penjelasan mudah diberi label sebagai penyederhanaan tambahan, sedangkan track seperti Portal Gampong dan materi lanjutan diberi label sebagai perluasan agar tidak tercampur dengan sumber utama.</p>
+      <p>Materi PDF dipertahankan per halaman untuk keterlacakan. Jalur interaktif lama tetap dipertahankan, sementara materi 2026 yang lebih luas ditambahkan sebagai track baru agar isi sumber tidak tercampur atau hilang.</p>
       <Bookmark id="reference:official" lessonId="bab-b" title="Referensi PDF" url="/referensi/" type="referensi" client:visible />
     </>
   )}
@@ -443,19 +517,35 @@ const cheats = [
     </>
   )}
 
-  {route === 'sumber/go-vue-postgresql' && (
+  {sourceDocument && (
     <>
-      <p class="intro">Transkripsi 59 halaman untuk keterlacakan. Buka PDF asli untuk melihat warna, tabel, diagram, dan tata letak kode seperti dokumen sumber.</p>
-      <a class="button" href="/sources/Belajar_FullStack_Go_Vue_PostgreSQL_Dari_Fundamental_Color_Syntax.pdf" target="_blank" rel="noopener noreferrer">
-        <LucideIcon name="book-open" size={16} />
-        <span>Buka PDF asli</span>
-      </a>
-      {sourcePages.map((page) => (
-        <section id={`halaman-${page.page}`}>
-          <h2>Halaman {page.page}</h2>
-          <pre class="source-page pdf-page-text"><code>{page.text || 'Halaman tanpa teks tambahan.'}</code></pre>
-        </section>
-      ))}
+      <section class={`source-intro-card source-intro-card--${sourceDocument.accent}`}>
+        <div>
+          <span class="source-chip">SUMBER ASLI · {sourceDocument.pageCount} HALAMAN</span>
+          <h2>{sourceDocument.title}</h2>
+          <p>{sourceDocument.description}</p>
+        </div>
+        <a class="button primary" href={sourceDocument.file} target="_blank" rel="noopener noreferrer">
+          <LucideIcon name="book-open" size={16} />
+          <span>Buka PDF asli</span>
+        </a>
+      </section>
+      <label class="source-filter" for="source-page-search">
+        <span>Cari teks di transkripsi</span>
+        <input id="source-page-search" type="search" data-filter-list placeholder="Contoh: authorization, goroutine, Docker..." />
+      </label>
+      <div class="source-pages-grid">
+        {sourceDocument.pages.map((page) => (
+          <section id={`halaman-${page.page}`} class="source-page-card" data-searchable>
+            <div class="source-page-card__head">
+              <span>PAGE</span>
+              <h2>{String(page.page).padStart(3, '0')}</h2>
+              <a href={`#halaman-${page.page}`} aria-label={`Tautan halaman ${page.page}`}>#</a>
+            </div>
+            <pre class="source-page pdf-page-text"><code>{page.text || 'Halaman tanpa teks tambahan.'}</code></pre>
+          </section>
+        ))}
+      </div>
     </>
   )}
 </Layout>

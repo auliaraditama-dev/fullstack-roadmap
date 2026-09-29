@@ -3,8 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import LucideIcon from '../components/LucideIcon.astro';
 import Personal from '../components/Personal.vue';
 import levels from '../data/levels.json';
-import weeks from '../data/weeks.json';
+import sourceLibrary from '../data/source-library.json';
+import fullstackChapters from '../data/fullstack-chapters.json';
+import fullstackWeeks from '../data/fullstack-weeks.json';
 import { catalog, parts, summaries } from '../lib/catalog';
+
+const totalSourcePages = sourceLibrary.reduce((sum, source) => sum + source.pageCount, 0);
 
 const partIcons = [
   'graduation-cap',
@@ -23,31 +27,31 @@ const partIcons = [
   <section class="home-hero" aria-labelledby="home-title">
     <div class="home-hero-copy">
       <div class="home-badges" aria-label="Informasi edisi">
-        <span class="signal-badge signal-badge--violet"><LucideIcon name="code-2" size={14} /> Full-stack</span>
-        <span class="signal-badge signal-badge--amber">Edisi 2026</span>
-        <span class="signal-badge signal-badge--mint">Bahasa Indonesia</span>
+        <span class="signal-badge signal-badge--violet"><LucideIcon name="code-2" size={14} /> Full-stack workspace</span>
+        <span class="signal-badge signal-badge--amber">3 sumber PDF</span>
+        <span class="signal-badge signal-badge--mint">{totalSourcePages} halaman</span>
       </div>
 
       <p class="home-overline">KURIKULUM BELAJAR MANDIRI</p>
-      <h1 id="home-title">Belajar Go + Vue + PostgreSQL dengan jalur yang <span class="marker-underline">terstruktur dari fundamental.</span></h1>
-      <p class="home-lead">Mulai dari algoritma dan Go, lanjut ke HTTP/API, Vue 3, PostgreSQL, Docker, lalu bangun Task Tracker end-to-end. Setiap unit dilengkapi ringkasan 60 detik, mental model, urutan berpikir, kesalahan umum, dan cek pemahaman; PDF 59 halaman tetap menjadi sumber utama.</p>
+      <h1 id="home-title">Belajar full-stack 2026 dari fondasi sampai production dalam workspace yang <span class="marker-underline">terstruktur dan bisa dipraktikkan.</span></h1>
+      <p class="home-lead">Track lama Go + Vue + PostgreSQL tetap utuh. Track baru menambahkan 51 bab Full-Stack Developer 2026: PHP, Laravel, Vue 3, TypeScript, testing, security, Linux, deployment, Docker, CI/CD, Go, AI-assisted development, privacy, cloud, integrasi, dan portfolio. Ketiga PDF tersedia penuh per halaman sebagai sumber belajar.</p>
 
       <div class="home-actions">
         <a class="button primary button-strong" href={catalog[0]!.url}>
           <LucideIcon name="play" size={17} />
-          <span>Mulai Bab 1</span>
+          <span>Mulai track fundamental</span>
         </a>
-        <a class="button button-quiet" href="/roadmap/">
-          <LucideIcon name="route" size={17} />
-          <span>Lihat peta belajar</span>
+        <a class="button button-quiet" href="/materi-2026/">
+          <LucideIcon name="library" size={17} />
+          <span>Buka 51 bab materi 2026</span>
         </a>
       </div>
 
       <dl class="curriculum-stats" aria-label="Ringkasan kurikulum">
-        <div><dt>{catalog.length}</dt><dd>Unit belajar</dd></div>
-        <div><dt>{parts.length}</dt><dd>Bagian</dd></div>
-        <div><dt>{weeks.length}</dt><dd>Minggu</dd></div>
-        <div><dt>{levels.length}</dt><dd>Level project</dd></div>
+        <div><dt>{fullstackChapters.length}</dt><dd>Bab 2026</dd></div>
+        <div><dt>{catalog.length}</dt><dd>Unit Go track</dd></div>
+        <div><dt>{fullstackWeeks.length}</dt><dd>Minggu roadmap</dd></div>
+        <div><dt>{totalSourcePages}</dt><dd>Halaman sumber</dd></div>
       </dl>
     </div>
 
@@ -81,11 +85,11 @@ const partIcons = [
     <div class="section-heading section-heading--strong">
       <div>
         <span class="section-number">01</span>
-        <h2 id="peta">Sepuluh bagian. Satu jalur dari logika sampai full-stack.</h2>
-        <p>Pahami urutannya, jangan cuma mengoleksi tutorial.</p>
+        <h2 id="peta">Track lama tetap lengkap. Materi 2026 ditambahkan tanpa menimpa fondasi.</h2>
+        <p>Gunakan jalur Go untuk latihan fundamental terarah, lalu perluas ke kurikulum full-stack 51 bab.</p>
       </div>
-      <a class="inline-icon-link text-link" href="/roadmap/">
-        <span>Roadmap lengkap</span>
+      <a class="inline-icon-link text-link" href="/materi-2026/">
+        <span>Full materi 2026</span>
         <LucideIcon name="arrow-right" size={15} />
       </a>
     </div>
@@ -123,12 +127,12 @@ const partIcons = [
         <span class="feature-link">Buka project <LucideIcon name="arrow-up-right" size={15} /></span>
       </a>
 
-      <a class="feature-card feature-card--weeks" href="/minggu/">
+      <a class="feature-card feature-card--weeks" href="/roadmap-26-minggu/">
         <span class="feature-icon"><LucideIcon name="calendar" size={22} /></span>
         <span class="feature-kicker">RENCANA BELAJAR</span>
-        <h3>{weeks.length} minggu terukur</h3>
-        <p>Target mingguan, output konkret, dan checkpoint agar progres tidak abstrak.</p>
-        <span class="feature-link">Lihat jadwal <LucideIcon name="arrow-up-right" size={15} /></span>
+        <h3>{fullstackWeeks.length} minggu terukur</h3>
+        <p>Roadmap 26 minggu dari environment dan Git sampai security, deployment, CI/CD, Go, dan portfolio.</p>
+        <span class="feature-link">Lihat roadmap <LucideIcon name="arrow-up-right" size={15} /></span>
       </a>
 
       <a class="feature-card feature-card--practice" href="/latihan/">
@@ -166,8 +170,8 @@ const partIcons = [
   <section class="release-note" aria-label="Pembaruan materi">
     <div class="release-date"><span>UPDATED</span><time datetime="2026-09-29">29.09.2026</time></div>
     <div>
-      <strong>Edisi digital full-stack 2026</strong>
-      <p>Materi PDF lengkap, latihan, quiz, progress lokal, Task Tracker, offline mode, dan transkripsi sumber tersedia dalam satu workspace belajar.</p>
+      <strong>Edisi digital full-stack 2026 · tiga sumber terintegrasi</strong>
+      <p>{totalSourcePages} halaman sumber, 51 bab kurikulum, roadmap 26 minggu, track Go lama, latihan, quiz, progress lokal, project, offline mode, dan transkripsi per halaman tersedia dalam satu workspace.</p>
     </div>
     <a class="button button-quiet" href="/referensi/">Sumber materi <LucideIcon name="arrow-right" size={15} /></a>
   </section>

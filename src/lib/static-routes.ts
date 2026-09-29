@@ -19,5 +19,9 @@ export const staticRoutes = [
   'debugging',
   'lanjutan',
   'belajar-dengan-ai',
+  'materi-2026',
+  'roadmap-26-minggu',
   'sumber/go-vue-postgresql',
+  'sumber/fullstack-developer-2026',
+  'sumber/roadmap-fullstack-2026',
 ];

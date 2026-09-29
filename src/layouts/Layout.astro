@@ -7,6 +7,7 @@ import AppHeader from '../components/AppHeader.astro';
 import AppSidebar from '../components/AppSidebar.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import LucideIcon from '../components/LucideIcon.astro';
+import DialogHost from '../components/DialogHost.vue';
 
 interface Props {
   title: string;
@@ -18,7 +19,7 @@ interface Props {
 
 const {
   title,
-  description = 'Belajar Go, Vue 3, PostgreSQL, Git, Docker, dan fundamental full-stack dari algoritma sampai Task Tracker end-to-end.',
+  description = 'Workspace belajar Full-Stack Developer 2026: fundamental, PHP, Laravel, Vue 3, TypeScript, Go, PostgreSQL, testing, security, Docker, CI/CD, deployment, dan project terpadu.',
   wide = false,
   headings = [],
   chapter,
@@ -35,7 +36,7 @@ const canonical = Astro.site ? new URL(path, Astro.site) : undefined;
     <meta name="description" content={description} />
     <meta name="theme-color" content="#4f46e5" />
     <meta name="color-scheme" content="light dark" />
-    <title>{title} · Go + Vue + PostgreSQL Roadmap</title>
+    <title>{title} · Full-Stack Developer 2026</title>
     {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -60,7 +61,7 @@ const canonical = Astro.site ? new URL(path, Astro.site) : undefined;
       <main id="main" class:list={['main', { wide }]} tabindex="-1">
         <slot />
         <footer class="page-footer">
-          <span>Go + Vue + PostgreSQL Roadmap · 2026</span>
+          <span>Full-Stack Developer Learning Lab · 2026</span>
           <a class="inline-icon-link" href="/referensi/">
             <LucideIcon name="book-open" size={14} />
             <span>Sumber &amp; versi materi</span>
@@ -104,6 +105,7 @@ const canonical = Astro.site ? new URL(path, Astro.site) : undefined;
       </button>
     </div>
 
+    <DialogHost client:load />
     <script>import '../scripts/client';</script>
   </body>
 </html>
