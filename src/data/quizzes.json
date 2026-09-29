@@ -1,0 +1,542 @@
+[
+  {
+    "id": "orientasi",
+    "title": "Orientasi & problem solving",
+    "questions": [
+      {
+        "id": "orientasi-1",
+        "question": "Dalam model dasar program, urutan yang benar adalah…",
+        "options": [
+          "Input → Process → Output",
+          "Process → Input → Output",
+          "Output → Input → Process"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. Program menerima input, memprosesnya, lalu menghasilkan output.",
+          "Process membutuhkan data yang sudah masuk.",
+          "Output adalah hasil, bukan langkah pertama."
+        ],
+        "url": "/belajar/orientasi/peta-belajar-dan-cara-kerja-program/"
+      },
+      {
+        "id": "orientasi-2",
+        "question": "Saat soal terasa membingungkan, teknik dari PDF yang paling tepat adalah…",
+        "options": [
+          "Langsung mencari syntax",
+          "Tulis input, output, langkah, edge case, lalu trace table",
+          "Menambah framework"
+        ],
+        "answer": 1,
+        "explanations": [
+          "Syntax tidak menggantikan langkah solusi.",
+          "Benar. Ini membuat logika terlihat sebelum coding.",
+          "Framework tidak menyelesaikan ketidakjelasan algoritma."
+        ],
+        "url": "/belajar/orientasi/algoritma-pseudocode-dan-problem-solving/"
+      },
+      {
+        "id": "orientasi-3",
+        "question": "Satu loop yang membaca n elemen sekali umumnya tumbuh…",
+        "options": [
+          "O(1)",
+          "O(n)",
+          "O(n²)"
+        ],
+        "answer": 1,
+        "explanations": [
+          "Bukan konstan jika jumlah elemen bertambah.",
+          "Benar. Pekerjaan bertambah sebanding dengan n.",
+          "O(n²) lebih umum pada dua loop bersarang."
+        ],
+        "url": "/belajar/orientasi/algoritma-pseudocode-dan-problem-solving/"
+      }
+    ]
+  },
+  {
+    "id": "go-dasar",
+    "title": "Go fundamental",
+    "questions": [
+      {
+        "id": "go-dasar-1",
+        "question": "Perintah yang menandai root module Go adalah…",
+        "options": [
+          "go mod init",
+          "go run .",
+          "gofmt -w ."
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. go mod init membuat go.mod.",
+          "go run menjalankan program.",
+          "gofmt memformat kode."
+        ],
+        "url": "/belajar/go-dasar/setup-go-dan-program-pertama/"
+      },
+      {
+        "id": "go-dasar-2",
+        "question": "Jika n % pembagi == 0, artinya…",
+        "options": [
+          "n tidak bisa dibagi",
+          "n habis dibagi pembagi",
+          "n selalu prima"
+        ],
+        "answer": 1,
+        "explanations": [
+          "Kebalikannya.",
+          "Benar. Sisa pembagiannya nol.",
+          "Justru bisa menjadi bukti n bukan prima jika pembagi bukan 1 atau n."
+        ],
+        "url": "/belajar/go-dasar/variable-tipe-data-konstanta-dan-operator/"
+      },
+      {
+        "id": "go-dasar-3",
+        "question": "Agar 5/2 menghasilkan 2.5, pendekatan yang tepat adalah…",
+        "options": [
+          "float64(5) / float64(2)",
+          "5 / 2 lalu ubah ke float64",
+          "Gunakan operator %"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. Konversi dilakukan sebelum pembagian.",
+          "Pembagian integer sudah menghasilkan 2.",
+          "% menghitung sisa bagi."
+        ],
+        "url": "/belajar/go-dasar/input-output-dan-konversi-tipe/"
+      }
+    ]
+  },
+  {
+    "id": "struktur-data",
+    "title": "Data, function & error",
+    "questions": [
+      {
+        "id": "struktur-data-1",
+        "question": "Struktur yang paling sering dipakai untuk kumpulan data sederhana di Go menurut PDF adalah…",
+        "options": [
+          "Array",
+          "Slice",
+          "Map"
+        ],
+        "answer": 1,
+        "explanations": [
+          "Array berguna tetapi panjangnya bagian dari tipe.",
+          "Benar. Slice lebih fleksibel dan umum.",
+          "Map untuk key-value, bukan urutan umum."
+        ],
+        "url": "/belajar/struktur-data/array-slice-string-dan-map/"
+      },
+      {
+        "id": "struktur-data-2",
+        "question": "Pola value, ok := m[key] dipakai untuk…",
+        "options": [
+          "Menambah kapasitas slice",
+          "Membedakan key map ditemukan atau tidak",
+          "Mengubah string ke rune"
+        ],
+        "answer": 1,
+        "explanations": [
+          "Tidak terkait map lookup.",
+          "Benar. ok memberi tahu keberadaan key.",
+          "Tidak terkait Unicode."
+        ],
+        "url": "/belajar/struktur-data/array-slice-string-dan-map/"
+      },
+      {
+        "id": "struktur-data-3",
+        "question": "Pola Go yang umum untuk operasi yang bisa gagal adalah…",
+        "options": [
+          "hasil + error",
+          "global exception otomatis",
+          "mengabaikan error"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. Go membuat kegagalan eksplisit.",
+          "Go tidak mengandalkan exception otomatis untuk error biasa.",
+          "PDF menekankan memeriksa err segera."
+        ],
+        "url": "/belajar/struktur-data/function-scope-dan-multiple-return/"
+      }
+    ]
+  },
+  {
+    "id": "algoritma-testing",
+    "title": "Algoritma, debugging & testing",
+    "questions": [
+      {
+        "id": "algoritma-testing-1",
+        "question": "Mengapa largest sebaiknya diinisialisasi dari numbers[0]?",
+        "options": [
+          "Agar selalu nol",
+          "Agar benar juga ketika semua data negatif",
+          "Agar loop tidak perlu"
+        ],
+        "answer": 1,
+        "explanations": [
+          "Nol bisa tidak ada di data.",
+          "Benar. Nilai awal berasal dari data sebenarnya.",
+          "Loop tetap diperlukan untuk elemen berikutnya."
+        ],
+        "url": "/belajar/algoritma-testing/latihan-inti-prima-rata-rata-nilai-terbesar/"
+      },
+      {
+        "id": "algoritma-testing-2",
+        "question": "Versi isPrime yang lebih efisien cukup mengecek selama…",
+        "options": [
+          "i < n",
+          "i*i <= n",
+          "i == n"
+        ],
+        "answer": 1,
+        "explanations": [
+          "Benar tetapi lebih banyak kerja.",
+          "Benar. Faktor besar memiliki pasangan faktor kecil.",
+          "Ini tidak memeriksa pembagi yang relevan."
+        ],
+        "url": "/belajar/algoritma-testing/latihan-inti-prima-rata-rata-nilai-terbesar/"
+      },
+      {
+        "id": "algoritma-testing-3",
+        "question": "Setelah bug diperbaiki, kebiasaan yang dianjurkan adalah…",
+        "options": [
+          "Hapus semua test",
+          "Tambahkan test agar bug yang sama tidak kembali",
+          "Ubah banyak hal sekaligus"
+        ],
+        "answer": 1,
+        "explanations": [
+          "Test justru membantu mencegah regresi.",
+          "Benar. PDF menekankan regression test.",
+          "Sulit mengetahui perubahan mana yang menyelesaikan masalah."
+        ],
+        "url": "/belajar/algoritma-testing/debugging-testing-dan-cara-membaca-error/"
+      }
+    ]
+  },
+  {
+    "id": "web-git",
+    "title": "Git & web fundamental",
+    "questions": [
+      {
+        "id": "web-git-1",
+        "question": "Perintah untuk melihat perubahan yang sudah masuk staging adalah…",
+        "options": [
+          "git diff --staged",
+          "git pull",
+          "git init"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. Ini membandingkan staged changes.",
+          "git pull mengambil perubahan remote.",
+          "git init membuat repository."
+        ],
+        "url": "/belajar/web-git/git-dan-github-dari-dasar/"
+      },
+      {
+        "id": "web-git-2",
+        "question": "Status yang umum untuk resource berhasil dibuat adalah…",
+        "options": [
+          "200",
+          "201",
+          "404"
+        ],
+        "answer": 1,
+        "explanations": [
+          "200 sukses umum, tetapi create biasanya 201.",
+          "Benar. 201 berarti resource dibuat.",
+          "404 berarti tidak ditemukan."
+        ],
+        "url": "/belajar/web-git/dasar-web-http-json-rest-dan-api/"
+      },
+      {
+        "id": "web-git-3",
+        "question": "Desain REST yang dianjurkan untuk aksi task adalah…",
+        "options": [
+          "URL berbasis resource dan aksi dibedakan method",
+          "Semua aksi lewat GET",
+          "Nama endpoint berupa kata kerja acak"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. Contohnya GET/POST/PATCH/DELETE /api/tasks.",
+          "GET tidak boleh dipakai untuk semua mutasi.",
+          "PDF menganjurkan resource-oriented URL."
+        ],
+        "url": "/belajar/web-git/dasar-web-http-json-rest-dan-api/"
+      }
+    ]
+  },
+  {
+    "id": "backend-go",
+    "title": "Backend Go",
+    "questions": [
+      {
+        "id": "backend-go-1",
+        "question": "Package standar Go yang dipakai untuk HTTP server pada contoh adalah…",
+        "options": [
+          "net/http",
+          "fmt/http",
+          "server/http"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. net/http menyediakan server dan handler.",
+          "Tidak ada package itu.",
+          "Tidak ada package standar itu."
+        ],
+        "url": "/belajar/backend-go/backend-go-http-server-dan-api-sederhana/"
+      },
+      {
+        "id": "backend-go-2",
+        "question": "Jika method tidak sesuai, contoh PDF mengembalikan…",
+        "options": [
+          "405 Method Not Allowed",
+          "201 Created",
+          "301 Redirect"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. http.StatusMethodNotAllowed.",
+          "201 untuk resource baru.",
+          "Redirect tidak sesuai kasus ini."
+        ],
+        "url": "/belajar/backend-go/backend-go-http-server-dan-api-sederhana/"
+      },
+      {
+        "id": "backend-go-3",
+        "question": "Lapisan yang bertanggung jawab mengakses database adalah…",
+        "options": [
+          "Handler",
+          "Repository",
+          "Middleware"
+        ],
+        "answer": 1,
+        "explanations": [
+          "Handler mengelola HTTP boundary.",
+          "Benar. Repository mengakses database.",
+          "Middleware untuk concern lintas request."
+        ],
+        "url": "/belajar/backend-go/backend-go-http-server-dan-api-sederhana/"
+      }
+    ]
+  },
+  {
+    "id": "frontend-vue",
+    "title": "JavaScript & Vue 3",
+    "questions": [
+      {
+        "id": "frontend-vue-1",
+        "question": "Method array JavaScript untuk membuat array transformasi baru adalah…",
+        "options": [
+          "map",
+          "reduce",
+          "fetch"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. map memetakan setiap elemen.",
+          "reduce mengakumulasi.",
+          "fetch untuk HTTP."
+        ],
+        "url": "/belajar/frontend-vue/javascript-fundamental-untuk-vue/"
+      },
+      {
+        "id": "frontend-vue-2",
+        "question": "Di Vue 3 Composition API, ref digunakan untuk…",
+        "options": [
+          "State reaktif",
+          "Membuat SQL query",
+          "Menjalankan Docker"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. Perubahan ref memicu update template yang bergantung.",
+          "Tidak terkait SQL.",
+          "Tidak terkait container."
+        ],
+        "url": "/belajar/frontend-vue/vue-3-fundamental/"
+      },
+      {
+        "id": "frontend-vue-3",
+        "question": "Lifecycle yang dipakai di contoh untuk fetch awal adalah…",
+        "options": [
+          "onMounted",
+          "onDeleted",
+          "beforeSQL"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. onMounted dijalankan setelah component dipasang.",
+          "Bukan API Vue standar pada contoh.",
+          "Bukan lifecycle Vue."
+        ],
+        "url": "/belajar/frontend-vue/vue-3-fundamental/"
+      }
+    ]
+  },
+  {
+    "id": "data-tools",
+    "title": "PostgreSQL & tooling",
+    "questions": [
+      {
+        "id": "data-tools-1",
+        "question": "Cara aman memasukkan input ke SQL backend adalah…",
+        "options": [
+          "String concatenation",
+          "Parameterized query",
+          "Menaruh input langsung di nama table"
+        ],
+        "answer": 1,
+        "explanations": [
+          "Berisiko SQL injection.",
+          "Benar. PDF menggunakan placeholder $1.",
+          "Identifier dinamis juga harus ditangani hati-hati dan bukan pola input biasa."
+        ],
+        "url": "/belajar/data-tools/sql-dan-postgresql/"
+      },
+      {
+        "id": "data-tools-2",
+        "question": "Panel browser yang utama untuk memeriksa request/response adalah…",
+        "options": [
+          "Network",
+          "Elements",
+          "Sources saja"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. Lihat URL, method, status, payload, response, header.",
+          "Elements fokus DOM/CSS.",
+          "Bukan pilihan utama untuk request."
+        ],
+        "url": "/belajar/data-tools/dbeaver-postman-dan-browser-devtools/"
+      },
+      {
+        "id": "data-tools-3",
+        "question": "Volume Docker digunakan untuk…",
+        "options": [
+          "Menyimpan data di luar lifecycle container",
+          "Mengubah HTTP status",
+          "Mengganti branch Git"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. Volume membantu persistence.",
+          "Tidak terkait HTTP.",
+          "Tidak terkait Git."
+        ],
+        "url": "/belajar/data-tools/docker-fundamental/"
+      }
+    ]
+  },
+  {
+    "id": "integrasi-project",
+    "title": "Integrasi & project",
+    "questions": [
+      {
+        "id": "integrasi-project-1",
+        "question": "Setelah Vue POST JSON pada alur create task, langkah backend awal adalah…",
+        "options": [
+          "Go decode JSON",
+          "Docker menghapus volume",
+          "Git merge otomatis"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. Go membaca payload sebelum validasi.",
+          "Tidak terkait request.",
+          "Tidak terkait request runtime."
+        ],
+        "url": "/belajar/integrasi-project/menggabungkan-vue-go-postgresql/"
+      },
+      {
+        "id": "integrasi-project-2",
+        "question": "Definition of done Task Tracker mencakup…",
+        "options": [
+          "Data tetap ada setelah refresh",
+          "Semua error disembunyikan",
+          "SQL dibangun dari string input"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. Persistence adalah kriteria PDF.",
+          "Frontend harus menampilkan error secara jelas.",
+          "SQL harus memakai parameter."
+        ],
+        "url": "/belajar/integrasi-project/mini-project-full-stack-task-tracker/"
+      },
+      {
+        "id": "integrasi-project-3",
+        "question": "Pada jadwal 8 minggu, minggu terakhir berfokus pada…",
+        "options": [
+          "Docker + integrasi full-stack",
+          "Hanya Git",
+          "Hanya variable"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. Targetnya Task Tracker end-to-end.",
+          "Git ada lebih awal.",
+          "Variable ada minggu pertama."
+        ],
+        "url": "/belajar/integrasi-project/jadwal-belajar-dan-checkpoint/"
+      }
+    ]
+  },
+  {
+    "id": "referensi",
+    "title": "Cheat sheet & kelulusan",
+    "questions": [
+      {
+        "id": "referensi-1",
+        "question": "Cheat sheet menurut PDF digunakan…",
+        "options": [
+          "Sebagai pengganti pemahaman",
+          "Sebagai pengingat setelah konsep dipahami",
+          "Untuk menyalin solusi ujian"
+        ],
+        "answer": 1,
+        "explanations": [
+          "PDF menekankan konsep dulu.",
+          "Benar. Ini referensi cepat setelah memahami konsep.",
+          "Bukan tujuan cheat sheet."
+        ],
+        "url": "/belajar/referensi/cheat-sheet-go/"
+      },
+      {
+        "id": "referensi-2",
+        "question": "Status sukses umum untuk DELETE pada cheat sheet HTTP adalah…",
+        "options": [
+          "204",
+          "500",
+          "401"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. 204 umum untuk delete tanpa body.",
+          "500 adalah server error.",
+          "401 belum terautentikasi."
+        ],
+        "url": "/belajar/referensi/cheat-sheet-git-sql-http-dan-docker/"
+      },
+      {
+        "id": "referensi-3",
+        "question": "Target akhir tahap dasar adalah mampu…",
+        "options": [
+          "Menyelesaikan tiga latihan inti dari pseudocode sampai test tanpa menyalin",
+          "Menghafal semua syntax",
+          "Menghindari Git"
+        ],
+        "answer": 0,
+        "explanations": [
+          "Benar. Ini target akhir checklist PDF.",
+          "PDF justru melarang fokus hafalan.",
+          "Git bagian dari workflow belajar."
+        ],
+        "url": "/belajar/referensi/cheat-sheet-git-sql-http-dan-docker/"
+      }
+    ]
+  }
+]

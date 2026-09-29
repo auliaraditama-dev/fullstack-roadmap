@@ -1,0 +1,29 @@
+---
+import LucideIcon from './LucideIcon.astro';
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+---
+<aside class="toc">
+  <span class="eyebrow">DI HALAMAN INI</span>
+  <nav aria-label="Daftar isi">
+    {headings.filter((heading) => heading.depth === 2 || heading.depth === 3).map((heading) => (
+      <a class:list={{ sub: heading.depth === 3 }} href={'#' + heading.slug}>{heading.text}</a>
+    ))}
+    <a href="#checkpoint">Checkpoint</a>
+    <a href="#catatan">Catatan pribadi</a>
+  </nav>
+  <a class="toc-offline inline-icon-link" href="/offline/">
+    <LucideIcon name="download" size={15} />
+    <span>Simpan untuk offline</span>
+  </a>
+</aside>

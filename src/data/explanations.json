@@ -1,0 +1,613 @@
+[
+  {
+    "id": "bab-01",
+    "summary": "Bayangkan semua program sebagai mesin tiga tahap: menerima input, memprosesnya dengan aturan, lalu menghasilkan output. Pada aplikasi full-stack, mesin itu tersebar di browser, API Go, dan PostgreSQL.",
+    "mentalModel": "Form Vue adalah pintu masuk. Request HTTP membawa data ke Go. Go memvalidasi dan menjalankan aturan. PostgreSQL menyimpan state. Hasil kembali sebagai JSON lalu Vue memperbarui layar.",
+    "why": "Model ini membantu kamu mengetahui lapisan mana yang perlu diperiksa saat data salah, hilang, atau tidak tampil.",
+    "steps": [
+      "Tentukan input yang masuk.",
+      "Tulis proses atau aturan yang mengubah input.",
+      "Tentukan output yang harus terlihat.",
+      "Jika memakai database, tentukan data mana yang perlu disimpan.",
+      "Ikuti alur data dari Vue sampai kembali ke Vue."
+    ],
+    "mistakes": [
+      "Langsung belajar banyak framework ketika logika dasar masih membingungkan.",
+      "Menganggap frontend, backend, dan database sebagai tiga hal terpisah tanpa memahami alur datanya.",
+      "Memulai coding sebelum output yang diinginkan jelas."
+    ],
+    "check": [
+      "Bisakah kamu menjelaskan alur satu form Vue sampai data tersimpan?",
+      "Jika output salah, lapisan mana saja yang akan kamu periksa?"
+    ],
+    "bridge": "Setelah alurnya jelas, Bab 2 melatih cara memecah masalah menjadi langkah yang bisa diterjemahkan ke kode."
+  },
+  {
+    "id": "bab-02",
+    "summary": "Algoritma adalah urutan langkah yang cukup jelas untuk dijalankan komputer. Sebelum syntax, kamu perlu tahu input, output, data yang disimpan, kondisi, loop, edge case, dan cara menguji hasil.",
+    "mentalModel": "Anggap algoritma seperti resep. Komputer tidak menebak maksudmu; ia hanya mengikuti langkah yang kamu tulis.",
+    "why": "Pseudocode dan trace table membuat logika terlihat sebelum kamu berurusan dengan error syntax.",
+    "steps": [
+      "Tulis input dan output.",
+      "Pecah masalah menjadi langkah kecil.",
+      "Tandai bagian yang butuh if atau loop.",
+      "Tulis pseudocode.",
+      "Simulasikan dengan trace table.",
+      "Uji data normal dan edge case."
+    ],
+    "mistakes": [
+      "Langsung menulis kode saat belum tahu langkah penyelesaiannya.",
+      "Hanya mencoba satu input yang kebetulan benar.",
+      "Tidak melacak perubahan nilai variabel saat loop."
+    ],
+    "check": [
+      "Bisakah kamu membuat trace table untuk mencari nilai terbesar?",
+      "Apa beda O(n) dan loop bersarang yang cenderung O(n²)?"
+    ],
+    "bridge": "Bab 3 memindahkan pola pikir algoritmik ini ke program Go pertama yang benar-benar bisa dijalankan."
+  },
+  {
+    "id": "bab-03",
+    "summary": "Tujuan awal bukan membuat program besar, tetapi memastikan toolchain Go bekerja dan memahami bentuk minimum program executable.",
+    "mentalModel": "go.mod adalah identitas module, package main menandai program executable, dan func main() adalah titik masuk saat program dijalankan.",
+    "why": "Environment yang stabil mengurangi kebingungan antara error kode dan error instalasi.",
+    "steps": [
+      "Verifikasi go, code, dan git.",
+      "Buat folder latihan.",
+      "Jalankan go mod init.",
+      "Tulis package main, import fmt, dan func main().",
+      "Jalankan go run .",
+      "Rapikan dengan gofmt -w ."
+    ],
+    "mistakes": [
+      "Melanjutkan belajar ketika perintah go belum dikenali.",
+      "Membuat banyak project acak tanpa satu struktur latihan yang rapi.",
+      "Mengabaikan gofmt lalu sibuk pada formatting manual."
+    ],
+    "check": [
+      "Apa fungsi go.mod?",
+      "Mengapa func main() penting pada executable Go?"
+    ],
+    "bridge": "Bab 4 mulai mengisi program dengan data: variable, tipe, konstanta, dan operator."
+  },
+  {
+    "id": "bab-04",
+    "summary": "Variable menyimpan nilai yang bisa berubah, konstanta menyimpan nilai tetap, dan tipe data menentukan operasi apa yang masuk akal untuk nilai tersebut.",
+    "mentalModel": "Variable seperti kotak berlabel. Tipe data menentukan jenis isi kotak dan operasi yang aman dilakukan pada isi itu.",
+    "why": "Memahami tipe dan operator adalah dasar untuk kondisi, loop, perhitungan rata-rata, dan pengecekan bilangan prima.",
+    "steps": [
+      "Pilih tipe sesuai data.",
+      "Gunakan deklarasi yang paling jelas untuk konteksnya.",
+      "Kenali zero value saat belum memberi nilai awal.",
+      "Gunakan const untuk nilai tetap.",
+      "Pahami perbedaan / dan % pada integer."
+    ],
+    "mistakes": [
+      "Mengira pembagian int selalu menghasilkan desimal.",
+      "Menggunakan variable untuk nilai yang seharusnya konstan.",
+      "Lupa bahwa zero value bisa memengaruhi logika awal program."
+    ],
+    "check": [
+      "Berapa hasil 10/3 jika keduanya int?",
+      "Mengapa operator % penting untuk soal prima?"
+    ],
+    "bridge": "Bab 5 memakai variable dan tipe untuk membaca input serta melakukan konversi tipe dengan benar."
+  },
+  {
+    "id": "bab-05",
+    "summary": "Program menjadi interaktif saat bisa membaca input, menyimpannya ke variable, lalu mengubah tipe bila perhitungan membutuhkan representasi yang berbeda.",
+    "mentalModel": "Input masuk sebagai nilai yang harus ditempatkan di lokasi variable yang tepat; output adalah cara program menjelaskan hasilnya kembali kepada pengguna.",
+    "why": "Konversi tipe mencegah hasil salah, terutama pada pembagian integer yang seharusnya menghasilkan desimal.",
+    "steps": [
+      "Siapkan variable tujuan.",
+      "Baca input ke variable.",
+      "Validasi atau pahami tipe data yang masuk.",
+      "Konversi ke tipe yang dibutuhkan sebelum operasi.",
+      "Format output agar mudah dibaca."
+    ],
+    "mistakes": [
+      "Menganggap 5/2 otomatis menjadi 2.5.",
+      "Menggunakan format Printf yang tidak sesuai tipe.",
+      "Tidak memahami bahwa fmt.Scan membutuhkan lokasi variable."
+    ],
+    "check": [
+      "Mengapa float64(total)/float64(jumlah) diperlukan untuk rata-rata?",
+      "Apa fungsi & pada fmt.Scan di contoh dasar?"
+    ],
+    "bridge": "Bab 6 menggunakan nilai boolean untuk memilih jalur program dengan percabangan."
+  },
+  {
+    "id": "bab-06",
+    "summary": "Percabangan membuat program memilih aksi berdasarkan kondisi true atau false. if cocok untuk kondisi bertingkat; switch cocok saat membandingkan beberapa kemungkinan nilai atau kasus.",
+    "mentalModel": "Bayangkan percabangan sebagai persimpangan jalan: kondisi menentukan jalur mana yang dilewati dan jalur lain dilewati begitu saja.",
+    "why": "Sebagian besar validasi, aturan bisnis, dan klasifikasi di backend dibangun dari logika kondisi.",
+    "steps": [
+      "Tuliskan kondisi sebagai ekspresi boolean.",
+      "Mulai dari kasus paling spesifik bila memakai else if.",
+      "Gunakan && saat semua syarat harus benar.",
+      "Gunakan || saat salah satu syarat cukup.",
+      "Sediakan else/default jika ada kondisi yang belum tercakup."
+    ],
+    "mistakes": [
+      "Urutan else if membuat kondisi umum menang sebelum kondisi khusus.",
+      "Tertukar antara && dan ||.",
+      "Menganggap semua input pasti masuk ke salah satu kondisi tanpa default."
+    ],
+    "check": [
+      "Apa beda && dan ||?",
+      "Bagaimana menentukan urutan kondisi kategori nilai?"
+    ],
+    "bridge": "Bab 7 mengulang keputusan dan perhitungan dengan loop for."
+  },
+  {
+    "id": "bab-07",
+    "summary": "Loop for mengulang pekerjaan. Counter mengontrol iterasi, accumulator menyimpan hasil yang terus bertambah, break menghentikan loop, dan continue melompat ke iterasi berikutnya.",
+    "mentalModel": "Pada setiap iterasi, tanyakan tiga hal: nilai sebelum langkah, pekerjaan yang dilakukan, dan nilai setelah langkah.",
+    "why": "Loop adalah dasar untuk membaca slice, menghitung total, mengecek pembagi, dan mengolah data dari database/API.",
+    "steps": [
+      "Tentukan kondisi mulai.",
+      "Tentukan kapan loop berhenti.",
+      "Pastikan ada perubahan yang mendekatkan ke kondisi berhenti.",
+      "Gunakan accumulator jika hasil harus dikumpulkan.",
+      "Trace beberapa iterasi dengan kertas saat bingung."
+    ],
+    "mistakes": [
+      "Infinite loop karena counter tidak berubah.",
+      "Off-by-one karena batas < dan <= tertukar.",
+      "Accumulator di-reset di dalam loop sehingga hasil hilang."
+    ],
+    "check": [
+      "Berapa nilai total setelah loop 1 sampai 5?",
+      "Kapan break lebih tepat daripada continue?"
+    ],
+    "bridge": "Bab 8 menggabungkan loop dengan kumpulan data: array, slice, string, dan map."
+  },
+  {
+    "id": "bab-08",
+    "summary": "Array memiliki panjang tetap dalam tipenya, sedangkan slice lebih fleksibel untuk kumpulan data. Map menyimpan pasangan key-value. String perlu dipahami sebagai byte/rune saat berurusan dengan Unicode.",
+    "mentalModel": "Slice seperti jendela dinamis ke kumpulan data; map seperti kamus yang mencari nilai lewat key, bukan index posisi.",
+    "why": "Hampir semua aplikasi mengolah kumpulan data, jadi kemampuan range, len, append, slicing, dan lookup map sangat sering dipakai.",
+    "steps": [
+      "Gunakan slice untuk daftar yang ukurannya berubah.",
+      "Loop dengan range untuk membaca index/value.",
+      "Gunakan _ jika index atau value sengaja tidak dipakai.",
+      "Periksa len sebelum akses index berisiko.",
+      "Gunakan pola value, ok untuk map ketika perlu tahu key ada atau tidak."
+    ],
+    "mistakes": [
+      "Mengakses index di luar panjang slice.",
+      "Mengira len(string) selalu sama dengan jumlah karakter manusia.",
+      "Menganggap nilai zero dari map berarti key pasti ada."
+    ],
+    "check": [
+      "Apa beda array dan slice?",
+      "Mengapa value, ok berguna saat membaca map?"
+    ],
+    "bridge": "Bab 9 memecah logika pengolahan data menjadi function yang dapat diuji dan digunakan ulang."
+  },
+  {
+    "id": "bab-09",
+    "summary": "Function memberi nama pada satu tanggung jawab. Parameter membawa input, return membawa hasil, scope membatasi tempat variable dapat diakses, dan multiple return sering dipakai untuk hasil + error.",
+    "mentalModel": "Function adalah mesin kecil dengan kontrak: input apa yang diterima dan output apa yang dijanjikan.",
+    "why": "Memecah program menjadi function membuat kode lebih mudah dibaca, diuji, dan diubah tanpa merusak bagian lain.",
+    "steps": [
+      "Beri nama berdasarkan tanggung jawab.",
+      "Tentukan parameter minimum yang dibutuhkan.",
+      "Tentukan tipe return yang jelas.",
+      "Tangani error segera setelah pemanggilan yang bisa gagal.",
+      "Pecah main jika mulai berisi terlalu banyak langkah."
+    ],
+    "mistakes": [
+      "Function melakukan terlalu banyak hal sekaligus.",
+      "Mengabaikan error return.",
+      "Mengakses variable di luar scope tempat ia dibuat."
+    ],
+    "check": [
+      "Mengapa Go sering mengembalikan hasil dan error sekaligus?",
+      "Bagaimana decomposition membantu pengujian?"
+    ],
+    "bridge": "Bab 10 menambahkan struct, method, pointer, dan pola error handling yang lebih dekat dengan bentuk backend nyata."
+  },
+  {
+    "id": "bab-10",
+    "summary": "Struct mengelompokkan field yang berkaitan, method menempelkan perilaku pada tipe, pointer memberi akses ke lokasi nilai, dan error handling menjaga kegagalan tetap eksplisit.",
+    "mentalModel": "Struct adalah bentuk data, method adalah perilaku yang relevan dengan bentuk itu, pointer adalah cara merujuk nilai yang sama tanpa selalu menyalinnya.",
+    "why": "Model API, data database, dan service Go banyak memakai struct, method, pointer receiver, serta error return.",
+    "steps": [
+      "Buat struct untuk data yang punya beberapa field terkait.",
+      "Pilih value atau pointer sesuai kebutuhan perubahan/copy.",
+      "Gunakan method saat perilaku secara alami terkait tipe.",
+      "Periksa err segera setelah operasi yang dapat gagal.",
+      "Hentikan alur atau kembalikan error saat state tidak valid."
+    ],
+    "mistakes": [
+      "Menggunakan pointer tanpa memahami siapa yang boleh mengubah nilai.",
+      "Mengabaikan err demi kode terlihat singkat.",
+      "Membuat method untuk logika yang sebenarnya tidak terkait tipe."
+    ],
+    "check": [
+      "Apa beda &x dan *p?",
+      "Kapan pointer memungkinkan function mengubah nilai pemanggil?"
+    ],
+    "bridge": "Bab 11 menggabungkan seluruh fundamental menjadi tiga latihan inti yang menguji problem solving nyata."
+  },
+  {
+    "id": "bab-11",
+    "summary": "Tiga latihan inti menguji pola yang berbeda: prima memakai pencarian pembagi, rata-rata memakai accumulator + konversi tipe, dan maksimum memakai kandidat awal + perbandingan berulang.",
+    "mentalModel": "Jangan hafal solusi. Hafal pola berpikir: validasi input → pilih state awal → loop → update state → kembalikan hasil.",
+    "why": "Jika kamu bisa menyelesaikan ketiganya dari pseudocode sampai test, fondasi algoritmamu cukup kuat untuk masuk ke backend dan integrasi.",
+    "steps": [
+      "Tulis versi paling sederhana yang benar.",
+      "Tambahkan edge case seperti n<2 atau slice kosong.",
+      "Pilih state awal yang valid dari data.",
+      "Trace loop dengan contoh kecil.",
+      "Baru optimalkan setelah hasil benar.",
+      "Tambahkan test untuk kasus batas."
+    ],
+    "mistakes": [
+      "Memulai maksimum dari 0 sehingga data negatif menghasilkan jawaban salah.",
+      "Membagi total int dengan jumlah int lalu kehilangan desimal.",
+      "Mengoptimalkan isPrime sebelum memahami versi dasarnya."
+    ],
+    "check": [
+      "Mengapa max sebaiknya mulai dari numbers[0]?",
+      "Mengapa pemeriksaan prima cukup sampai i*i <= n pada versi lebih efisien?"
+    ],
+    "bridge": "Bab 12 memastikan kamu dapat membuktikan solusi benar dan menemukan bug saat asumsi tidak sesuai kenyataan."
+  },
+  {
+    "id": "bab-12",
+    "summary": "Debugging dimulai dengan mengklasifikasikan masalah: compile error, runtime error, atau logic error. Setelah itu reproduksi, baca pesan, cek state, ubah satu hal, lalu tambahkan test regresi.",
+    "mentalModel": "Debugging bukan menebak. Ini proses mengurangi ruang kemungkinan sampai penyebab yang salah ditemukan.",
+    "why": "Kemampuan membaca error dan menulis test membuat kamu tidak bergantung pada trial-and-error acak.",
+    "steps": [
+      "Reproduksi dengan input terkecil.",
+      "Baca error pertama yang relevan.",
+      "Tentukan kategori error.",
+      "Periksa nilai sebelum titik gagal.",
+      "Buat satu hipotesis dan satu perubahan.",
+      "Tambahkan test ketika bug sudah diperbaiki."
+    ],
+    "mistakes": [
+      "Mengubah banyak hal sekaligus.",
+      "Hanya membaca baris terakhir stack/error message.",
+      "Memperbaiki bug tanpa test sehingga regresi mudah kembali."
+    ],
+    "check": [
+      "Apa beda runtime dan logic error?",
+      "Mengapa table-driven test cocok untuk banyak input fungsi yang sama?"
+    ],
+    "bridge": "Bab 13 membawa kebiasaan eksperimen itu ke Git agar setiap perubahan dapat dilacak."
+  },
+  {
+    "id": "bab-13",
+    "summary": "Git menyimpan riwayat lokal melalui working tree, staging area, dan commit. Branch memisahkan pekerjaan, sedangkan remote GitHub digunakan untuk sinkronisasi dan kolaborasi.",
+    "mentalModel": "Working tree = yang sedang kamu ubah, staging = yang dipilih untuk snapshot berikutnya, commit = snapshot bernama.",
+    "why": "Riwayat yang rapi memudahkan kembali ke kondisi sebelumnya, review perubahan, dan bekerja aman pada fitur baru.",
+    "steps": [
+      "Cek git status sebelum add.",
+      "Review git diff.",
+      "Stage perubahan yang memang satu tujuan.",
+      "Commit dengan pesan yang menjelaskan niat.",
+      "Gunakan branch untuk pekerjaan terpisah.",
+      "Push/pull setelah memahami perubahan lokal dan remote."
+    ],
+    "mistakes": [
+      "git add . tanpa review perubahan.",
+      "Commit file .env atau credential.",
+      "Menganggap GitHub adalah Git itu sendiri."
+    ],
+    "check": [
+      "Apa beda working tree, staging, dan commit?",
+      "File apa yang tidak boleh masuk repository publik?"
+    ],
+    "bridge": "Bab 14 menjelaskan bahasa komunikasi yang dipakai frontend dan backend: HTTP, JSON, REST, dan API."
+  },
+  {
+    "id": "bab-14",
+    "summary": "HTTP mengatur request/response. Method menyatakan tujuan operasi, status code menjelaskan hasilnya, JSON membawa data, dan REST membantu merancang URL berdasarkan resource.",
+    "mentalModel": "URL menunjuk resource, method menjelaskan apa yang ingin dilakukan terhadap resource, status memberi tahu hasilnya.",
+    "why": "Tanpa model ini, error integrasi sering salah didiagnosis sebagai masalah Vue atau Go padahal kontrak HTTP yang keliru.",
+    "steps": [
+      "Tentukan resource dan URL.",
+      "Pilih method sesuai aksi.",
+      "Gunakan status code yang sesuai hasil.",
+      "Kirim/terima JSON dengan bentuk konsisten.",
+      "Bedakan error client 4xx dan server 5xx."
+    ],
+    "mistakes": [
+      "Memakai POST untuk semua aksi.",
+      "Selalu mengembalikan 200 walaupun validasi gagal.",
+      "Menaruh kata kerja pada semua URL alih-alih memakai method HTTP."
+    ],
+    "check": [
+      "Apa beda 401 dan 403?",
+      "Method apa yang cocok untuk perubahan sebagian resource?"
+    ],
+    "bridge": "Bab 15 menerapkan kontrak HTTP itu dengan net/http di Go."
+  },
+  {
+    "id": "bab-15",
+    "summary": "Server Go menerima request melalui handler, menulis response, dapat mengencode JSON, memvalidasi method, dan nantinya memisahkan tanggung jawab ke handler, service, repository, model/DTO, serta middleware.",
+    "mentalModel": "Handler adalah pintu HTTP, service memegang aturan bisnis, repository berbicara ke database, middleware menangani kebutuhan lintas fitur.",
+    "why": "Pemisahan tanggung jawab mencegah satu handler menjadi tempat semua logic menumpuk ketika project membesar.",
+    "steps": [
+      "Buat server minimal lebih dulu.",
+      "Tambahkan endpoint JSON.",
+      "Validasi method/input.",
+      "Pisahkan aturan bisnis saat handler mulai rumit.",
+      "Pisahkan akses database dari aturan bisnis.",
+      "Gunakan middleware untuk concern lintas route."
+    ],
+    "mistakes": [
+      "Mengabaikan error dari operasi server/database.",
+      "Menaruh seluruh SQL, validasi, dan formatting di satu handler besar.",
+      "Membuat terlalu banyak layer pada latihan kecil tanpa kebutuhan nyata."
+    ],
+    "check": [
+      "Apa tanggung jawab handler dibanding service?",
+      "Mengapa Content-Type JSON perlu jelas?"
+    ],
+    "bridge": "Bab 16 menyiapkan JavaScript yang dibutuhkan agar frontend Vue tidak terasa seperti magic."
+  },
+  {
+    "id": "bab-16",
+    "summary": "Vue berdiri di atas JavaScript. Kamu perlu nyaman dengan const/let, array/object, function, map/filter/reduce, destructuring, spread, async/await, dan fetch.",
+    "mentalModel": "Vue menambahkan reaktivitas dan template; logika data tetap JavaScript biasa.",
+    "why": "Jika JavaScript dasarnya lemah, kesalahan di Vue sulit dibedakan antara masalah framework dan masalah bahasa.",
+    "steps": [
+      "Gunakan const secara default dan let saat nilai binding harus berubah.",
+      "Latih function biasa dan arrow function.",
+      "Pahami transformasi array dengan map/filter/reduce.",
+      "Gunakan destructuring/spread untuk membaca dan membuat object baru.",
+      "Gunakan async/await untuk alur fetch yang jelas.",
+      "Periksa response.ok sebelum membaca hasil sebagai sukses."
+    ],
+    "mistakes": [
+      "Mengubah data tanpa memahami reference/object behavior.",
+      "Mengabaikan HTTP error karena fetch hanya reject pada error jaringan tertentu.",
+      "Menggunakan array method tanpa memahami input-output callback."
+    ],
+    "check": [
+      "Apa beda map dan filter?",
+      "Mengapa response.ok perlu diperiksa?"
+    ],
+    "bridge": "Bab 17 menempelkan JavaScript ini ke UI reaktif menggunakan Vue 3."
+  },
+  {
+    "id": "bab-17",
+    "summary": "Vue menghubungkan state ke template. ref membuat state reaktif, directive seperti v-if/v-for mengatur tampilan, v-model mengikat form, dan lifecycle seperti onMounted cocok untuk memuat data awal.",
+    "mentalModel": "Template adalah fungsi dari state: ketika state berubah, Vue memperbarui bagian DOM yang bergantung padanya.",
+    "why": "Model reaktif membuat UI loading, error, empty state, form, dan list dapat dikelola tanpa manipulasi DOM manual.",
+    "steps": [
+      "Simpan state yang berubah dalam ref/reactive.",
+      "Render kondisi loading/error/data secara eksplisit.",
+      "Gunakan :key stabil pada v-for.",
+      "Gunakan v-model untuk input form.",
+      "Panggil API pada lifecycle yang sesuai.",
+      "Pisahkan logic ke composable saat komponen mulai besar."
+    ],
+    "mistakes": [
+      "Menganggap ref sama dengan nilai biasa lalu lupa .value di script.",
+      "Tidak memiliki state loading/error/empty yang jelas.",
+      "Menggunakan index array sebagai key untuk data yang dapat berubah urutan."
+    ],
+    "check": [
+      "Apa fungsi ref?",
+      "Mengapa UI perlu membedakan loading, error, empty, dan success?"
+    ],
+    "bridge": "Bab 18 memberikan penyimpanan permanen menggunakan PostgreSQL dan SQL."
+  },
+  {
+    "id": "bab-18",
+    "summary": "PostgreSQL menyimpan data relasional dalam table, row, column, primary key, dan foreign key. CRUD dilakukan dengan SQL; transaction menjaga beberapa perubahan sebagai satu unit.",
+    "mentalModel": "Database adalah sumber state persisten. Primary key mengenali row, foreign key menghubungkan row antar table, dan transaction menjaga konsistensi perubahan terkait.",
+    "why": "Backend tanpa penyimpanan persisten kehilangan data ketika proses berhenti. SQL memberi kontrol eksplisit terhadap data yang dibaca dan diubah.",
+    "steps": [
+      "Desain table dan constraint.",
+      "Gunakan primary key.",
+      "Tambahkan foreign key untuk relasi.",
+      "Tulis SELECT/INSERT/UPDATE/DELETE eksplisit.",
+      "Gunakan parameter query dari driver.",
+      "Gunakan transaction saat beberapa perubahan harus sukses bersama."
+    ],
+    "mistakes": [
+      "Menggabungkan input pengguna langsung ke string SQL.",
+      "Menghapus/mengubah data tanpa WHERE yang benar.",
+      "Mengabaikan constraint dan mencoba memvalidasi semuanya hanya di frontend."
+    ],
+    "check": [
+      "Mengapa parameter query penting?",
+      "Kapan transaction dibutuhkan?"
+    ],
+    "bridge": "Bab 19 memperkenalkan tools untuk mengamati database, request API, dan browser secara langsung."
+  },
+  {
+    "id": "bab-19",
+    "summary": "DBeaver membantu melihat dan menjalankan SQL, Postman/Insomnia menguji API terpisah dari frontend, dan Browser DevTools menunjukkan DOM, console, network, storage, serta responsive layout.",
+    "mentalModel": "Tools observability membuat fakta terlihat. Jangan menebak lapisan mana yang salah jika Network atau SQL Editor bisa membuktikannya.",
+    "why": "Memisahkan pengujian database, API, dan frontend mempercepat debugging integrasi.",
+    "steps": [
+      "Uji query di DBeaver.",
+      "Uji endpoint di Postman/Insomnia.",
+      "Lihat Network untuk request dari Vue.",
+      "Bandingkan payload dan response.",
+      "Periksa Console untuk error JS.",
+      "Periksa Application untuk storage/cache."
+    ],
+    "mistakes": [
+      "Mengandalkan GUI database tanpa belajar SQL.",
+      "Menyimpulkan Vue error sebelum melihat response API.",
+      "Tidak memeriksa method, status, payload, dan header di Network."
+    ],
+    "check": [
+      "Panel DevTools mana untuk melihat request/response?",
+      "Mengapa API sebaiknya bisa diuji sebelum frontend selesai?"
+    ],
+    "bridge": "Bab 20 membuat environment service lebih konsisten menggunakan Docker."
+  },
+  {
+    "id": "bab-20",
+    "summary": "Docker membungkus aplikasi/service dalam image dan menjalankannya sebagai container. Port menghubungkan host-container, volume menyimpan data, dan environment variable mengatur konfigurasi.",
+    "mentalModel": "Image adalah blueprint; container adalah instance yang sedang berjalan; volume adalah tempat data persisten di luar lifecycle container.",
+    "why": "Docker membuat setup PostgreSQL dan service lain lebih konsisten antar mesin dan lebih mudah diulang.",
+    "steps": [
+      "Pahami image vs container.",
+      "Map port host ke container.",
+      "Gunakan volume untuk data database.",
+      "Gunakan environment variable untuk konfigurasi.",
+      "Mulai dengan docker compose up -d.",
+      "Periksa status dan log sebelum menyalahkan aplikasi."
+    ],
+    "mistakes": [
+      "Menganggap menghapus container otomatis menghapus volume.",
+      "Menyimpan secret langsung di image/source.",
+      "Bingung antara port host dan port di dalam container."
+    ],
+    "check": [
+      "Apa beda image dan container?",
+      "Mengapa PostgreSQL butuh volume bila datanya harus bertahan?"
+    ],
+    "bridge": "Bab 21 menyatukan Vue, Go, dan PostgreSQL menjadi satu alur data end-to-end."
+  },
+  {
+    "id": "bab-21",
+    "summary": "Integrasi penuh berarti satu aksi pengguna melewati Vue → HTTP → Go → SQL → PostgreSQL lalu hasil kembali sebagai JSON ke Vue.",
+    "mentalModel": "Setiap lapisan punya kontrak. Ketika satu kontrak berubah, lapisan sebelum dan sesudahnya harus tetap sepakat tentang bentuk data dan status kegagalan.",
+    "why": "Memahami alur ini membuat kamu bisa melacak bug integrasi secara sistematis, bukan menebak-nebak.",
+    "steps": [
+      "Definisikan bentuk request JSON.",
+      "Validasi di Go.",
+      "Gunakan SQL parameterized.",
+      "Kembalikan status dan JSON yang tepat.",
+      "Perbarui state Vue dari response.",
+      "Uji gagal dan sukses pada setiap batas lapisan."
+    ],
+    "mistakes": [
+      "Frontend dan backend memakai nama field berbeda.",
+      "UI menganggap request sukses tanpa memeriksa status.",
+      "Backend menerima data tanpa validasi karena frontend sudah memvalidasi."
+    ],
+    "check": [
+      "Jelaskan perjalanan task baru dari form sampai tampil kembali.",
+      "Di lapisan mana validasi tetap harus dilakukan walau frontend sudah punya validasi?"
+    ],
+    "bridge": "Bab 22 menjadikan alur integrasi ini sebagai mini project Task Tracker yang utuh."
+  },
+  {
+    "id": "bab-22",
+    "summary": "Task Tracker adalah latihan end-to-end: desain schema, CRUD API Go, uji API, bangun UI Vue, tangani loading/error/empty state, lalu jalankan service dengan Docker.",
+    "mentalModel": "Project kecil yang selesai lebih berguna daripada arsitektur besar yang belum terbukti. Bangun vertikal satu fitur dari database sampai UI, lalu ulangi.",
+    "why": "Mini project memaksa semua konsep sebelumnya bekerja bersama dan menunjukkan celah pemahaman yang tidak terlihat saat latihan terpisah.",
+    "steps": [
+      "Buat schema tasks.",
+      "Implementasikan GET/POST dahulu.",
+      "Uji endpoint tanpa frontend.",
+      "Bangun list + form Vue.",
+      "Tambahkan PATCH/DELETE.",
+      "Tambahkan loading/error/empty state.",
+      "Tambahkan test dan Docker.",
+      "Tinjau definition of done."
+    ],
+    "mistakes": [
+      "Membangun frontend dan backend sekaligus tanpa kontrak API jelas.",
+      "Menambah fitur baru sebelum CRUD dasar stabil.",
+      "Mengabaikan state gagal karena hanya menguji happy path."
+    ],
+    "check": [
+      "Apa definition of done minimum Task Tracker?",
+      "Urutan implementasi apa yang membuat debugging paling mudah?"
+    ],
+    "bridge": "Bab 23 mengubah materi menjadi ritme belajar mingguan dengan checkpoint konkret."
+  },
+  {
+    "id": "bab-23",
+    "summary": "Jadwal belajar bukan target membaca, tetapi target kemampuan. Setiap minggu punya fokus, output, dan checkpoint yang harus bisa dibuktikan lewat latihan atau project.",
+    "mentalModel": "Ukur progres dari apa yang bisa kamu buat dan jelaskan, bukan dari jumlah halaman yang selesai dibaca.",
+    "why": "Checkpoint mencegah kamu maju terlalu cepat dengan fondasi yang masih rapuh.",
+    "steps": [
+      "Tentukan waktu belajar realistis.",
+      "Selesaikan output minggu itu.",
+      "Ulang bab yang checkpoint-nya belum kuat.",
+      "Simpan latihan dengan Git.",
+      "Gunakan review mingguan untuk melihat pola error."
+    ],
+    "mistakes": [
+      "Mengejar jadwal walau checkpoint belum tercapai.",
+      "Menganggap membaca ulang sama dengan praktik.",
+      "Tidak menyimpan latihan sehingga progres sulit ditinjau."
+    ],
+    "check": [
+      "Apa bukti bahwa satu minggu benar-benar selesai?",
+      "Kapan kamu sebaiknya mengulang materi sebelum lanjut?"
+    ],
+    "bridge": "Bab 24 memberi bank latihan bertingkat untuk menguji kemampuan tanpa bergantung pada contoh."
+  },
+  {
+    "id": "bab-24",
+    "summary": "Bank latihan bergerak dari variable/operator, percabangan, loop, slice, function/algoritma sampai web/backend. Kunci pendekatan digunakan setelah kamu benar-benar mencoba.",
+    "mentalModel": "Latihan adalah tempat membangun retrieval dan problem solving. Jika selalu melihat solusi terlalu cepat, otak tidak sempat membangun pola penyelesaian sendiri.",
+    "why": "Soal bertingkat menunjukkan apakah fundamental bisa dipakai pada konteks baru, bukan hanya pada contoh yang sama persis.",
+    "steps": [
+      "Kerjakan tanpa melihat kunci.",
+      "Tulis input-output-pseudocode.",
+      "Trace jika loop membingungkan.",
+      "Uji edge case.",
+      "Baru bandingkan dengan kunci pendekatan.",
+      "Refactor setelah solusi benar."
+    ],
+    "mistakes": [
+      "Membuka kunci setelah hanya mencoba sebentar.",
+      "Menghafal jawaban dan mengira itu pemahaman.",
+      "Tidak mendefinisikan aturan untuk kasus ambigu seperti second largest dengan duplikat."
+    ],
+    "check": [
+      "Bisakah kamu menjelaskan solusi sebelum mengetik kode?",
+      "Apa yang harus kamu tentukan untuk secondLargest ketika data berisi duplikat?"
+    ],
+    "bridge": "Lampiran cheat sheet berikutnya dipakai sebagai referensi cepat setelah konsep sudah dipahami."
+  },
+  {
+    "id": "bab-a",
+    "summary": "Cheat Sheet Go adalah pengingat bentuk syntax inti: variable, const, if, loop, range, slice, append, map, function, struct, pointer, dan error check.",
+    "mentalModel": "Gunakan cheat sheet untuk mengingat bentuk, bukan mengganti pemahaman tentang kapan dan mengapa syntax dipakai.",
+    "why": "Referensi cepat mengurangi gangguan kecil saat praktik tanpa membuat kamu berhenti terlalu lama mencari syntax dasar.",
+    "steps": [
+      "Cari bentuk syntax yang lupa.",
+      "Ketik ulang, jangan hanya copy-paste.",
+      "Sesuaikan nama variable dan tipe dengan masalahmu.",
+      "Jalankan gofmt dan test setelah perubahan."
+    ],
+    "mistakes": [
+      "Menggunakan template tanpa memahami input/output function.",
+      "Copy-paste pointer/error handling tanpa tahu maknanya."
+    ],
+    "check": [
+      "Bisakah kamu menjelaskan semua baris template console?",
+      "Kapan function untuk slice harus memeriksa len(values)==0?"
+    ],
+    "bridge": "Cheat Sheet B merangkum perintah Git, SQL, HTTP, dan Docker yang sering dipakai selama integrasi."
+  },
+  {
+    "id": "bab-b",
+    "summary": "Cheat Sheet B merangkum workflow Git, pola CRUD SQL, method/status HTTP, dan perintah Docker Compose, lalu menutup dengan checklist kelulusan fundamental.",
+    "mentalModel": "Cheat sheet adalah dashboard operasi: cepat melihat perintah yang dibutuhkan sambil tetap memahami konsep di baliknya.",
+    "why": "Checklist akhir membantu membedakan 'sudah membaca' dari 'sudah mampu menjelaskan, membuat, menguji, dan memperbaiki'.",
+    "steps": [
+      "Gunakan Git untuk menyimpan progres.",
+      "Gunakan SQL parameterized dari backend.",
+      "Pilih method/status HTTP sesuai aksi.",
+      "Gunakan Docker Compose untuk service.",
+      "Tinjau checklist fundamental secara jujur."
+    ],
+    "mistakes": [
+      "Menganggap checklist selesai karena pernah melihat materinya.",
+      "Menghafal command tanpa tahu efeknya terhadap repository/database/container."
+    ],
+    "check": [
+      "Bisakah kamu menjelaskan alur Vue → HTTP → Go → SQL → PostgreSQL → JSON → Vue?",
+      "Bisakah kamu menyelesaikan tiga latihan inti tanpa menyalin solusi?"
+    ],
+    "bridge": "Setelah checklist dasar kuat, lanjutkan Task Tracker dan track lanjutan sebagai tempat memperdalam skill."
+  }
+]

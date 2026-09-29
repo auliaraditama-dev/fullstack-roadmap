@@ -1,0 +1,62 @@
+[
+  {
+    "id": "orientasi",
+    "title": "Orientasi & problem solving",
+    "start": 1,
+    "end": 2
+  },
+  {
+    "id": "go-dasar",
+    "title": "Go fundamental",
+    "start": 3,
+    "end": 7
+  },
+  {
+    "id": "struktur-data",
+    "title": "Data, function & error",
+    "start": 8,
+    "end": 10
+  },
+  {
+    "id": "algoritma-testing",
+    "title": "Algoritma, debugging & testing",
+    "start": 11,
+    "end": 12
+  },
+  {
+    "id": "web-git",
+    "title": "Git & web fundamental",
+    "start": 13,
+    "end": 14
+  },
+  {
+    "id": "backend-go",
+    "title": "Backend Go",
+    "start": 15,
+    "end": 15
+  },
+  {
+    "id": "frontend-vue",
+    "title": "JavaScript & Vue 3",
+    "start": 16,
+    "end": 17
+  },
+  {
+    "id": "data-tools",
+    "title": "PostgreSQL & tooling",
+    "start": 18,
+    "end": 20
+  },
+  {
+    "id": "integrasi-project",
+    "title": "Integrasi & project",
+    "start": 21,
+    "end": 24
+  },
+  {
+    "id": "referensi",
+    "title": "Cheat sheet & kelulusan",
+    "start": 25,
+    "end": 26
+  }
+]

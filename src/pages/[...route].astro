@@ -1,0 +1,461 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Bookmark from '../components/Bookmark.vue';
+import LucideIcon from '../components/LucideIcon.astro';
+import Milestone from '../components/Milestone.vue';
+import OfflineManager from '../components/OfflineManager.vue';
+import Personal from '../components/Personal.vue';
+import Quiz from '../components/Quiz.vue';
+import glossary from '../data/glossary.json';
+import levels from '../data/levels.json';
+import portalLevels from '../data/portal-levels.json';
+import quizzes from '../data/quizzes.json';
+import sourcePages from '../data/source-pages.json';
+import weeks from '../data/weeks.json';
+import { catalog, parts, summaries } from '../lib/catalog';
+
+import { staticRoutes } from '../lib/static-routes';
+
+export function getStaticPaths() {
+  const routes = [
+    ...staticRoutes,
+    ...parts.map((part) => `belajar/${part.id}`),
+    ...weeks.map((week) => `minggu/${week.number}`),
+    ...quizzes.map((quiz) => `quiz/${quiz.id}`),
+  ];
+  return routes.map((route) => ({ params: { route } }));
+}
+
+const route = Astro.params.route!;
+const part = parts.find((item) => route === `belajar/${item.id}`);
+const week = weeks.find((item) => route === `minggu/${item.number}`);
+const quiz = quizzes.find((item) => route === `quiz/${item.id}`);
+
+const titles: Record<string, string> = {
+  belajar: 'Kurikulum lengkap',
+  roadmap: 'Peta perjalanan belajar',
+  minggu: 'Roadmap 8 minggu',
+  project: 'Project pembelajaran',
+  'project/task-tracker': 'Task Tracker Full-Stack',
+  'project/portal-gampong': 'Portal Gampong — track tambahan',
+  'project/contoh': 'Contoh project lengkap',
+  latihan: 'Latihan & checkpoint',
+  quiz: 'Uji pemahaman',
+  cheatsheet: 'Cheat sheet',
+  glossary: 'Glossary',
+  bookmark: 'Bookmark',
+  notes: 'Catatan pribadi',
+  progress: 'Progress belajar',
+  offline: 'Materi offline',
+  referensi: 'Referensi & sumber',
+  tentang: 'Tentang platform',
+  debugging: 'Debugging framework',
+  lanjutan: 'Track lanjutan',
+  'belajar-dengan-ai': 'Belajar dengan AI secara benar',
+  'sumber/go-vue-postgresql': 'Transkripsi PDF Go + Vue + PostgreSQL',
+};
+
+const title = part?.title
+  ?? (week ? `Minggu ${week.number}: ${week.title}` : undefined)
+  ?? (quiz ? `Quiz: ${quiz.title}` : undefined)
+  ?? titles[route]
+  ?? 'Materi';
+
+const roadmapSteps = ['Pahami', 'Ketik ulang', 'Modifikasi', 'Latihan', 'Integrasi', 'Uji'];
+const debuggingSteps = [
+  'Reproduksi error secara konsisten.',
+  'Bedakan compile, runtime, atau logic error.',
+  'Baca file:baris dan pesan error.',
+  'Periksa input serta state sebelum titik gagal.',
+  'Buat satu hipotesis.',
+  'Ubah satu hal.',
+  'Uji kembali.',
+  'Tambahkan regression test.',
+];
+const exampleProjects = [
+  ['go-algorithms', 'Go Algorithms'],
+  ['go-api', 'Go JSON API'],
+  ['task-tracker', 'Task Tracker Full-Stack'],
+] as const;
+const advancedTracks = [
+  ['Backend Go lanjutan', 'Context, structured logging, auth, rate limiting, migration, observability.'],
+  ['Vue lanjutan', 'Router, composable, Pinia bila diperlukan, validation, accessibility.'],
+  ['PostgreSQL lanjutan', 'Index, EXPLAIN, isolation, backup/restore, connection pooling.'],
+  ['Delivery', 'CI/CD, container image, reverse proxy, TLS, monitoring.'],
+] as const;
+const cheats = [
+  ['Go', 'go version\ngo mod init belajar-go\ngofmt -w .\ngo test ./...\ngo run .'],
+  ['Git', 'git status\ngit add .\ngit commit -m "pesan"\ngit log --oneline\ngit switch -c nama-branch\ngit pull\ngit push'],
+  ['SQL', 'SELECT ... FROM ... WHERE ...;\nINSERT INTO ... (...) VALUES (...);\nUPDATE ... SET ... WHERE ...;\nDELETE FROM ... WHERE ...;'],
+  ['HTTP', 'GET    /api/tasks      → 200\nPOST   /api/tasks      → 201\nPATCH  /api/tasks/:id  → 200/204\nDELETE /api/tasks/:id  → 204'],
+  ['Docker', 'docker compose up -d\ndocker compose ps\ndocker compose logs -f\ndocker compose down'],
+  ['Vue', 'const count = ref(0)\nconst loading = ref(true)\nonMounted(async () => { /* fetch */ })'],
+  ['PostgreSQL', 'psql --version\nCREATE TABLE ...;\nBEGIN;\nCOMMIT;\nROLLBACK;'],
+] as const;
+---
+<Layout title={title} wide>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Ruang belajar</a>
+    <span>/</span>
+    <span>{title}</span>
+  </nav>
+  <div class="page-kicker">GO · VUE 3 · POSTGRESQL · GIT · DOCKER</div>
+  <h1>{title}</h1>
+
+  {(route === 'belajar' || part) && (
+    <>
+      <p class="intro">
+        Kurikulum utama mengikuti PDF <strong>Belajar Full-Stack Go + Vue + PostgreSQL</strong>:
+        fundamental → Go → HTTP/API → Vue → PostgreSQL → Docker → integrasi → project.
+      </p>
+
+      {(part ? [part] : parts).map((currentPart) => (
+        <section>
+          <div class="section-heading">
+            <h2><a href={`/belajar/${currentPart.id}/`}>{currentPart.title}</a></h2>
+            <small>{currentPart.end - currentPart.start + 1} bab</small>
+          </div>
+          <ol class="curriculum-list">
+            {catalog.filter((item) => item.part === currentPart.id).map((item) => (
+              <li>
+                <a href={item.url} data-lesson-id={item.id}>
+                  <span class="num">{item.label}</span>
+                  <div>
+                    <strong>{item.title}</strong>
+                    <p>{item.description}</p>
+                  </div>
+                  <small class="curriculum-meta">
+                    ±{item.estimatedMinutes} mnt
+                    <span class="lesson-check" aria-hidden="true"><LucideIcon name="check" size={14} /></span>
+                  </small>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))}
+    </>
+  )}
+
+  {route === 'roadmap' && (
+    <>
+      <p class="intro">
+        Urutan sumber: problem solving → Go fundamental → algoritma/testing → Git/HTTP → Go API →
+        JavaScript/Vue → PostgreSQL/tooling → Docker → integrasi Task Tracker.
+      </p>
+      <div class="diagram" role="img" aria-label="Alur belajar utama">
+        {roadmapSteps.map((step, index) => (
+          <>
+            <span>{step}</span>
+            {index < roadmapSteps.length - 1 && <LucideIcon name="arrow-right" size={15} class="diagram-arrow" />}
+          </>
+        ))}
+      </div>
+      <ol class="curriculum-list">
+        {parts.map((currentPart, index) => {
+          const minutes = catalog
+            .filter((item) => item.part === currentPart.id)
+            .reduce((sum, item) => sum + item.estimatedMinutes, 0);
+          return (
+            <li>
+              <a href={`/belajar/${currentPart.id}/`}>
+                <span class="num">{String(index + 1).padStart(2, '0')}</span>
+                <div>
+                  <strong>{currentPart.title}</strong>
+                  <p>{currentPart.end - currentPart.start + 1} bab · {minutes} menit estimasi baca/praktik awal.</p>
+                </div>
+                <LucideIcon name="arrow-right" size={16} />
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+      <a class="inline-icon-link" href="/minggu/">
+        <span>Lihat jadwal 8 minggu dari PDF</span>
+        <LucideIcon name="arrow-right" size={15} />
+      </a>
+    </>
+  )}
+
+  {route === 'minggu' && (
+    <>
+      <p class="intro">
+        Jadwal delapan minggu mengikuti checkpoint PDF. Kecepatan boleh disesuaikan; yang penting
+        kemampuan minimum tercapai.
+      </p>
+      <ol class="curriculum-list">
+        {weeks.map((currentWeek) => (
+          <li>
+            <a href={`/minggu/${currentWeek.number}/`}>
+              <span class="num">{String(currentWeek.number).padStart(2, '0')}</span>
+              <div>
+                <strong>{currentWeek.title}</strong>
+                <p>Output: {currentWeek.output}</p>
+              </div>
+              <LucideIcon name="arrow-right" size={16} />
+            </a>
+          </li>
+        ))}
+      </ol>
+    </>
+  )}
+
+  {week && (
+    <>
+      <p class="intro">Output minggu ini: <strong>{week.output}</strong>.</p>
+      <h2>Materi yang dipelajari</h2>
+      <ul>
+        {week.lessons.map((chapter) => (
+          <li><a href={catalog[chapter - 1]!.url}>{catalog[chapter - 1]!.title}</a></li>
+        ))}
+      </ul>
+      <h2>Ritme sesi 90 menit</h2>
+      <p>15 menit review → 20 menit konsep baru → 35 menit ketik dan modifikasi contoh → 15 menit latihan tanpa melihat contoh → 5 menit commit dan catatan.</p>
+      <h2>Checklist minggu {week.number}</h2>
+      <Milestone id={`week-${week.number}`} items={week.checklist} client:visible />
+      <nav class="lesson-nav" aria-label="Navigasi minggu">
+        {week.number > 1 && (
+          <a class="inline-icon-link" href={`/minggu/${week.number - 1}/`}>
+            <LucideIcon name="arrow-left" size={15} />
+            <span>Minggu {week.number - 1}</span>
+          </a>
+        )}
+        {week.number < weeks.length && (
+          <a class="inline-icon-link" href={`/minggu/${week.number + 1}/`}>
+            <span>Minggu {week.number + 1}</span>
+            <LucideIcon name="arrow-right" size={15} />
+          </a>
+        )}
+      </nav>
+    </>
+  )}
+
+  {route === 'project' && (
+    <>
+      <p class="intro">Project utama mengikuti PDF. Track Portal Gampong tetap tersedia sebagai fitur lama/latihan tambahan.</p>
+      <a class="project-link" href="/project/task-tracker/">
+        <strong>Task Tracker — 12 milestone</strong>
+        <small>Vue + Go + PostgreSQL + Docker dari schema sampai definition of done.</small>
+      </a>
+      <a class="project-link" href="/project/portal-gampong/">
+        <strong>Portal Gampong — track tambahan</strong>
+        <small>Project lama tetap tersedia sebagai latihan perluasan; bukan bagian dari materi PDF utama.</small>
+      </a>
+      <a class="project-link" href="/project/contoh/">
+        <strong>Contoh runnable</strong>
+        <small>Go fundamental, Go API, dan Task Tracker source.</small>
+      </a>
+    </>
+  )}
+
+  {route === 'project/task-tracker' && (
+    <>
+      <p class="intro">Project pada Bab 22: CRUD task dengan loading, error, empty state, PostgreSQL persistence, backend test, dan alur end-to-end.</p>
+      <Bookmark id="project:task-tracker" lessonId="bab-22" title="Task Tracker Full-Stack" url="/project/task-tracker/" type="project" client:idle />
+      {levels.map((level) => (
+        <section id={`level-${level.number}`}>
+          <h2>{String(level.number).padStart(2, '0')}. {level.title}</h2>
+          <p>{level.description}</p>
+          <p class="muted">
+            Prerequisite: {level.prerequisite
+              ? <a href={`#level-${level.prerequisite}`}>Milestone {level.prerequisite}</a>
+              : 'Bab SQL dan PostgreSQL'}.
+          </p>
+          <ul>
+            {level.lessons.map((chapter) => (
+              <li><a href={catalog[chapter - 1]!.url}>{catalog[chapter - 1]!.title}</a></li>
+            ))}
+          </ul>
+          <Milestone id={`task-level-${level.number}`} items={level.checklist} client:visible />
+        </section>
+      ))}
+    </>
+  )}
+
+  {route === 'project/portal-gampong' && (
+    <>
+      <p class="intro">Track tambahan dipertahankan dari versi lama. Gunakan sebagai latihan requirement dan delivery setelah Task Tracker selesai; materi PDF utama tetap Go + Vue + PostgreSQL.</p>
+      <Bookmark id="project:portal" lessonId="bab-22" title="Portal Gampong" url="/project/portal-gampong/" type="project" client:idle />
+      {portalLevels.map((level) => (
+        <section id={`portal-level-${level.number}`}>
+          <h2>{String(level.number).padStart(2, '0')}. {level.title}</h2>
+          <p>{level.description}</p>
+          <Milestone id={`portal-level-${level.number}`} items={level.checklist} client:visible />
+        </section>
+      ))}
+    </>
+  )}
+
+  {route === 'project/contoh' && (
+    <>
+      <p class="intro">Source runnable untuk mengulang materi PDF dan melihat bentuk project yang lebih utuh.</p>
+      <ul class="row-list">
+        {exampleProjects.map(([id, name]) => (
+          <li>
+            <div>
+              <a class="inline-icon-link" href={`/contoh/${id}/`}>
+                <span>{name}</span>
+                <LucideIcon name="arrow-right" size={15} />
+              </a>
+              <small>Source, struktur project, dan file konfigurasi</small>
+            </div>
+            <a class="button" href={`/downloads/${id}.zip`} download>
+              <LucideIcon name="download" size={15} />
+              <span>Unduh ZIP</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+
+  {route === 'latihan' && (
+    <>
+      <p class="intro">Latihan mengikuti setiap bab PDF. Kerjakan tanpa melihat contoh, lalu tandai progress setelah bisa menjelaskan alasan solusi.</p>
+      <ul class="curriculum-list">
+        {catalog.map((item) => (
+          <li>
+            <a href={`${item.url}#latihan-praktik`}>
+              <span class="num">{item.label}</span>
+              <div>
+                <strong>{item.title}</strong>
+                <p>{item.practice[0]}</p>
+              </div>
+              <span class="inline-icon-link">Latihan <LucideIcon name="arrow-right" size={15} /></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+
+  {route === 'quiz' && (
+    <>
+      <p class="intro">Quiz per bagian untuk menguji pemahaman konsep, bukan hafalan syntax.</p>
+      <ul class="row-list">
+        {quizzes.map((item) => (
+          <li>
+            <a href={`/quiz/${item.id}/`}>{item.title}</a>
+            <span class="inline-icon-link">{item.questions.length} pertanyaan <LucideIcon name="arrow-right" size={15} /></span>
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+
+  {quiz && <Quiz id={quiz.id} questions={quiz.questions} client:load />}
+
+  {route === 'glossary' && (
+    <>
+      <p class="intro">Istilah penting dalam jalur Go, Vue, PostgreSQL, HTTP, Git, dan Docker.</p>
+      <label for="glossary-search">Cari istilah</label>
+      <input id="glossary-search" type="search" data-filter-list placeholder="Misalnya: slice" />
+      <dl>
+        {glossary.map((item) => (
+          <div data-searchable id={item.term.toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
+            <dt><h2>{item.term}</h2></dt>
+            <dd>{item.definition}</dd>
+          </div>
+        ))}
+      </dl>
+    </>
+  )}
+
+  {route === 'cheatsheet' && (
+    <>
+      <p class="intro">Pengingat cepat setelah konsep dipahami. Cheat sheet tidak menggantikan latihan.</p>
+      <label for="cheat-search">Cari perintah</label>
+      <input id="cheat-search" type="search" data-filter-list />
+      <div class="prose">
+        {cheats.map(([name, code]) => (
+          <section data-searchable>
+            <h2>{name}</h2>
+            <pre data-language={name}><code>{code}</code></pre>
+          </section>
+        ))}
+      </div>
+      <p><a class="inline-icon-link" href={catalog[24]!.url}>Cheat Sheet Go dari PDF <LucideIcon name="arrow-right" size={15} /></a></p>
+      <p><a class="inline-icon-link" href={catalog[25]!.url}>Cheat Sheet Git/SQL/HTTP/Docker dari PDF <LucideIcon name="arrow-right" size={15} /></a></p>
+    </>
+  )}
+
+  {['progress', 'notes', 'bookmark'].includes(route) && (
+    <Personal mode={route as 'progress' | 'notes' | 'bookmark'} lessons={summaries} parts={parts} weeks={weeks} client:load />
+  )}
+  {route === 'offline' && <OfflineManager client:load />}
+
+  {route === 'referensi' && (
+    <>
+      <p class="intro">Sumber utama platform adalah PDF 59 halaman yang Anda lampirkan. Kurikulum, jadwal, latihan inti, Task Tracker, dan cheat sheet diturunkan dari dokumen tersebut.</p>
+      <h2>Dokumen sumber</h2>
+      <ul>
+        <li><a href="/sumber/go-vue-postgresql/">Transkripsi lengkap — 59 halaman</a></li>
+        <li><a href="/sources/Belajar_FullStack_Go_Vue_PostgreSQL_Dari_Fundamental_Color_Syntax.pdf">PDF asli</a></li>
+      </ul>
+      <h2>Stack platform</h2>
+      <p>Website pembelajaran menggunakan Astro + Vue + TypeScript. Materi pembelajaran berfokus pada Go, Vue 3, PostgreSQL, Git, Docker, Postman/Insomnia, DBeaver, dan Browser DevTools sesuai PDF.</p>
+      <h2>Prinsip sumber</h2>
+      <p>Konten yang berasal dari PDF diberi referensi halaman. Penjelasan mudah diberi label sebagai penyederhanaan tambahan, sedangkan track seperti Portal Gampong dan materi lanjutan diberi label sebagai perluasan agar tidak tercampur dengan sumber utama.</p>
+      <Bookmark id="reference:official" lessonId="bab-b" title="Referensi PDF" url="/referensi/" type="referensi" client:visible />
+    </>
+  )}
+
+  {route === 'tentang' && (
+    <>
+      <p class="intro">Platform belajar mandiri dari fundamental yang samar-samar sampai mampu menyelesaikan latihan algoritma dan membangun aplikasi full-stack sederhana.</p>
+      <h2>Cara belajar</h2>
+      <p>Baca penjelasan mudah → telusuri sumber PDF → ketik ulang → modifikasi → latihan. Sebelum coding, tulis input, output, langkah algoritma, edge case, lalu uji data normal dan data batas.</p>
+      <h2>Privasi dan penyimpanan</h2>
+      <p>Tidak ada akun atau analytics. Progress, quiz, bookmark, dan catatan disimpan lokal di IndexedDB. Gunakan export/import untuk backup.</p>
+      <h2>Offline</h2>
+      <p>Modul dapat disimpan melalui halaman Offline. Tautan eksternal tetap memerlukan internet.</p>
+    </>
+  )}
+
+  {route === 'debugging' && (
+    <>
+      <p class="intro">Ikuti Bab 12: reproduksi dengan input sekecil mungkin, baca error persis, periksa nilai sebelum titik gagal, ubah satu hal, lalu tambah test.</p>
+      <ol>{debuggingSteps.map((step) => <li>{step}</li>)}</ol>
+      <a class="inline-icon-link" href={catalog[11]!.url}>
+        <span>Buka Bab 12</span>
+        <LucideIcon name="arrow-right" size={15} />
+      </a>
+    </>
+  )}
+
+  {route === 'lanjutan' && (
+    <>
+      <p class="intro">Track opsional setelah checklist kelulusan fundamental dan Task Tracker selesai. Materi ini merupakan perluasan platform, bukan isi PDF sumber.</p>
+      {advancedTracks.map(([name, topics]) => (
+        <section>
+          <h2>{name}</h2>
+          <p>{topics}</p>
+        </section>
+      ))}
+    </>
+  )}
+
+  {route === 'belajar-dengan-ai' && (
+    <>
+      <p class="intro">AI dapat dipakai untuk menjelaskan konsep dan meninjau jawaban, tetapi latihan tetap harus Anda kerjakan sendiri sebelum melihat solusi.</p>
+      <blockquote>Jelaskan konsep ini dengan mental model sederhana. Beri satu contoh minimal, lalu beri tiga latihan tanpa solusi. Setelah saya menjawab, review alasan saya dan tunjukkan bagian yang salah.</blockquote>
+      <p>Jangan unggah secret, credential, database production, atau data pribadi.</p>
+    </>
+  )}
+
+  {route === 'sumber/go-vue-postgresql' && (
+    <>
+      <p class="intro">Transkripsi 59 halaman untuk keterlacakan. Buka PDF asli untuk melihat warna, tabel, diagram, dan tata letak kode seperti dokumen sumber.</p>
+      <a class="button" href="/sources/Belajar_FullStack_Go_Vue_PostgreSQL_Dari_Fundamental_Color_Syntax.pdf" target="_blank" rel="noopener noreferrer">
+        <LucideIcon name="book-open" size={16} />
+        <span>Buka PDF asli</span>
+      </a>
+      {sourcePages.map((page) => (
+        <section id={`halaman-${page.page}`}>
+          <h2>Halaman {page.page}</h2>
+          <pre class="source-page pdf-page-text"><code>{page.text || 'Halaman tanpa teks tambahan.'}</code></pre>
+        </section>
+      ))}
+    </>
+  )}
+</Layout>

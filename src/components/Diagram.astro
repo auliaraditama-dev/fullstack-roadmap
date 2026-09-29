@@ -1,0 +1,5 @@
+---
+interface Props{title:string;steps:string[];}
+const{title,steps}=Astro.props;
+---
+<figure class="flow-figure"><figcaption>{title}</figcaption><ol class="flow-diagram">{steps.map((step,i)=><li><span class="flow-number">{i+1}</span>{step}</li>)}</ol></figure>

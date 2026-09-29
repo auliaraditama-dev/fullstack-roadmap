@@ -1,0 +1,122 @@
+[
+  {
+    "term": "Accumulator",
+    "definition": "Variable yang mengumpulkan hasil dari iterasi ke iterasi, misalnya total pada loop."
+  },
+  {
+    "term": "API",
+    "definition": "Kontrak komunikasi antar software melalui request, response, input, output, dan kondisi gagal."
+  },
+  {
+    "term": "Array",
+    "definition": "Kumpulan elemen dengan panjang tetap; di Go panjang menjadi bagian dari tipe array."
+  },
+  {
+    "term": "Container",
+    "definition": "Instance dari image yang sedang atau pernah berjalan secara terisolasi."
+  },
+  {
+    "term": "CRUD",
+    "definition": "Create, Read, Update, Delete: empat operasi dasar pengelolaan data."
+  },
+  {
+    "term": "DBeaver",
+    "definition": "Database client untuk membuat koneksi, menjalankan SQL, dan memeriksa schema serta data."
+  },
+  {
+    "term": "DTO",
+    "definition": "Bentuk data yang dipakai untuk memindahkan input/output antar boundary aplikasi, misalnya request JSON di Go."
+  },
+  {
+    "term": "Edge case",
+    "definition": "Input atau kondisi batas yang berpotensi menghasilkan perilaku berbeda atau kegagalan."
+  },
+  {
+    "term": "Environment variable",
+    "definition": "Konfigurasi runtime yang berada di luar source code; credential tidak boleh dicommit."
+  },
+  {
+    "term": "Foreign key",
+    "definition": "Constraint relasional yang menghubungkan row pada satu table dengan row table lain."
+  },
+  {
+    "term": "Go module",
+    "definition": "Unit module Go yang ditandai file go.mod dan dibuat dengan go mod init."
+  },
+  {
+    "term": "HTTP",
+    "definition": "Protokol request-response yang menghubungkan client dan server."
+  },
+  {
+    "term": "Image Docker",
+    "definition": "Template read-only yang digunakan untuk membuat container."
+  },
+  {
+    "term": "JSON",
+    "definition": "Format pertukaran data berbasis object, array, string, number, boolean, dan null."
+  },
+  {
+    "term": "Map Go",
+    "definition": "Struktur key-value; lookup dapat memakai pola value, ok := map[key]."
+  },
+  {
+    "term": "Method HTTP",
+    "definition": "Operasi seperti GET, POST, PUT/PATCH, dan DELETE yang memberi semantics pada request."
+  },
+  {
+    "term": "Middleware",
+    "definition": "Lapisan lintas request untuk concern seperti logging, CORS, auth, atau observability."
+  },
+  {
+    "term": "PostgreSQL",
+    "definition": "Database relasional yang menjadi penyimpanan utama pada roadmap PDF ini."
+  },
+  {
+    "term": "Primary key",
+    "definition": "Kolom atau kombinasi kolom yang mengidentifikasi row secara unik."
+  },
+  {
+    "term": "Pseudocode",
+    "definition": "Langkah solusi yang ditulis dalam bahasa terstruktur sebelum diterjemahkan ke syntax pemrograman."
+  },
+  {
+    "term": "Repository",
+    "definition": "Lapisan backend yang bertanggung jawab terhadap akses database."
+  },
+  {
+    "term": "REST",
+    "definition": "Gaya desain API yang berorientasi resource dan memanfaatkan semantics HTTP."
+  },
+  {
+    "term": "Slice",
+    "definition": "Struktur kumpulan data dinamis yang umum digunakan di Go."
+  },
+  {
+    "term": "Status code",
+    "definition": "Kode HTTP seperti 200, 201, 204, 400, 401, 403, 404, 422, atau 500 yang menjelaskan hasil request."
+  },
+  {
+    "term": "Struct",
+    "definition": "Tipe data Go yang mengelompokkan beberapa field menjadi satu model."
+  },
+  {
+    "term": "Table-driven test",
+    "definition": "Pola test Go yang menyimpan banyak input dan expected result dalam table lalu menjalankannya dengan loop."
+  },
+  {
+    "term": "Trace table",
+    "definition": "Tabel untuk mencatat nilai variable pada setiap iterasi agar logika loop dapat dilihat."
+  },
+  {
+    "term": "Transaction",
+    "definition": "Sekumpulan operasi database yang diperlakukan sebagai satu unit: semua berhasil atau dibatalkan."
+  },
+  {
+    "term": "Vue ref",
+    "definition": "Primitive reaktivitas Vue Composition API; perubahan nilai memicu pembaruan template yang menggunakannya."
+  },
+  {
+    "term": "Volume Docker",
+    "definition": "Penyimpanan yang bertahan di luar lifecycle container."
+  }
+]

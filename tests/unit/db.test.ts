@@ -1,0 +1,10 @@
+import 'fake-indexeddb/auto';
+import {beforeEach,afterEach,it,expect,vi} from 'vitest';
+import {emptyData} from '../../src/lib/model';
+import {readData,updateData,replaceData,readPreviousBackup} from '../../src/lib/db';
+beforeEach(async()=>{vi.stubGlobal('window',new EventTarget());await replaceData(emptyData());});
+afterEach(()=>{vi.restoreAllMocks();vi.unstubAllGlobals();});
+it('transaksi paralel mempertahankan perubahan masing-masing',async()=>{await Promise.all([updateData(d=>{d.checkpoints.a=true;}),updateData(d=>{d.exercises.b=true;})]);const d=await readData();expect(d.checkpoints.a).toBe(true);expect(d.exercises.b).toBe(true);});
+it('mutasi invalid tidak membuat state tersimpan menjadi tidak terbaca',async()=>{await expect(updateData(d=>{d.notes.push({lessonId:'bab-01',text:'x'.repeat(100001),updatedAt:new Date().toISOString()});})).rejects.toThrow();expect((await readData()).notes).toEqual([]);});
+it('import menyimpan cadangan sebelumnya dan clear menghapus keduanya',async()=>{await updateData(d=>{d.notes.push({lessonId:'bab-01',text:'Sebelum import',updatedAt:new Date().toISOString()});});const next=emptyData();next.milestones.week=true;await replaceData(next,true);expect((await readPreviousBackup())?.notes[0]?.text).toBe('Sebelum import');expect((await readData()).milestones.week).toBe(true);await replaceData(emptyData());expect(await readPreviousBackup()).toBeUndefined();expect((await readData()).notes).toEqual([]);});
+it('quota error saat mengganti state menggagalkan seluruh transaksi import',async()=>{await updateData(d=>{d.checkpoints.original=true;});const original=IDBObjectStore.prototype.put;vi.spyOn(IDBObjectStore.prototype,'put').mockImplementation(function(this:IDBObjectStore,value:unknown,key?:IDBValidKey){if(key==='state')throw new DOMException('Full','QuotaExceededError');return original.call(this,value,key);});await expect(replaceData(emptyData(),true)).rejects.toMatchObject({name:'QuotaExceededError'});vi.restoreAllMocks();expect((await readData()).checkpoints.original).toBe(true);expect(await readPreviousBackup()).toBeUndefined();});

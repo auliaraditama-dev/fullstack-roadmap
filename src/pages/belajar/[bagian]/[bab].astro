@@ -1,0 +1,158 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Bookmark from '../../../components/Bookmark.vue';
+import Diagram from '../../../components/Diagram.astro';
+import LessonTools from '../../../components/LessonTools.vue';
+import LearningGuide from '../../../components/LearningGuide.astro';
+import LucideIcon from '../../../components/LucideIcon.astro';
+import lessons from '../../../data/lessons.json';
+import explanations from '../../../data/explanations.json';
+import sourcePages from '../../../data/source-pages.json';
+import { catalog, checkpoints } from '../../../lib/catalog';
+
+export function getStaticPaths() {
+  return lessons.map((lesson) => ({
+    params: { bagian: lesson.part, bab: lesson.slug },
+    props: { lesson },
+  }));
+}
+
+const { lesson } = Astro.props as { lesson: (typeof lessons)[number] };
+const current = catalog.find((item) => item.id === lesson.id)!;
+const index = catalog.findIndex((item) => item.id === lesson.id);
+const previous = index > 0 ? catalog[index - 1] : undefined;
+const next = index < catalog.length - 1 ? catalog[index + 1] : undefined;
+const [sourceStart, sourceEnd] = lesson.sourcePages;
+if (sourceStart === undefined || sourceEnd === undefined) {
+  throw new Error('Rentang halaman sumber tidak lengkap: ' + lesson.id);
+}
+const pages = sourcePages.filter((page) => page.page >= sourceStart && page.page <= sourceEnd);
+const guide = explanations.find((item) => item.id === lesson.id)!;
+const headings = [
+  { depth: 2, slug: 'tujuan-belajar', text: 'Tujuan belajar' },
+  { depth: 2, slug: 'penjelasan-mudah', text: 'Penjelasan mudah dipahami' },
+  { depth: 2, slug: 'materi-pdf-lengkap', text: 'Materi PDF lengkap' },
+  ...pages.map((page) => ({ depth: 2, slug: `halaman-${page.page}`, text: `Halaman ${page.page}` })),
+  { depth: 2, slug: 'latihan-praktik', text: 'Latihan praktik' },
+  { depth: 2, slug: 'checkpoint', text: 'Checkpoint' },
+];
+const flows: Record<number, string[]> = {
+  1: ['Input', 'Process', 'Output'],
+  2: ['Input', 'Output', 'Pseudocode', 'Trace table', 'Edge case', 'Test'],
+  14: ['Client', 'HTTP request', 'API resource', 'HTTP response', 'JSON'],
+  21: ['Vue', 'POST JSON', 'Go decode + validation', 'Parameterized SQL', 'PostgreSQL', '201 + JSON', 'Vue state'],
+  22: ['Schema', 'Go API', 'Postman', 'Vue UI', 'Integrasi', 'Testing', 'Docker'],
+};
+---
+<Layout title={current.title} description={current.description} headings={headings} chapter={current.chapter}>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/belajar/">Kurikulum</a>
+    <span>/</span>
+    <a href={'/belajar/' + current.part + '/'}>{current.partTitle}</a>
+    <span>/ {current.label === String(current.chapter).padStart(2, '0') ? `Bab ${current.chapter}` : `Bab ${current.label}`}</span>
+  </nav>
+
+  <div class="page-kicker">{current.partTitle.toUpperCase()}</div>
+  <h1>{current.title}</h1>
+  <p class="intro">{current.description}</p>
+
+  <div class="lesson-meta">
+    <span>{current.label === String(current.chapter).padStart(2, '0') ? `Bab ${current.label}` : `Lampiran ${current.label}`} / {catalog.length}</span>
+    <span>± {current.estimatedMinutes} menit baca &amp; praktik awal</span>
+    <span>Sumber PDF halaman {current.sourcePages[0]}–{current.sourcePages[1]}</span>
+  </div>
+
+  <div class="reading-controls" aria-label="Pengaturan baca">
+    <button type="button" data-size="0.9" aria-label="Perkecil teks">A−</button>
+    <button type="button" data-size="1" aria-label="Ukuran teks standar">A</button>
+    <button type="button" data-size="1.15" aria-label="Perbesar teks">A+</button>
+    <button type="button" id="focus-mode" aria-pressed="false">
+      <LucideIcon name="focus" size={15} />
+      <span>Mode fokus</span>
+    </button>
+    <label>
+      <span class="sr-only">Lebar baca</span>
+      <select id="reading-width">
+        <option value="normal">Lebar normal</option>
+        <option value="comfortable">Lebar nyaman</option>
+      </select>
+    </label>
+    <a class="button" href="/offline/">
+      <LucideIcon name="download" size={15} />
+      <span>Unduh modul</span>
+    </a>
+  </div>
+
+  <details class="mobile-toc">
+    <summary>Di halaman ini</summary>
+    <ul>{headings.map((heading) => <li><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ul>
+  </details>
+
+  {flows[current.chapter] && <Diagram title={'Alur ' + current.title} steps={flows[current.chapter]!} />}
+
+  <article class="prose pdf-lesson">
+    <section id="tujuan-belajar" class="lesson-objectives">
+      <h2>Tujuan belajar</h2>
+      <ul>{current.objectives.map((objective) => <li>{objective}</li>)}</ul>
+      {current.prerequisites.length > 0 && (
+        <p class="muted">Prerequisite: {current.prerequisites.map((id) => catalog.find((item) => item.id === id)?.title).filter(Boolean).join(', ')}.</p>
+      )}
+    </section>
+
+    <LearningGuide guide={guide} lessonTitle={current.title} />
+
+    <section id="materi-pdf-lengkap" class="source-intro-card">
+      <div>
+        <span class="source-kicker">SUMBER UTAMA</span>
+        <h2>Materi PDF lengkap</h2>
+        <p>Isi berikut berasal dari PDF yang Anda lampirkan. Tata letak teks dipertahankan sedekat mungkin agar kode, tabel, checklist, dan urutan pembahasan tetap dapat ditelusuri ke halaman sumber.</p>
+      </div>
+      <a class="button" href="/sources/Belajar_FullStack_Go_Vue_PostgreSQL_Dari_Fundamental_Color_Syntax.pdf" target="_blank" rel="noopener noreferrer">
+        <LucideIcon name="book-open" size={16} />
+        <span>Buka PDF asli</span>
+      </a>
+    </section>
+
+    {pages.map((page) => (
+      <section id={`halaman-${page.page}`} class="pdf-source-section">
+        <div class="pdf-page-heading">
+          <h2>Halaman {page.page}</h2>
+          <a href={`/sumber/go-vue-postgresql/#halaman-${page.page}`}>Buka transkripsi</a>
+        </div>
+        <pre class="pdf-page-text"><code>{page.text}</code></pre>
+      </section>
+    ))}
+
+    <section id="latihan-praktik" class="lesson-practice">
+      <h2>Latihan praktik</h2>
+      <ol>{current.practice.map((item, itemIndex) => <li><label class="check-row"><input type="checkbox" data-exercise={`${current.id}:${itemIndex}`} /> {item}</label></li>)}</ol>
+    </section>
+
+    <section id="checkpoint" class="lesson-checkpoint">
+      <h2>Checkpoint</h2>
+      <p>Jangan menandai selesai hanya karena sudah membaca. Buktikan pemahaman dengan menjelaskan konsep, menulis ulang contoh, menguji edge case, dan memperbaiki error tanpa menebak.</p>
+    </section>
+  </article>
+
+  <div class="toolbar">
+    <Bookmark id={current.id + ':materi'} lessonId={current.id} title={current.title} url={current.url} type="materi" client:visible />
+    <Bookmark id={current.id + ':latihan'} lessonId={current.id} title={'Latihan — ' + current.title} url={current.url + '#latihan-praktik'} type="latihan" client:visible />
+  </div>
+
+  <LessonTools id={current.id} title={current.title} url={current.url} checkpoints={checkpoints} client:load />
+
+  <nav class="lesson-nav" aria-label="Materi berurutan">
+    {previous ? (
+      <a href={previous.url}>
+        <small class="inline-icon-link"><LucideIcon name="arrow-left" size={14} /> Sebelumnya</small>
+        {previous.title}
+      </a>
+    ) : <a href="/belajar/">Kembali ke kurikulum</a>}
+    {next ? (
+      <a href={next.url}>
+        <small class="inline-icon-link">Selanjutnya <LucideIcon name="arrow-right" size={14} /></small>
+        {next.title}
+      </a>
+    ) : <a class="inline-icon-link" href="/progress/">Tinjau seluruh checkpoint <LucideIcon name="arrow-right" size={14} /></a>}
+  </nav>
+</Layout>

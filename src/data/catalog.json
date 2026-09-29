@@ -1,0 +1,951 @@
+[
+  {
+    "id": "bab-01",
+    "chapter": 1,
+    "label": "01",
+    "part": "orientasi",
+    "partTitle": "Orientasi & problem solving",
+    "title": "Peta Belajar dan Cara Kerja Program",
+    "description": "Pahami model input → process → output dan hubungan Vue → HTTP/JSON → Go → SQL → PostgreSQL.",
+    "estimatedMinutes": 18,
+    "difficulty": "dasar",
+    "objectives": [
+      "Menjelaskan model input-process-output.",
+      "Menjelaskan alur data full-stack Vue, Go, dan PostgreSQL.",
+      "Menentukan urutan belajar sebelum integrasi."
+    ],
+    "practice": [
+      "Gambarkan ulang alur input → process → output dengan contoh sendiri.",
+      "Jelaskan perjalanan satu data form dari Vue sampai kembali sebagai JSON."
+    ],
+    "sourcePages": [
+      5,
+      6
+    ],
+    "slug": "peta-belajar-dan-cara-kerja-program",
+    "url": "/belajar/orientasi/peta-belajar-dan-cara-kerja-program/",
+    "offlineEligible": true,
+    "tags": [
+      "orientasi",
+      "Vue",
+      "HTTP",
+      "JSON",
+      "Go",
+      "SQL",
+      "PostgreSQL"
+    ],
+    "prerequisites": [],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-02",
+    "chapter": 2,
+    "label": "02",
+    "part": "orientasi",
+    "partTitle": "Orientasi & problem solving",
+    "title": "Algoritma, Pseudocode, dan Problem Solving",
+    "description": "Pecah masalah menjadi input, output, data, percabangan, perulangan, edge case, dan pengujian sebelum menulis syntax.",
+    "estimatedMinutes": 25,
+    "difficulty": "dasar",
+    "objectives": [
+      "Memecah soal menjadi langkah yang dapat diuji.",
+      "Menulis pseudocode dan trace table.",
+      "Mengenali kompleksitas dasar O(n) dan O(n²)."
+    ],
+    "practice": [
+      "Buat pseudocode untuk nilai minimum dari slice.",
+      "Buat trace table untuk data [5, 9, 2, 15, 7]."
+    ],
+    "sourcePages": [
+      7,
+      8
+    ],
+    "slug": "algoritma-pseudocode-dan-problem-solving",
+    "url": "/belajar/orientasi/algoritma-pseudocode-dan-problem-solving/",
+    "offlineEligible": true,
+    "tags": [
+      "orientasi"
+    ],
+    "prerequisites": [
+      "bab-01"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-03",
+    "chapter": 3,
+    "label": "03",
+    "part": "go-dasar",
+    "partTitle": "Go fundamental",
+    "title": "Setup Go dan Program Pertama",
+    "description": "Pastikan toolchain bekerja, buat module Go, jalankan program pertama, dan biasakan gofmt.",
+    "estimatedMinutes": 20,
+    "difficulty": "dasar",
+    "objectives": [
+      "Memverifikasi Go, VS Code, dan Git.",
+      "Membuat module dengan go mod init.",
+      "Menjalankan go run dan gofmt."
+    ],
+    "practice": [
+      "Buat module belajar-go dan program Halo Go.",
+      "Susun folder latihan 01-variable, 02-if, dan 03-loop."
+    ],
+    "sourcePages": [
+      9,
+      10
+    ],
+    "slug": "setup-go-dan-program-pertama",
+    "url": "/belajar/go-dasar/setup-go-dan-program-pertama/",
+    "offlineEligible": true,
+    "tags": [
+      "go-dasar",
+      "Go"
+    ],
+    "prerequisites": [
+      "bab-02"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-04",
+    "chapter": 4,
+    "label": "04",
+    "part": "go-dasar",
+    "partTitle": "Go fundamental",
+    "title": "Variable, Tipe Data, Konstanta, dan Operator",
+    "description": "Pelajari variable, zero value, const, operator aritmatika, perbandingan, dan logika yang menjadi dasar algoritma Go.",
+    "estimatedMinutes": 28,
+    "difficulty": "dasar",
+    "objectives": [
+      "Menggunakan int, float64, string, dan bool.",
+      "Menjelaskan zero value dan const.",
+      "Menggunakan operator %, perbandingan, dan logika."
+    ],
+    "practice": [
+      "Hitung sisa pembagian 137 dengan 12.",
+      "Buat ekspresi logika untuk syarat umur dan status aktif."
+    ],
+    "sourcePages": [
+      11,
+      12
+    ],
+    "slug": "variable-tipe-data-konstanta-dan-operator",
+    "url": "/belajar/go-dasar/variable-tipe-data-konstanta-dan-operator/",
+    "offlineEligible": true,
+    "tags": [
+      "go-dasar",
+      "Go"
+    ],
+    "prerequisites": [
+      "bab-03"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-05",
+    "chapter": 5,
+    "label": "05",
+    "part": "go-dasar",
+    "partTitle": "Go fundamental",
+    "title": "Input/Output dan Konversi Tipe",
+    "description": "Buat program console yang membaca input, memformat output, dan melakukan konversi tipe tanpa kehilangan desimal.",
+    "estimatedMinutes": 22,
+    "difficulty": "dasar",
+    "objectives": [
+      "Menggunakan fmt.Println, fmt.Printf, dan fmt.Scan.",
+      "Memilih format %d, %f, %s, %t, dan %v.",
+      "Menghindari pembagian integer saat membutuhkan desimal."
+    ],
+    "practice": [
+      "Baca dua angka dan tampilkan rata-ratanya.",
+      "Tunjukkan perbedaan 5/2 dengan float64(5)/float64(2)."
+    ],
+    "sourcePages": [
+      13,
+      14
+    ],
+    "slug": "input-output-dan-konversi-tipe",
+    "url": "/belajar/go-dasar/input-output-dan-konversi-tipe/",
+    "offlineEligible": true,
+    "tags": [
+      "go-dasar"
+    ],
+    "prerequisites": [
+      "bab-04"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-06",
+    "chapter": 6,
+    "label": "06",
+    "part": "go-dasar",
+    "partTitle": "Go fundamental",
+    "title": "Boolean dan Percabangan",
+    "description": "Gunakan if, else if, else, kondisi gabungan, dan switch untuk memilih jalur program.",
+    "estimatedMinutes": 24,
+    "difficulty": "dasar",
+    "objectives": [
+      "Menulis percabangan berdasarkan bool.",
+      "Menggabungkan kondisi dengan && dan ||.",
+      "Menggunakan switch untuk pilihan diskret."
+    ],
+    "practice": [
+      "Cek positif, negatif, atau nol.",
+      "Buat klasifikasi suhu dengan batas yang Anda jelaskan."
+    ],
+    "sourcePages": [
+      15,
+      16
+    ],
+    "slug": "boolean-dan-percabangan",
+    "url": "/belajar/go-dasar/boolean-dan-percabangan/",
+    "offlineEligible": true,
+    "tags": [
+      "go-dasar"
+    ],
+    "prerequisites": [
+      "bab-05"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-07",
+    "chapter": 7,
+    "label": "07",
+    "part": "go-dasar",
+    "partTitle": "Go fundamental",
+    "title": "Perulangan dengan for",
+    "description": "Kuasai counter, accumulator, loop seperti while, break, continue, dan loop bersarang.",
+    "estimatedMinutes": 25,
+    "difficulty": "dasar",
+    "objectives": [
+      "Menggunakan for dalam beberapa bentuk.",
+      "Menggunakan accumulator.",
+      "Memprediksi nilai counter dengan trace table."
+    ],
+    "practice": [
+      "Hitung jumlah 1 sampai n.",
+      "Cetak angka ganjil 1 sampai 20 tanpa duplikasi logika."
+    ],
+    "sourcePages": [
+      17,
+      18
+    ],
+    "slug": "perulangan-dengan-for",
+    "url": "/belajar/go-dasar/perulangan-dengan-for/",
+    "offlineEligible": true,
+    "tags": [
+      "go-dasar"
+    ],
+    "prerequisites": [
+      "bab-06"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-08",
+    "chapter": 8,
+    "label": "08",
+    "part": "struktur-data",
+    "partTitle": "Data, function & error",
+    "title": "Array, Slice, String, dan Map",
+    "description": "Gunakan array, slice, range, slicing, string byte/rune awareness, dan map key-value.",
+    "estimatedMinutes": 30,
+    "difficulty": "dasar",
+    "objectives": [
+      "Membedakan array dan slice.",
+      "Menggunakan append, len, range, dan slicing.",
+      "Membaca nilai map dengan pola value, ok."
+    ],
+    "practice": [
+      "Cari nilai terkecil dalam slice.",
+      "Balik urutan slice tanpa helper.",
+      "Cari apakah target ada di slice."
+    ],
+    "sourcePages": [
+      19,
+      20
+    ],
+    "slug": "array-slice-string-dan-map",
+    "url": "/belajar/struktur-data/array-slice-string-dan-map/",
+    "offlineEligible": true,
+    "tags": [
+      "struktur-data"
+    ],
+    "prerequisites": [
+      "bab-07"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-09",
+    "chapter": 9,
+    "label": "09",
+    "part": "struktur-data",
+    "partTitle": "Data, function & error",
+    "title": "Function, Scope, dan Multiple Return",
+    "description": "Pecah program menjadi function kecil, pahami scope, parameter, return value, dan pola hasil + error.",
+    "estimatedMinutes": 24,
+    "difficulty": "dasar",
+    "objectives": [
+      "Menulis function berparameter dan return value.",
+      "Menggunakan multiple return.",
+      "Memecah tanggung jawab ke function kecil."
+    ],
+    "practice": [
+      "Buat function tambah dan bagi yang aman.",
+      "Pecah program input-kalkulasi-output menjadi function terpisah."
+    ],
+    "sourcePages": [
+      21,
+      22
+    ],
+    "slug": "function-scope-dan-multiple-return",
+    "url": "/belajar/struktur-data/function-scope-dan-multiple-return/",
+    "offlineEligible": true,
+    "tags": [
+      "struktur-data"
+    ],
+    "prerequisites": [
+      "bab-08"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-10",
+    "chapter": 10,
+    "label": "10",
+    "part": "struktur-data",
+    "partTitle": "Data, function & error",
+    "title": "Struct, Pointer, Method, dan Error Dasar",
+    "description": "Bangun model data dengan struct, pahami pointer, method, dan kebiasaan memeriksa error segera.",
+    "estimatedMinutes": 30,
+    "difficulty": "dasar",
+    "objectives": [
+      "Mendefinisikan struct dan method.",
+      "Menjelaskan & dan * pada pointer.",
+      "Menangani error secara eksplisit."
+    ],
+    "practice": [
+      "Buat struct User dan method Greeting.",
+      "Buat function yang mengubah nilai lewat pointer."
+    ],
+    "sourcePages": [
+      23,
+      24
+    ],
+    "slug": "struct-pointer-method-dan-error-dasar",
+    "url": "/belajar/struktur-data/struct-pointer-method-dan-error-dasar/",
+    "offlineEligible": true,
+    "tags": [
+      "struktur-data"
+    ],
+    "prerequisites": [
+      "bab-09"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-11",
+    "chapter": 11,
+    "label": "11",
+    "part": "algoritma-testing",
+    "partTitle": "Algoritma, debugging & testing",
+    "title": "Latihan Inti: Prima, Rata-rata, Nilai Terbesar",
+    "description": "Satukan fundamental untuk isPrime, average, max, edge case slice kosong, dan variasi tantangan tanpa menyalin solusi.",
+    "estimatedMinutes": 50,
+    "difficulty": "menengah",
+    "objectives": [
+      "Mengimplementasikan isPrime termasuk optimasi i*i <= n.",
+      "Menghitung rata-rata dengan konversi float64.",
+      "Mencari maksimum dengan aman untuk nilai negatif."
+    ],
+    "practice": [
+      "Tulis ulang isPrime tanpa melihat contoh.",
+      "Buat function min dan countPrimes.",
+      "Cari nilai terbesar kedua tanpa sorting."
+    ],
+    "sourcePages": [
+      25,
+      29
+    ],
+    "slug": "latihan-inti-prima-rata-rata-nilai-terbesar",
+    "url": "/belajar/algoritma-testing/latihan-inti-prima-rata-rata-nilai-terbesar/",
+    "offlineEligible": true,
+    "tags": [
+      "algoritma-testing"
+    ],
+    "prerequisites": [
+      "bab-10"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-12",
+    "chapter": 12,
+    "label": "12",
+    "part": "algoritma-testing",
+    "partTitle": "Algoritma, debugging & testing",
+    "title": "Debugging, Testing, dan Cara Membaca Error",
+    "description": "Bedakan compile, runtime, dan logic error; gunakan reproduksi kecil, print debugging, serta table-driven test.",
+    "estimatedMinutes": 35,
+    "difficulty": "menengah",
+    "objectives": [
+      "Mengklasifikasikan jenis error.",
+      "Menulis table-driven test dengan testing package.",
+      "Mengubah satu hal pada satu waktu saat debugging."
+    ],
+    "practice": [
+      "Tambahkan test untuk isPrime(-1,0,1,2,4,17,49).",
+      "Buat bug kecil lalu dokumentasikan langkah reproduksinya."
+    ],
+    "sourcePages": [
+      30,
+      31
+    ],
+    "slug": "debugging-testing-dan-cara-membaca-error",
+    "url": "/belajar/algoritma-testing/debugging-testing-dan-cara-membaca-error/",
+    "offlineEligible": true,
+    "tags": [
+      "algoritma-testing",
+      "Testing"
+    ],
+    "prerequisites": [
+      "bab-11"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-13",
+    "chapter": 13,
+    "label": "13",
+    "part": "web-git",
+    "partTitle": "Git & web fundamental",
+    "title": "Git dan GitHub dari Dasar",
+    "description": "Kelola working tree, staging, commit, branch, remote, dan .gitignore tanpa memasukkan credential.",
+    "estimatedMinutes": 28,
+    "difficulty": "menengah",
+    "objectives": [
+      "Menggunakan workflow status → add → commit.",
+      "Membuat branch dan merge.",
+      "Menjaga secret keluar dari repository."
+    ],
+    "practice": [
+      "Buat branch latihan-slice dan merge ke main.",
+      "Pastikan .env, node_modules, dist, dan log tidak ter-commit."
+    ],
+    "sourcePages": [
+      32,
+      33
+    ],
+    "slug": "git-dan-github-dari-dasar",
+    "url": "/belajar/web-git/git-dan-github-dari-dasar/",
+    "offlineEligible": true,
+    "tags": [
+      "web-git",
+      "Git"
+    ],
+    "prerequisites": [
+      "bab-12"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-14",
+    "chapter": 14,
+    "label": "14",
+    "part": "web-git",
+    "partTitle": "Git & web fundamental",
+    "title": "Dasar Web: HTTP, JSON, REST, dan API",
+    "description": "Pahami request/response, HTTP method, status code, JSON, dan desain URL berbasis resource.",
+    "estimatedMinutes": 30,
+    "difficulty": "menengah",
+    "objectives": [
+      "Memilih GET, POST, PUT/PATCH, dan DELETE.",
+      "Memilih status code 200/201/204/4xx/500.",
+      "Mendesain endpoint REST sederhana."
+    ],
+    "practice": [
+      "Rancang endpoint CRUD /api/tasks.",
+      "Jelaskan perbedaan 401 dan 403 dengan contoh."
+    ],
+    "sourcePages": [
+      34,
+      35
+    ],
+    "slug": "dasar-web-http-json-rest-dan-api",
+    "url": "/belajar/web-git/dasar-web-http-json-rest-dan-api/",
+    "offlineEligible": true,
+    "tags": [
+      "web-git",
+      "HTTP",
+      "JSON",
+      "API"
+    ],
+    "prerequisites": [
+      "bab-13"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-15",
+    "chapter": 15,
+    "label": "15",
+    "part": "backend-go",
+    "partTitle": "Backend Go",
+    "title": "Backend Go: HTTP Server dan API Sederhana",
+    "description": "Gunakan net/http dan encoding/json untuk server sederhana, validasi method, dan pisahkan handler, service, repository, DTO, middleware.",
+    "estimatedMinutes": 38,
+    "difficulty": "menengah",
+    "objectives": [
+      "Menjalankan HTTP server Go.",
+      "Mengirim response JSON dan status yang tepat.",
+      "Menjelaskan pemisahan tanggung jawab backend."
+    ],
+    "practice": [
+      "Buat GET /api/hello yang mengembalikan JSON.",
+      "Tolak method selain GET dengan 405."
+    ],
+    "sourcePages": [
+      36,
+      37
+    ],
+    "slug": "backend-go-http-server-dan-api-sederhana",
+    "url": "/belajar/backend-go/backend-go-http-server-dan-api-sederhana/",
+    "offlineEligible": true,
+    "tags": [
+      "backend-go",
+      "Go",
+      "HTTP",
+      "API",
+      "http",
+      "json"
+    ],
+    "prerequisites": [
+      "bab-14"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-16",
+    "chapter": 16,
+    "label": "16",
+    "part": "frontend-vue",
+    "partTitle": "JavaScript & Vue 3",
+    "title": "JavaScript Fundamental untuk Vue",
+    "description": "Kuasai variable, object, array method, function, destructuring, spread, async/await, dan fetch sebelum masuk Vue.",
+    "estimatedMinutes": 30,
+    "difficulty": "menengah",
+    "objectives": [
+      "Menggunakan const/let, object, dan array.",
+      "Menggunakan map, filter, reduce.",
+      "Menangani fetch gagal dengan response.ok."
+    ],
+    "practice": [
+      "Transformasi array dengan map/filter/reduce.",
+      "Buat function async untuk mengambil /api/users."
+    ],
+    "sourcePages": [
+      38,
+      39
+    ],
+    "slug": "javascript-fundamental-untuk-vue",
+    "url": "/belajar/frontend-vue/javascript-fundamental-untuk-vue/",
+    "offlineEligible": true,
+    "tags": [
+      "frontend-vue",
+      "JavaScript",
+      "Vue"
+    ],
+    "prerequisites": [
+      "bab-15"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-17",
+    "chapter": 17,
+    "label": "17",
+    "part": "frontend-vue",
+    "partTitle": "JavaScript & Vue 3",
+    "title": "Vue 3 Fundamental",
+    "description": "Hubungkan state ke template dengan ref, conditional rendering, v-for, v-model, lifecycle, serta konsep props/emit/computed/watch/router/composable.",
+    "estimatedMinutes": 38,
+    "difficulty": "menengah",
+    "objectives": [
+      "Menggunakan ref dan template reaktif.",
+      "Membuat loading/error/empty state.",
+      "Mengambil data pada onMounted."
+    ],
+    "practice": [
+      "Buat counter dengan ref.",
+      "Buat form v-model dan list hasil fetch."
+    ],
+    "sourcePages": [
+      40,
+      41
+    ],
+    "slug": "vue-3-fundamental",
+    "url": "/belajar/frontend-vue/vue-3-fundamental/",
+    "offlineEligible": true,
+    "tags": [
+      "frontend-vue",
+      "Vue"
+    ],
+    "prerequisites": [
+      "bab-16"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-18",
+    "chapter": 18,
+    "label": "18",
+    "part": "data-tools",
+    "partTitle": "PostgreSQL & tooling",
+    "title": "SQL dan PostgreSQL",
+    "description": "Modelkan table relasional, primary/foreign key, CRUD SQL, parameter query, JOIN, dan transaction.",
+    "estimatedMinutes": 42,
+    "difficulty": "menengah",
+    "objectives": [
+      "Membuat table dengan constraint.",
+      "Menulis INSERT/SELECT/UPDATE/DELETE.",
+      "Menggunakan parameter query dan transaction."
+    ],
+    "practice": [
+      "Buat users dan tasks dengan foreign key.",
+      "Tulis JOIN task dengan owner."
+    ],
+    "sourcePages": [
+      42,
+      43
+    ],
+    "slug": "sql-dan-postgresql",
+    "url": "/belajar/data-tools/sql-dan-postgresql/",
+    "offlineEligible": true,
+    "tags": [
+      "data-tools",
+      "SQL",
+      "PostgreSQL"
+    ],
+    "prerequisites": [
+      "bab-17"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-19",
+    "chapter": 19,
+    "label": "19",
+    "part": "data-tools",
+    "partTitle": "PostgreSQL & tooling",
+    "title": "DBeaver, Postman, dan Browser DevTools",
+    "description": "Gunakan tool inspeksi untuk melihat database, menguji API, dan mendiagnosis request tanpa menebak.",
+    "estimatedMinutes": 20,
+    "difficulty": "menengah",
+    "objectives": [
+      "Menggunakan SQL Editor DBeaver.",
+      "Menguji GET/POST dengan Postman/Insomnia.",
+      "Membaca Network, Console, dan Application DevTools."
+    ],
+    "practice": [
+      "Uji POST /api/tasks dan periksa payload/response.",
+      "Diagnosa satu request gagal dari Network panel."
+    ],
+    "sourcePages": [
+      44,
+      44
+    ],
+    "slug": "dbeaver-postman-dan-browser-devtools",
+    "url": "/belajar/data-tools/dbeaver-postman-dan-browser-devtools/",
+    "offlineEligible": true,
+    "tags": [
+      "data-tools",
+      "API"
+    ],
+    "prerequisites": [
+      "bab-18"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-20",
+    "chapter": 20,
+    "label": "20",
+    "part": "data-tools",
+    "partTitle": "PostgreSQL & tooling",
+    "title": "Docker Fundamental",
+    "description": "Pahami image, container, port, volume, environment variable, dan jalankan PostgreSQL lokal dengan Docker Compose.",
+    "estimatedMinutes": 32,
+    "difficulty": "menengah",
+    "objectives": [
+      "Menjelaskan image dan container.",
+      "Menjalankan PostgreSQL via Compose.",
+      "Menempatkan secret lokal di environment yang tidak dicommit."
+    ],
+    "practice": [
+      "Jalankan docker compose up -d dan cek logs db.",
+      "Uji persistence data lewat volume setelah restart container."
+    ],
+    "sourcePages": [
+      45,
+      46
+    ],
+    "slug": "docker-fundamental",
+    "url": "/belajar/data-tools/docker-fundamental/",
+    "offlineEligible": true,
+    "tags": [
+      "data-tools",
+      "Docker",
+      "PostgreSQL"
+    ],
+    "prerequisites": [
+      "bab-19"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-21",
+    "chapter": 21,
+    "label": "21",
+    "part": "integrasi-project",
+    "partTitle": "Integrasi & project",
+    "title": "Menggabungkan Vue + Go + PostgreSQL",
+    "description": "Satukan alur create task dari Vue, JSON, Go DTO, validasi, query parameterized, PostgreSQL, lalu response 201.",
+    "estimatedMinutes": 38,
+    "difficulty": "menengah",
+    "objectives": [
+      "Menjelaskan alur create task end-to-end.",
+      "Membuat DTO request/response Go.",
+      "Menggunakan parameter query untuk INSERT."
+    ],
+    "practice": [
+      "Trace satu create task dari UI sampai database.",
+      "Tambahkan validasi judul kosong pada backend."
+    ],
+    "sourcePages": [
+      47,
+      48
+    ],
+    "slug": "menggabungkan-vue-go-postgresql",
+    "url": "/belajar/integrasi-project/menggabungkan-vue-go-postgresql/",
+    "offlineEligible": true,
+    "tags": [
+      "integrasi-project",
+      "Vue",
+      "Go",
+      "PostgreSQL",
+      "JSON"
+    ],
+    "prerequisites": [
+      "bab-20"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-22",
+    "chapter": 22,
+    "label": "22",
+    "part": "integrasi-project",
+    "partTitle": "Integrasi & project",
+    "title": "Mini Project Full-Stack: Task Tracker",
+    "description": "Bangun Task Tracker CRUD dengan backend Go, frontend Vue, PostgreSQL, Docker, state loading/error/empty, dan testing backend.",
+    "estimatedMinutes": 70,
+    "difficulty": "menengah",
+    "objectives": [
+      "Menyelesaikan CRUD task end-to-end.",
+      "Menyusun project backend/frontend/compose.",
+      "Memenuhi definition of done dari PDF."
+    ],
+    "practice": [
+      "Implementasikan GET dan POST terlebih dahulu.",
+      "Tambahkan PATCH dan DELETE setelah backend lolos uji Postman.",
+      "Hubungkan Vue dan uji refresh persistence."
+    ],
+    "sourcePages": [
+      49,
+      50
+    ],
+    "slug": "mini-project-full-stack-task-tracker",
+    "url": "/belajar/integrasi-project/mini-project-full-stack-task-tracker/",
+    "offlineEligible": true,
+    "tags": [
+      "integrasi-project",
+      "Go",
+      "Vue",
+      "PostgreSQL",
+      "Docker",
+      "testing"
+    ],
+    "prerequisites": [
+      "bab-21"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-23",
+    "chapter": 23,
+    "label": "23",
+    "part": "integrasi-project",
+    "partTitle": "Integrasi & project",
+    "title": "Jadwal Belajar dan Checkpoint",
+    "description": "Gunakan jadwal 8 minggu dan sesi 90 menit; lanjut hanya setelah checkpoint dapat dibuktikan.",
+    "estimatedMinutes": 18,
+    "difficulty": "lanjutan",
+    "objectives": [
+      "Mengikuti fokus 8 minggu dari fundamental sampai integrasi.",
+      "Membagi sesi 90 menit secara terarah.",
+      "Menggunakan indikator pemahaman, bukan sekadar selesai membaca."
+    ],
+    "practice": [
+      "Susun kalender 8 minggu Anda sendiri.",
+      "Catat checkpoint yang belum lulus dan jadwalkan pengulangan."
+    ],
+    "sourcePages": [
+      51,
+      52
+    ],
+    "slug": "jadwal-belajar-dan-checkpoint",
+    "url": "/belajar/integrasi-project/jadwal-belajar-dan-checkpoint/",
+    "offlineEligible": true,
+    "tags": [
+      "integrasi-project"
+    ],
+    "prerequisites": [
+      "bab-22"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-24",
+    "chapter": 24,
+    "label": "24",
+    "part": "integrasi-project",
+    "partTitle": "Integrasi & project",
+    "title": "Bank Latihan + Kunci Pembahasan",
+    "description": "Kerjakan bank latihan level 1–6 sebelum membaca kunci pendekatan untuk factorial, contains, countPrimes, dan second largest.",
+    "estimatedMinutes": 55,
+    "difficulty": "lanjutan",
+    "objectives": [
+      "Menyelesaikan latihan variable hingga web/backend.",
+      "Menggunakan kunci sebagai pendekatan, bukan salinan jawaban.",
+      "Kembali ke input-output-pseudocode-trace table saat mentok."
+    ],
+    "practice": [
+      "Kerjakan minimal 3 soal dari setiap level.",
+      "Tulis secondLargest dengan aturan duplikat yang Anda tetapkan."
+    ],
+    "sourcePages": [
+      53,
+      55
+    ],
+    "slug": "bank-latihan-kunci-pembahasan",
+    "url": "/belajar/integrasi-project/bank-latihan-kunci-pembahasan/",
+    "offlineEligible": true,
+    "tags": [
+      "integrasi-project"
+    ],
+    "prerequisites": [
+      "bab-23"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-a",
+    "chapter": 25,
+    "label": "A",
+    "part": "referensi",
+    "partTitle": "Cheat sheet & kelulusan",
+    "title": "Cheat Sheet Go",
+    "description": "Referensi cepat variable, const, if, loop, range, slice, map, function, struct, pointer, error check, dan template aman.",
+    "estimatedMinutes": 15,
+    "difficulty": "lanjutan",
+    "objectives": [
+      "Menggunakan cheat sheet setelah konsep dipahami.",
+      "Mengingat pola dasar program console dan function aman untuk slice."
+    ],
+    "practice": [
+      "Tulis program console dari template tanpa melihat kembali."
+    ],
+    "sourcePages": [
+      56,
+      57
+    ],
+    "slug": "cheat-sheet-go",
+    "url": "/belajar/referensi/cheat-sheet-go/",
+    "offlineEligible": true,
+    "tags": [
+      "referensi",
+      "Go"
+    ],
+    "prerequisites": [
+      "bab-24"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  },
+  {
+    "id": "bab-b",
+    "chapter": 26,
+    "label": "B",
+    "part": "referensi",
+    "partTitle": "Cheat sheet & kelulusan",
+    "title": "Cheat Sheet Git, SQL, HTTP, dan Docker",
+    "description": "Referensi cepat command Git, CRUD SQL, method/status HTTP, command Docker, dan checklist kelulusan fundamental.",
+    "estimatedMinutes": 20,
+    "difficulty": "lanjutan",
+    "objectives": [
+      "Menggunakan command inti Git/SQL/Docker.",
+      "Memilih method/status HTTP umum.",
+      "Mengevaluasi checklist kelulusan fundamental."
+    ],
+    "practice": [
+      "Centang checklist hanya jika mampu tanpa bantuan besar.",
+      "Ulangi tiga latihan inti dari pseudocode sampai test."
+    ],
+    "sourcePages": [
+      58,
+      59
+    ],
+    "slug": "cheat-sheet-git-sql-http-dan-docker",
+    "url": "/belajar/referensi/cheat-sheet-git-sql-http-dan-docker/",
+    "offlineEligible": true,
+    "tags": [
+      "referensi",
+      "Git",
+      "SQL",
+      "HTTP",
+      "Docker"
+    ],
+    "prerequisites": [
+      "bab-a"
+    ],
+    "updatedAt": "2026-09-29",
+    "version": "2.0.0"
+  }
+]

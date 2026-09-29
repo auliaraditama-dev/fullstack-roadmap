@@ -1,0 +1,174 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LucideIcon from '../components/LucideIcon.astro';
+import Personal from '../components/Personal.vue';
+import levels from '../data/levels.json';
+import weeks from '../data/weeks.json';
+import { catalog, parts, summaries } from '../lib/catalog';
+
+const partIcons = [
+  'graduation-cap',
+  'code-2',
+  'git-branch',
+  'layout-template',
+  'server-cog',
+  'database',
+  'workflow',
+  'shield-check',
+  'rocket',
+  'scroll-text',
+] as const;
+---
+<Layout title="Ruang belajar" wide>
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="home-hero-copy">
+      <div class="home-badges" aria-label="Informasi edisi">
+        <span class="signal-badge signal-badge--violet"><LucideIcon name="code-2" size={14} /> Full-stack</span>
+        <span class="signal-badge signal-badge--amber">Edisi 2026</span>
+        <span class="signal-badge signal-badge--mint">Bahasa Indonesia</span>
+      </div>
+
+      <p class="home-overline">KURIKULUM BELAJAR MANDIRI</p>
+      <h1 id="home-title">Belajar Go + Vue + PostgreSQL dengan jalur yang <span class="marker-underline">terstruktur dari fundamental.</span></h1>
+      <p class="home-lead">Mulai dari algoritma dan Go, lanjut ke HTTP/API, Vue 3, PostgreSQL, Docker, lalu bangun Task Tracker end-to-end. Setiap unit dilengkapi ringkasan 60 detik, mental model, urutan berpikir, kesalahan umum, dan cek pemahaman; PDF 59 halaman tetap menjadi sumber utama.</p>
+
+      <div class="home-actions">
+        <a class="button primary button-strong" href={catalog[0]!.url}>
+          <LucideIcon name="play" size={17} />
+          <span>Mulai Bab 1</span>
+        </a>
+        <a class="button button-quiet" href="/roadmap/">
+          <LucideIcon name="route" size={17} />
+          <span>Lihat peta belajar</span>
+        </a>
+      </div>
+
+      <dl class="curriculum-stats" aria-label="Ringkasan kurikulum">
+        <div><dt>{catalog.length}</dt><dd>Unit belajar</dd></div>
+        <div><dt>{parts.length}</dt><dd>Bagian</dd></div>
+        <div><dt>{weeks.length}</dt><dd>Minggu</dd></div>
+        <div><dt>{levels.length}</dt><dd>Level project</dd></div>
+      </dl>
+    </div>
+
+    <aside class="hero-workbench" aria-label="Cara belajar di roadmap ini">
+      <div class="workbench-topline">
+        <span><span class="status-dot"></span> LEARNING WORKSPACE</span>
+        <span>FS/26</span>
+      </div>
+      <div class="workbench-path">
+        <div class="path-node path-node--blue"><span>01</span><strong>Pahami</strong><small>konsep &amp; mental model</small></div>
+        <LucideIcon name="arrow-right" size={16} />
+        <div class="path-node path-node--violet"><span>02</span><strong>Praktik</strong><small>kode dari nol</small></div>
+        <LucideIcon name="arrow-right" size={16} />
+        <div class="path-node path-node--orange"><span>03</span><strong>Bangun</strong><small>project bertahap</small></div>
+        <LucideIcon name="arrow-right" size={16} />
+        <div class="path-node path-node--green"><span>04</span><strong>Uji</strong><small>error &amp; trade-off</small></div>
+      </div>
+      <div class="workbench-terminal" aria-hidden="true">
+        <span class="terminal-prompt">$</span>
+        <span>belajar --step-by-step</span>
+        <span class="terminal-cursor"></span>
+      </div>
+    </aside>
+  </section>
+
+  <section class="home-personal" aria-label="Progress belajar Anda">
+    <Personal mode="home" lessons={summaries} parts={parts} client:load />
+  </section>
+
+  <section class="home-section" aria-labelledby="peta">
+    <div class="section-heading section-heading--strong">
+      <div>
+        <span class="section-number">01</span>
+        <h2 id="peta">Sepuluh bagian. Satu jalur dari logika sampai full-stack.</h2>
+        <p>Pahami urutannya, jangan cuma mengoleksi tutorial.</p>
+      </div>
+      <a class="inline-icon-link text-link" href="/roadmap/">
+        <span>Roadmap lengkap</span>
+        <LucideIcon name="arrow-right" size={15} />
+      </a>
+    </div>
+
+    <div class="roadmap-grid roadmap-grid--colorful">
+      {parts.map((part, index) => (
+        <a class={`roadmap-item roadmap-tone-${(index % 6) + 1}`} href={'/belajar/' + part.id + '/'}>
+          <div class="roadmap-card-top">
+            <span class="roadmap-icon"><LucideIcon name={partIcons[index] ?? 'book-open'} size={19} /></span>
+            <span class="num">{String(index + 1).padStart(2, '0')}</span>
+          </div>
+          <h3>{part.title}</h3>
+          <small>{part.end - part.start + 1} bab · {index === 0 ? 'Mulai di sini' : `lanjut setelah ${parts[index - 1]?.title.toLowerCase()}`}</small>
+          <span class="roadmap-arrow" aria-hidden="true"><LucideIcon name="arrow-up-right" size={17} /></span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="home-section build-section" aria-labelledby="bangun">
+    <div class="section-heading section-heading--strong">
+      <div>
+        <span class="section-number">02</span>
+        <h2 id="bangun">Bukan cuma baca. Ada hasil yang harus jadi.</h2>
+        <p>Progress disimpan lokal di perangkat Anda dan dapat dibackup.</p>
+      </div>
+    </div>
+
+    <div class="feature-board">
+      <a class="feature-card feature-card--project" href="/project/task-tracker/">
+        <span class="feature-icon"><LucideIcon name="folder-kanban" size={22} /></span>
+        <span class="feature-kicker">PROJECT UTAMA</span>
+        <h3>Task Tracker</h3>
+        <p>{levels.length} level pengembangan: dari HTML statis sampai deployment production.</p>
+        <span class="feature-link">Buka project <LucideIcon name="arrow-up-right" size={15} /></span>
+      </a>
+
+      <a class="feature-card feature-card--weeks" href="/minggu/">
+        <span class="feature-icon"><LucideIcon name="calendar" size={22} /></span>
+        <span class="feature-kicker">RENCANA BELAJAR</span>
+        <h3>{weeks.length} minggu terukur</h3>
+        <p>Target mingguan, output konkret, dan checkpoint agar progres tidak abstrak.</p>
+        <span class="feature-link">Lihat jadwal <LucideIcon name="arrow-up-right" size={15} /></span>
+      </a>
+
+      <a class="feature-card feature-card--practice" href="/latihan/">
+        <span class="feature-icon"><LucideIcon name="target" size={22} /></span>
+        <span class="feature-kicker">PRAKTIK</span>
+        <h3>Latihan &amp; quiz</h3>
+        <p>Uji pemahaman, bukan hafalan. Setiap materi punya checkpoint yang bisa Anda tandai sendiri.</p>
+        <span class="feature-link">Mulai latihan <LucideIcon name="arrow-up-right" size={15} /></span>
+      </a>
+
+      <a class="feature-card feature-card--offline" href="/offline/">
+        <span class="feature-icon"><LucideIcon name="hard-drive-download" size={22} /></span>
+        <span class="feature-kicker">OFFLINE FIRST</span>
+        <h3>Bawa materi tanpa internet</h3>
+        <p>Unduh modul, simpan catatan dan bookmark, lalu lanjut belajar saat koneksi tidak stabil.</p>
+        <span class="feature-link">Kelola offline <LucideIcon name="arrow-up-right" size={15} /></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="home-section reference-ribbon" aria-labelledby="referensi-cepat">
+    <div>
+      <span class="section-number">03</span>
+      <h2 id="referensi-cepat">Saat lupa sintaks, jangan kehilangan momentum.</h2>
+      <p>Gunakan cheatsheet, glossary, pencarian global, bookmark, dan catatan sebagai meja kerja kedua.</p>
+    </div>
+    <div class="reference-links">
+      <a href="/cheatsheet/"><LucideIcon name="scroll-text" size={18} /><span>Cheatsheet</span></a>
+      <a href="/glossary/"><LucideIcon name="book-open-text" size={18} /><span>Glossary</span></a>
+      <a href="/bookmark/"><LucideIcon name="bookmark" size={18} /><span>Bookmark</span></a>
+      <a href="/notes/"><LucideIcon name="notebook-pen" size={18} /><span>Catatan</span></a>
+    </div>
+  </section>
+
+  <section class="release-note" aria-label="Pembaruan materi">
+    <div class="release-date"><span>UPDATED</span><time datetime="2026-09-29">29.09.2026</time></div>
+    <div>
+      <strong>Edisi digital full-stack 2026</strong>
+      <p>Materi PDF lengkap, latihan, quiz, progress lokal, Task Tracker, offline mode, dan transkripsi sumber tersedia dalam satu workspace belajar.</p>
+    </div>
+    <a class="button button-quiet" href="/referensi/">Sumber materi <LucideIcon name="arrow-right" size={15} /></a>
+  </section>
+</Layout>

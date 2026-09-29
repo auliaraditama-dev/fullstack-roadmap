@@ -1,0 +1,59 @@
+name: Verify release
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run audit:static
+      - run: npm run validate:content
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/setup-go@v7
+        with:
+          go-version: '1.27.x'
+      - run: go test ./...
+        working-directory: examples/go-algorithms
+      - run: go test ./...
+        working-directory: examples/go-api
+      - run: go test ./...
+        working-directory: examples/task-tracker/backend
+      - run: |
+          python scripts/package-examples.py
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+          for path in Path('public/downloads').glob('*.zip'):
+              with zipfile.ZipFile(path) as archive:
+                  assert archive.testzip() is None
+          PY
+      - run: |
+          npm run preview &
+          node -e "const pause=()=>new Promise(r=>setTimeout(r,500));for(let i=0;i<30;i++){try{if((await fetch('http://127.0.0.1:4321')).ok)process.exit(0)}catch{}await pause()}process.exit(1)"
+          npm run audit:performance
+      - run: node scripts/vercel-output.mjs
+      - uses: actions/upload-artifact@v7
+        with:
+          name: verified-static-release
+          path: .vercel/output
+          include-hidden-files: true
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: verification-reports
+          path: |
+            playwright-report
+            .reports/performance

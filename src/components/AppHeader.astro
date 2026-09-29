@@ -1,0 +1,49 @@
+---
+import Search from './Search.vue';
+import LucideIcon from './LucideIcon.astro';
+import { headerNavigation } from '../lib/navigation';
+
+interface Props {
+  path: string;
+}
+
+const { path } = Astro.props;
+---
+<header class="app-header">
+  <a class="brand" href="/" aria-label="Go Vue PostgreSQL Roadmap, beranda">
+    <span class="brand-mark" aria-hidden="true">fs<span>.</span></span>
+    <span>Go + Vue <strong>Roadmap</strong></span>
+    <small>2026</small>
+  </a>
+
+  <Search client:idle />
+
+  <nav class="header-links" aria-label="Navigasi utama">
+    {headerNavigation.map((item) => (
+      <a class:list={{ active: path === item.href }} href={item.href}>
+        <LucideIcon name={item.icon} size={16} />
+        <span>{item.label}</span>
+      </a>
+    ))}
+  </nav>
+
+  <span id="connection" class="connection" aria-live="polite">
+    <span class="connection-icon" data-online-icon><LucideIcon name="wifi" size={15} /></span>
+    <span class="connection-icon" data-offline-icon hidden><LucideIcon name="wifi-off" size={15} /></span>
+    <span data-connection-label>Online</span>
+  </span>
+
+  <label class="theme-label">
+    <LucideIcon name="sun-moon" size={16} />
+    <span class="sr-only">Tema</span>
+    <select id="theme" aria-label="Tema">
+      <option value="system">Sistem</option>
+      <option value="light">Terang</option>
+      <option value="dark">Gelap</option>
+    </select>
+  </label>
+
+  <button class="mobile-toggle icon-button" id="open-nav" aria-label="Buka kurikulum" aria-expanded="false" aria-controls="sidebar">
+    <LucideIcon name="menu" />
+  </button>
+</header>

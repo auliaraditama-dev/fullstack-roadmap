@@ -1,0 +1,109 @@
+---
+import '../styles/global.css';
+import '../styles/redesign.css';
+import '../styles/learning.css';
+import '../styles/system.css';
+import AppHeader from '../components/AppHeader.astro';
+import AppSidebar from '../components/AppSidebar.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import LucideIcon from '../components/LucideIcon.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  wide?: boolean;
+  headings?: { depth: number; slug: string; text: string }[];
+  chapter?: number;
+}
+
+const {
+  title,
+  description = 'Belajar Go, Vue 3, PostgreSQL, Git, Docker, dan fundamental full-stack dari algoritma sampai Task Tracker end-to-end.',
+  wide = false,
+  headings = [],
+  chapter,
+} = Astro.props;
+
+const path = Astro.url.pathname;
+const canonical = Astro.site ? new URL(path, Astro.site) : undefined;
+---
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#3559e0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>{title} · Go + Vue + PostgreSQL Roadmap</title>
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <script is:inline src="/theme.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Lewati navigasi</a>
+    <AppHeader path={path} />
+
+    <div class="app-grid">
+      <AppSidebar path={path} chapter={chapter} />
+      <div id="nav-backdrop" hidden></div>
+
+      <main id="main" class:list={['main', { wide }]} tabindex="-1">
+        <slot />
+        <footer class="page-footer">
+          <span>Go + Vue + PostgreSQL Roadmap · 2026</span>
+          <a class="inline-icon-link" href="/referensi/">
+            <LucideIcon name="book-open" size={14} />
+            <span>Sumber &amp; versi materi</span>
+          </a>
+        </footer>
+      </main>
+
+      {headings.length > 0 && <TableOfContents headings={headings} />}
+    </div>
+
+
+    <nav class="mobile-dock" aria-label="Navigasi cepat">
+      <a class:list={{ active: path === '/' }} href="/" aria-current={path === '/' ? 'page' : undefined}>
+        <LucideIcon name="home" size={18} />
+        <span>Beranda</span>
+      </a>
+      <a class:list={{ active: path.startsWith('/roadmap') || path.startsWith('/belajar') }} href="/roadmap/" aria-current={path.startsWith('/roadmap') ? 'page' : undefined}>
+        <LucideIcon name="route" size={18} />
+        <span>Roadmap</span>
+      </a>
+      <button type="button" id="dock-search" aria-label="Buka pencarian">
+        <LucideIcon name="search" size={18} />
+        <span>Cari</span>
+      </button>
+      <a class:list={{ active: path.startsWith('/project') }} href="/project/" aria-current={path.startsWith('/project') ? 'page' : undefined}>
+        <LucideIcon name="folder-kanban" size={18} />
+        <span>Project</span>
+      </a>
+      <a class:list={{ active: path.startsWith('/progress') }} href="/progress/" aria-current={path.startsWith('/progress') ? 'page' : undefined}>
+        <LucideIcon name="chart" size={18} />
+        <span>Progress</span>
+      </a>
+    </nav>
+
+    <div id="update-banner" class="update-banner" hidden>
+      <LucideIcon name="refresh-cw" size={18} />
+      <span>Versi materi baru tersedia.</span>
+      <button id="apply-update">Perbarui sekarang</button>
+      <button id="dismiss-update" class="icon-button" aria-label="Tutup pemberitahuan update">
+        <LucideIcon name="x" size={17} />
+      </button>
+    </div>
+
+    <script>import '../scripts/client';</script>
+  </body>
+</html>
