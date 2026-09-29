@@ -99,6 +99,10 @@ assert(clientScript.includes("import './ui-system';"),'client memuat universal i
 assert(systemCss.includes('::-webkit-scrollbar')&&systemCss.includes('scrollbar-color'),'custom scrollbar memiliki WebKit dan standards fallback');
 assert(systemCss.includes('.ui-select__menu')&&systemCss.includes('.ui-select__option'),'custom dropdown/select memiliki panel dan option states');
 assert(systemCss.includes('input[type=checkbox]')&&systemCss.includes('input[type=radio]'),'checkbox dan radio memakai visual system universal');
+assert(systemCss.includes('--code:#f7f9ff')&&systemCss.includes('--code:#0b1020'),'light/dark memiliki surface kode terpisah dan kontras');
+assert(systemCss.includes(':root[data-theme=light] .astro-code')&&systemCss.includes('var(--shiki-light'),'syntax highlighting light mode dipaksa memakai token Shiki light');
+assert(systemCss.includes(':root[data-theme=dark] .astro-code')&&systemCss.includes('var(--shiki-dark'),'syntax highlighting dark mode memakai token Shiki dark');
+assert(systemCss.includes('.roadmap-tone-6')&&systemCss.includes('.feature-card--offline'),'visual system colorful mencakup roadmap dan feature board');
 assert(uiSystem.includes("setAttribute('role', 'listbox')")&&uiSystem.includes("setAttribute('role', 'option')"),'custom select mempertahankan semantic listbox/option');
 assert(uiSystem.includes("event.key === 'Escape'")&&uiSystem.includes("event.key === 'ArrowDown'")&&uiSystem.includes("event.key === 'ArrowUp'"),'dropdown mendukung Escape dan keyboard navigation');
 assert(uiSystem.includes('availableBelow')&&uiSystem.includes('availableAbove'),'dropdown memposisikan panel berdasarkan viewport');

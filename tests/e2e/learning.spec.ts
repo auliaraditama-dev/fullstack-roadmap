@@ -156,6 +156,25 @@ test('import valid menunggu konfirmasi dan cadangan tetap tersedia setelah reloa
   await expect(page.getByText('Catatan dari backup valid', { exact: true })).toBeVisible();
 });
 
+test('syntax highlighting tetap terbaca di light dan dark mode', async ({ page }) => {
+  await page.goto('/contoh/go-api/');
+  const code = page.locator('.astro-code').first();
+  const token = code.locator('span').first();
+  await expect(code).toBeVisible();
+  await expect(token).toBeVisible();
+
+  for (const theme of ['light', 'dark'] as const) {
+    await page.getByLabel('Tema', { exact: true }).selectOption(theme);
+    await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
+    const colors = await token.evaluate((element) => {
+      const tokenStyle = getComputedStyle(element);
+      const codeStyle = getComputedStyle(element.closest('.astro-code')!);
+      return { token: tokenStyle.color, background: codeStyle.backgroundColor };
+    });
+    expect(colors.token).not.toBe(colors.background);
+  }
+});
+
 for (const width of [320, 360, 375, 390, 430, 768]) {
   test(`lesson responsive ${width}px tanpa overflow`, async ({ page }) => {
     await page.setViewportSize({ width, height: 844 });
