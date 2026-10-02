@@ -19,7 +19,7 @@ interface Props {
 
 const {
   title,
-  description = 'Workspace belajar Full-Stack Developer 2026: fundamental, PHP, Laravel, Vue 3, TypeScript, Go, PostgreSQL, testing, security, Docker, CI/CD, deployment, dan project terpadu.',
+  description = 'Empty full-stack workspace template siap dikembangkan.',
   wide = false,
   headings = [],
   chapter,
@@ -36,7 +36,7 @@ const canonical = Astro.site ? new URL(path, Astro.site) : undefined;
     <meta name="description" content={description} />
     <meta name="theme-color" content="#4f46e5" />
     <meta name="color-scheme" content="light dark" />
-    <title>{title} · Full-Stack Developer 2026</title>
+    <title>{title} · Full-Stack Workspace</title>
     {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

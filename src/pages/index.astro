@@ -4,7 +4,7 @@ import LucideIcon from '../components/LucideIcon.astro';
 import Personal from '../components/Personal.vue';
 import { summaries, parts } from '../lib/catalog';
 
-const partIcons = ['layout-template','folder-kanban','chart','bookmark','notebook-pen','hard-drive-download-download'] as const;
+const partIcons = ['layout-template','folder-kanban','chart','bookmark','notebook-pen','hard-drive-download'] as const;
 ---
 <Layout title="Workspace Template" wide>
   <section class="home-hero" aria-labelledby="home-title">
@@ -53,7 +53,7 @@ const partIcons = ['layout-template','folder-kanban','chart','bookmark','noteboo
         ['/progress/','Progress','Penyimpanan progress dan backup JSON lokal.','chart'],
         ['/bookmark/','Bookmark','Simpan halaman yang ingin ditandai.','bookmark'],
         ['/notes/','Catatan','Catatan pribadi tersimpan di browser.','notebook-pen'],
-        ['/offline/','Offline','Mode offline untuk shell aplikasi.','hard-drive-download-download'],
+        ['/offline/','Offline','Mode offline untuk shell aplikasi.','hard-drive-download'],
       ].map(([href,title,description,icon], index) => (
         <a class={`roadmap-item roadmap-tone-${(index%6)+1}`} href={href}>
           <div class="roadmap-card-top"><span class="roadmap-icon"><LucideIcon name={icon as any} size={19}/></span><span class="num">{String(index+1).padStart(2,'0')}</span></div>

@@ -25,5 +25,5 @@ const { name, size = 18, strokeWidth = 2, class: className } = Astro.props;
   aria-hidden="true"
   focusable="false"
 >
-  {iconPaths[name].map((d) => <path d={d} />)}
+  {(iconPaths[name] ?? []).map((d) => <path d={d} />)}
 </svg>
