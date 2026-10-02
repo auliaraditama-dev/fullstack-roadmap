@@ -1,201 +1,113 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Bookmark from '../components/Bookmark.vue';
 import LucideIcon from '../components/LucideIcon.astro';
-import Milestone from '../components/Milestone.vue';
 import OfflineManager from '../components/OfflineManager.vue';
 import Personal from '../components/Personal.vue';
-import Quiz from '../components/Quiz.vue';
-import glossary from '../data/glossary.json';
-import levels from '../data/levels.json';
-import portalLevels from '../data/portal-levels.json';
-import quizzes from '../data/quizzes.json';
-import sourceLibrary from '../data/source-library.json';
-import fullstackChapters from '../data/fullstack-chapters.json';
-import fullstackWeeks from '../data/fullstack-weeks.json';
-import weeks from '../data/weeks.json';
-import { catalog, parts, summaries } from '../lib/catalog';
+import { summaries, parts } from '../lib/catalog';
 import { staticRoutes } from '../lib/static-routes';
 
 export function getStaticPaths() {
-  const routes = [
-    ...staticRoutes,
-    ...parts.map((part) => `belajar/${part.id}`),
-    ...weeks.map((week) => `minggu/${week.number}`),
-    ...quizzes.map((quiz) => `quiz/${quiz.id}`),
-  ];
-  return routes.map((route) => ({ params: { route } }));
+  return staticRoutes.map((route) => ({ params: { route } }));
 }
 
 const route = Astro.params.route!;
-const part = parts.find((item) => route === `belajar/${item.id}`);
-const week = weeks.find((item) => route === `minggu/${item.number}`);
-const quiz = quizzes.find((item) => route === `quiz/${item.id}`);
-const sourceDocument = sourceLibrary.find((item) => route === `sumber/${item.id}`);
-const fullstackParts = Array.from(new Set(fullstackChapters.map((item) => item.part)));
-const totalSourceUnits = sourceLibrary.reduce((sum, item) => sum + item.unitCount, 0);
-
-const titles: Record<string, string> = {
-  belajar: '36 Sesi Full-Stack Developer',
-  roadmap: 'Peta perjalanan 36 sesi',
-  minggu: 'Roadmap 26 minggu',
-  project: 'Project pembelajaran',
-  'project/task-tracker': 'Task Tracker Full-Stack',
-  'project/portal-gampong': 'Portal Gampong — project utama',
-  'project/contoh': 'Contoh project lengkap',
-  latihan: 'Latihan & checkpoint',
-  quiz: 'Uji pemahaman',
-  cheatsheet: 'Cheat sheet',
-  glossary: 'Glossary',
+const titles: Record<string,string> = {
+  roadmap: 'Roadmap',
+  project: 'Project',
+  progress: 'Progress',
   bookmark: 'Bookmark',
   notes: 'Catatan pribadi',
-  progress: 'Progress belajar',
-  offline: 'Materi offline',
-  referensi: 'Referensi & sumber',
-  tentang: 'Tentang platform',
-  debugging: 'Debugging framework',
-  lanjutan: 'Track lanjutan',
-  'belajar-dengan-ai': 'Belajar dengan AI secara benar',
-  'materi-2026': '51 Bab Full-Stack Developer 2026',
-  'roadmap-26-minggu': 'Roadmap 26 minggu',
+  offline: 'Offline',
+  referensi: 'Referensi',
+  tentang: 'Tentang template',
 };
-const title = part?.title ?? (week ? `Minggu ${week.number}: ${week.title}` : undefined) ?? (quiz ? `Quiz: ${quiz.title}` : undefined) ?? sourceDocument?.title ?? titles[route] ?? 'Materi';
+const title = titles[route] ?? 'Workspace';
 
-const debuggingSteps = [
-  'Reproduksi error secara konsisten.',
-  'Bedakan compile, runtime, atau logic error.',
-  'Baca file, nomor baris, pesan error, dan stack trace.',
-  'Periksa input, state, konfigurasi, dependency, process, dan port.',
-  'Buat satu hipotesis lalu ubah satu hal.',
-  'Uji kembali dengan kasus normal, batas, dan gagal.',
-  'Tambahkan regression test setelah bug diperbaiki.',
-];
-const exampleProjects = [
-  ['go-algorithms', 'Go Algorithms'],
-  ['go-api', 'Go JSON API'],
-  ['task-tracker', 'Task Tracker Full-Stack'],
-] as const;
-const cheats = [
-  ['Go', 'go version\ngo mod init belajar-go\ngofmt -w .\ngo test ./...\ngo run .'],
-  ['Git', 'git status\ngit add .\ngit commit -m "pesan"\ngit log --oneline --graph\ngit switch -c feature/nama\ngit pull\ngit push'],
-  ['SQL', 'SELECT ... FROM ... WHERE ...;\nINSERT INTO ... (...) VALUES (...);\nUPDATE ... SET ... WHERE ...;\nDELETE FROM ... WHERE ...;'],
-  ['HTTP', 'GET    /api/tasks      → 200\nPOST   /api/tasks      → 201\nPATCH  /api/tasks/:id  → 200/204\nDELETE /api/tasks/:id  → 204'],
-  ['Docker', 'docker compose up -d\ndocker compose ps\ndocker compose logs -f\ndocker compose down'],
-  ['Vue', 'const count = ref(0)\nconst loading = ref(true)\nonMounted(async () => { /* fetch */ })'],
-  ['PostgreSQL', 'psql --version\nCREATE TABLE ...;\nBEGIN;\nCOMMIT;\nROLLBACK;'],
-] as const;
+const cards: Record<string, {title:string;description:string;icon:string;href:string}[]> = {
+  roadmap: [
+    {title:'Halaman baru',description:'Tempatkan struktur roadmap Anda di sini.',icon:'route',href:'/project/'},
+    {title:'Alur kerja',description:'Definisikan tahapan yang dibutuhkan aplikasi.',icon:'workflow',href:'/project/'},
+    {title:'Checkpoint',description:'Tambahkan target dan validasi Anda sendiri.',icon:'circle-check',href:'/progress/'},
+  ],
+  project: [
+    {title:'Project kosong',description:'Mulai tambahkan project pertama Anda.',icon:'folder-kanban',href:'/project/'},
+    {title:'Komponen',description:'Susun komponen reusable untuk aplikasi.',icon:'layout-template',href:'/project/'},
+    {title:'Deployment',description:'Siapkan build dan deployment Anda.',icon:'rocket',href:'/project/'},
+  ],
+};
 ---
 <Layout title={title} wide>
   <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="/">Ruang belajar</a><span>/</span><span>{title}</span>
+    <a href="/">Workspace</a><span>/</span><span>{title}</span>
   </nav>
 
-  {(route === 'belajar' || part) && (
+  {route === 'progress' && (
     <>
-      <div class="page-kicker">KURIKULUM UTAMA · 36 SESI</div>
-      <h1>{title}</h1>
-      <p class="intro">Jalur utama kini berbentuk sesi seperti deck kelas: setiap sesi 180 menit, memiliki agenda, tujuan, alur praktik, latihan, checkpoint, dan materi sumber lengkap dari PDF/PPT.</p>
-      {(part ? [part] : parts).map((currentPart) => (
-        <section class="curriculum-section">
-          <div class="section-heading section-heading--strong">
-            <div><span class="section-number">{String(parts.indexOf(currentPart)+1).padStart(2,'0')}</span><h2>{currentPart.title}</h2></div>
-            <small>{currentPart.end - currentPart.start + 1} sesi</small>
-          </div>
-          <ol class="curriculum-list">
-            {catalog.filter((item) => item.part === currentPart.id).map((item) => (
-              <li>
-                <a href={item.url} data-lesson-id={item.id}>
-                  <span class="num">S{String(item.chapter).padStart(2,'0')}</span>
-                  <div><strong>{item.title}</strong><p>{item.description}</p></div>
-                  <small class="curriculum-meta">180 mnt <span class="lesson-check"><LucideIcon name="check" size={14}/></span></small>
-                </a>
-              </li>
-            ))}
-          </ol>
-        </section>
-      ))}
+      <div class="page-kicker">PERSONAL DATA</div><h1>Progress</h1>
+      <p class="intro">Kelola data lokal, backup, dan status workspace Anda.</p>
+      <Personal mode="progress" lessons={summaries} parts={parts} client:load />
     </>
   )}
 
-  {route === 'roadmap' && (
+  {route === 'notes' && (
     <>
-      <div class="page-kicker">ROADMAP KELAS</div>
-      <h1>36 sesi dari fundamental sampai project</h1>
-      <p class="intro">Gunakan urutan sesi. Pola belajar mengambil format dari PPT Sesi 1–3: pembukaan, konsep, istirahat, hands-on, komunikasi/refleksi, tugas, dan tanya jawab.</p>
-      <div class="learning-flow-grid roadmap-session-flow">
-        {['Pahami','Ketik ulang','Modifikasi','Hands-on','Uji','Refleksi'].map((step, i) => <article class="learning-flow-card"><span>{String(i+1).padStart(2,'0')}</span><strong>{step}</strong></article>)}
-      </div>
-      <ol class="curriculum-list">
-        {catalog.map((item) => <li><a href={item.url}><span class="num">S{String(item.chapter).padStart(2,'0')}</span><div><strong>{item.title}</strong><p>{item.partTitle}</p></div><LucideIcon name="arrow-right" size={16}/></a></li>)}
-      </ol>
-      <a class="inline-icon-link" href="/roadmap-26-minggu/"><span>Lihat roadmap 26 minggu</span><LucideIcon name="arrow-right" size={15}/></a>
+      <div class="page-kicker">PERSONAL DATA</div><h1>Catatan pribadi</h1>
+      <p class="intro">Catatan Anda tersimpan secara lokal di browser.</p>
+      <Personal mode="notes" lessons={summaries} parts={parts} client:load />
     </>
   )}
 
-  {route === 'minggu' && (
+  {route === 'bookmark' && (
     <>
-      <div class="page-kicker">ROADMAP 26 MINGGU</div><h1>Roadmap praktik 26 minggu</h1>
-      <p class="intro">Urutan ini mengikuti roadmap sumber dan mengaitkannya dengan sesi utama. Minggu bukan deadline kaku; lanjut setelah output dan checkpoint tercapai.</p>
-      <ol class="curriculum-list">
-        {weeks.map((currentWeek) => <li><a href={`/minggu/${currentWeek.number}/`}><span class="num">M{String(currentWeek.number).padStart(2,'0')}</span><div><strong>{currentWeek.title}</strong><p>{currentWeek.output}</p></div><LucideIcon name="arrow-right" size={16}/></a></li>)}
-      </ol>
+      <div class="page-kicker">PERSONAL DATA</div><h1>Bookmark</h1>
+      <p class="intro">Simpan halaman penting dari workspace.</p>
+      <Personal mode="bookmark" lessons={summaries} parts={parts} client:load />
     </>
   )}
 
-  {week && (
+  {route === 'offline' && (
     <>
-      <div class="page-kicker">MINGGU {String(week.number).padStart(2,'0')}</div><h1>{week.title}</h1>
-      <p class="intro">Output minggu ini: <strong>{week.output}</strong>.</p>
-      <h2>Sesi yang terkait</h2>
-      <ul>{week.lessons.map((number) => { const item = catalog[number - 1]; return item ? <li><a href={item.url}>Sesi {String(number).padStart(2,'0')} — {item.title}</a></li> : null; })}</ul>
-      <h2>Pola belajar</h2><p>Pahami → ketik ulang → modifikasi → bangun → uji → refleksi. Simpan hasil dan keputusan di Git.</p>
-      <h2>Checklist minggu {week.number}</h2><Milestone id={`week-${week.number}`} items={week.checklist} client:visible />
+      <div class="page-kicker">OFFLINE</div><h1>Mode offline</h1>
+      <p class="intro">Simpan shell aplikasi untuk membuka workspace tanpa koneksi.</p>
+      <OfflineManager client:load />
     </>
   )}
 
-  {route === 'project' && (
+  {route === 'referensi' && (
     <>
-      <div class="page-kicker">PROJECT</div><h1>Project pembelajaran</h1>
-      <p class="intro">Project tetap tersedia sebagai tempat menerapkan seluruh materi. Gunakan Task Tracker atau Portal Gampong sebagai latihan terpadu.</p>
-      <div class="project-grid">
-        <a class="project-card" href="/project/task-tracker/"><span>01</span><h2>Task Tracker</h2><p>Full-stack Go + Vue + PostgreSQL dengan testing dan graceful shutdown.</p></a>
-        <a class="project-card" href="/project/portal-gampong/"><span>02</span><h2>Portal Gampong</h2><p>Project utama untuk requirement, data-driven content, security, dan portfolio.</p></a>
-        <a class="project-card" href="/project/contoh/"><span>03</span><h2>Contoh source</h2><p>Go Algorithms, Go API, dan contoh project yang tersedia di package.</p></a>
+      <div class="page-kicker">EMPTY</div><h1>Referensi</h1>
+      <p class="intro">Tidak ada materi atau sumber bawaan pada template ini.</p>
+      <div class="empty-state"><LucideIcon name="library" size={28}/><strong>Referensi kosong</strong><span>Tambahkan sumber Anda sendiri ketika workspace mulai digunakan.</span></div>
+    </>
+  )}
+
+  {route === 'tentang' && (
+    <>
+      <div class="page-kicker">TEMPLATE</div><h1>Workspace template kosong</h1>
+      <p class="intro">Template ini mempertahankan fondasi aplikasi dan fitur UI tetapi sengaja tidak membawa materi, contoh, source library, maupun data kurikulum.</p>
+      <div class="chapter-grid">
+        <article class="chapter-card"><LucideIcon name="palette" size={22}/><h2>UI system</h2><p>Responsive layout, theme, dark mode, icons, navigation, dialog, dan search.</p></article>
+        <article class="chapter-card"><LucideIcon name="hard-drive-download" size={22}/><h2>Local storage</h2><p>Progress, bookmark, catatan, backup, import, dan offline shell.</p></article>
+        <article class="chapter-card"><LucideIcon name="code-2" size={22}/><h2>Developer ready</h2><p>Struktur Astro + Vue + TypeScript siap dikembangkan dengan konten Anda sendiri.</p></article>
       </div>
     </>
   )}
 
-  {route === 'latihan' && (
-    <><div class="page-kicker">PRAKTIK</div><h1>Latihan 36 sesi</h1><p class="intro">Kerjakan tanpa copy-paste. Setiap sesi memiliki latihan dan tugas yang diturunkan dari materi sumber.</p><ul class="curriculum-list">{catalog.map((item) => <li><a href={`${item.url}#latihan-praktik`}><span class="num">S{String(item.chapter).padStart(2,'0')}</span><div><strong>{item.title}</strong><p>{item.practice[0]}</p></div><span class="inline-icon-link">Latihan <LucideIcon name="arrow-right" size={15}/></span></a></li>)}</ul></>
-  )}
-
-  {route === 'quiz' && (<><div class="page-kicker">ASESMEN</div><h1>Quiz</h1><p class="intro">Uji pemahaman konsep yang sudah dipelajari.</p><ul class="row-list">{quizzes.map((item) => <li><a href={`/quiz/${item.id}/`}>{item.title}</a><span>{item.questions.length} pertanyaan</span></li>)}</ul></>)}
-  {quiz && <Quiz id={quiz.id} questions={quiz.questions} client:load />}
-
-  {route === 'glossary' && (<><div class="page-kicker">REFERENSI</div><h1>Glossary</h1><p class="intro">Istilah penting dalam full-stack, Go, Laravel, Vue, SQL, HTTP, security, dan production.</p><label for="glossary-search">Cari istilah</label><input id="glossary-search" type="search" data-filter-list placeholder="Misalnya: transaction"/><dl>{glossary.map((item)=><div data-searchable id={item.term.toLowerCase().replace(/[^a-z0-9]+/g,'-')}><dt><h2>{item.term}</h2></dt><dd>{item.definition}</dd></div>)}</dl></>)}
-
-  {route === 'cheatsheet' && (<><div class="page-kicker">REFERENSI CEPAT</div><h1>Cheat sheet</h1><p class="intro">Gunakan setelah memahami konsep.</p><div class="prose">{cheats.map(([name,code])=><section data-searchable><h2>{name}</h2><pre data-language={name}><code>{code}</code></pre></section>)}</div></>)}
-
-  {['progress','notes','bookmark'].includes(route) && <Personal mode={route as 'progress'|'notes'|'bookmark'} lessons={summaries} parts={parts} weeks={weeks} client:load />}
-  {route === 'offline' && <OfflineManager client:load />}
-
-  {route === 'materi-2026' && (
-    <><div class="page-kicker">KURIKULUM SUMBER</div><h1>51 Bab Full-Stack Developer 2026</h1><p class="intro">Semua bab dari Buku Lengkap 2026 tetap tersedia sebagai indeks materi. Jalur utama belajar menggunakan 36 sesi agar alurnya seperti kelas.</p>{fullstackParts.map((currentPart, partIndex)=><section class="curriculum-part"><div class="section-heading section-heading--strong"><div><span class="section-number">{String(partIndex+1).padStart(2,'0')}</span><h2>{currentPart}</h2></div></div><div class="chapter-grid">{fullstackChapters.filter((chapter)=>chapter.part===currentPart).map((chapter)=><a class="chapter-card" href={`/sumber/fullstack-developer-2026/#unit-fullstack-developer-2026-${chapter.startPage}`}><span class="chapter-card__number">{String(chapter.number).padStart(2,'0')}</span><div><h3>{chapter.title}</h3><p>{chapter.summary}</p><small>Halaman {chapter.startPage}{chapter.endPage>chapter.startPage?`–${chapter.endPage}`:''}</small></div><LucideIcon name="arrow-right" size={17}/></a>)}</div></section>)}</>
-  )}
-
-  {route === 'roadmap-26-minggu' && (<><div class="page-kicker">ROADMAP SUMBER</div><h1>Roadmap 26 minggu</h1><p class="intro">Roadmap lengkap tetap tersedia dan terhubung dengan sesi.</p><div class="week-board">{fullstackWeeks.map((item)=><article class="week-card"><span class="week-card__number">M{String(item.number).padStart(2,'0')}</span><h2>{item.focus}</h2><p>{item.output}</p></article>)}</div></>)}
-
-  {route === 'referensi' && (<><div class="page-kicker">SUMBER LENGKAP</div><h1>PDF & PPT sumber</h1><p class="intro">Seluruh PDF dan PPT yang Anda kirim dimasukkan ke workspace. Total <strong>{sourceLibrary.length} berkas</strong> dan <strong>{totalSourceUnits} unit halaman/slide</strong> dapat ditelusuri.</p><div class="source-library-grid">{sourceLibrary.map((source)=><article class={`source-library-card source-library-card--${source.accent}`}><span class="source-chip">{source.unitCount} {source.unitLabel}</span><h2>{source.shortTitle}</h2><p>{source.description}</p><div class="toolbar"><a class="button primary" href={`/sumber/${source.id}/`}>Buka transkripsi</a><a class="button" href={source.file} target="_blank" rel="noopener noreferrer"><LucideIcon name="external-link" size={15}/><span>Buka {source.kind.toUpperCase()}</span></a></div></article>)}</div><h2>Jalur utama</h2><p><a class="inline-icon-link" href="/belajar/">36 sesi belajar <LucideIcon name="arrow-right" size={15}/></a></p></>)}
-
-  {route === 'tentang' && (<><div class="page-kicker">TENTANG</div><h1>Full-Stack Developer Learning Lab</h1><p class="intro">Workspace belajar mandiri yang menyatukan materi sumber, sesi praktik, project, testing, security, production, dan portfolio.</p><h2>Metode belajar</h2><p>Pahami konsep → ketik ulang → modifikasi → bangun → uji → refleksi. Selesaikan checkpoint sebelum melanjutkan.</p><h2>Penyimpanan</h2><p>Progress, quiz, bookmark, catatan, dan milestone disimpan lokal di browser. Backup dapat diexport/import.</p></>)}
-
-  {route === 'debugging' && (<><div class="page-kicker">DEBUGGING</div><h1>Debugging framework</h1><p class="intro">Jangan menebak. Telusuri lapisan masalah satu per satu.</p><ol>{debuggingSteps.map((step)=><li>{step}</li>)}</ol><a class="inline-icon-link" href={catalog[11]?.url ?? '/belajar/'}>Buka sesi debugging <LucideIcon name="arrow-right" size={15}/></a></>)}
-
-  {route === 'lanjutan' && (<><div class="page-kicker">LANJUTAN</div><h1>Materi setelah roadmap inti</h1><p class="intro">Pilih materi lanjutan berdasarkan requirement project, bukan karena tren.</p><div class="chapter-grid"><article class="chapter-card"><h2>Go backend lanjutan</h2><p>Context, structured logging, auth, rate limiting, migration, observability.</p></article><article class="chapter-card"><h2>Vue lanjutan</h2><p>Router, composable, state management, validation, accessibility.</p></article><article class="chapter-card"><h2>PostgreSQL lanjutan</h2><p>Index, EXPLAIN, isolation, backup/restore, connection pooling.</p></article><article class="chapter-card"><h2>Delivery</h2><p>CI/CD, container image, reverse proxy, TLS, monitoring.</p></article></div></>)}
-
-  {route === 'belajar-dengan-ai' && (<><div class="page-kicker">AI-ASSISTED DEVELOPMENT</div><h1>Belajar dengan AI secara benar</h1><p class="intro">Gunakan AI untuk menjelaskan, meninjau, dan membantu eksplorasi; validasi hasil melalui dokumentasi, test, dan eksperimen.</p><blockquote>Jelaskan konsep ini dengan mental model sederhana. Beri satu contoh minimal dan latihan tanpa solusi. Setelah saya menjawab, review alasan saya dan tunjukkan bagian yang perlu diperbaiki.</blockquote><p>Jangan kirim secret, credential, database production, atau data pribadi.</p></>)}
-
-  {sourceDocument && (
-    <><div class={`source-intro-card source-intro-card--${sourceDocument.accent}`}><div><span class="source-chip">SUMBER ASLI · {sourceDocument.unitCount} {sourceDocument.unitLabel}</span><h2>{sourceDocument.title}</h2><p>{sourceDocument.description}</p></div><a class="button primary" href={sourceDocument.file} target="_blank" rel="noopener noreferrer"><LucideIcon name="external-link" size={16}/><span>Buka berkas asli</span></a></div><label class="source-filter" for="source-page-search"><span>Cari teks di sumber</span><input id="source-page-search" type="search" data-filter-list placeholder="Contoh: authorization, goroutine, Docker..."/></label><div class="source-pages-grid">{sourceDocument.units.map((unit)=><section id={`unit-${sourceDocument.id}-${unit.unit}`} class="source-page-card" data-searchable><div class="source-page-card__head"><span>{sourceDocument.kind.toUpperCase()}</span><h2>{String(unit.unit).padStart(3,'0')}</h2><a href={`#unit-${sourceDocument.id}-${unit.unit}`}>#</a></div>{unit.heading&&<h3>{unit.heading}</h3>}<pre class="source-page pdf-page-text"><code>{unit.text||'Unit tanpa teks tambahan.'}</code></pre>{unit.notes&&<div class="source-notes"><strong>Catatan trainer/speaker</strong><p>{unit.notes}</p></div>}</section>)}</div></>
+  {cards[route] && (
+    <>
+      <div class="page-kicker">WORKSPACE</div><h1>{title}</h1>
+      <p class="intro">Halaman ini sengaja kosong. Tambahkan data dan implementasi Anda sendiri.</p>
+      <div class="feature-board">
+        {cards[route].map((card) => (
+          <a class="feature-card" href={card.href}>
+            <span class="feature-icon"><LucideIcon name={card.icon as any} size={22}/></span>
+            <span class="feature-kicker">READY</span>
+            <h3>{card.title}</h3>
+            <p>{card.description}</p>
+          </a>
+        ))}
+      </div>
+      <div class="empty-state"><LucideIcon name="file-json" size={28}/><strong>Belum ada konten</strong><span>Folder data dan materi lama sudah dibersihkan dari template.</span></div>
+    </>
   )}
 </Layout>

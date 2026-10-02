@@ -2,68 +2,73 @@
 import Layout from '../layouts/Layout.astro';
 import LucideIcon from '../components/LucideIcon.astro';
 import Personal from '../components/Personal.vue';
-import sourceLibrary from '../data/source-library.json';
-import fullstackChapters from '../data/fullstack-chapters.json';
-import fullstackWeeks from '../data/fullstack-weeks.json';
-import { catalog, parts, summaries } from '../lib/catalog';
+import { summaries, parts } from '../lib/catalog';
 
-const totalSourceUnits = sourceLibrary.reduce((sum, source) => sum + source.unitCount, 0);
-const partIcons = ['graduation-cap','code-2','database','layout-template','shield-check','server-cog','terminal','rocket'] as const;
+const partIcons = ['layout-template','folder-kanban','chart','bookmark','notebook-pen','hard-drive-download-download'] as const;
 ---
-<Layout title="Ruang belajar" wide>
+<Layout title="Workspace Template" wide>
   <section class="home-hero" aria-labelledby="home-title">
     <div class="home-hero-copy">
-      <div class="home-badges" aria-label="Informasi kurikulum">
-        <span class="signal-badge signal-badge--violet"><LucideIcon name="layers-3" size={14} /> 36 sesi</span>
-        <span class="signal-badge signal-badge--amber">51 bab 2026</span>
-        <span class="signal-badge signal-badge--mint">8 sumber</span>
+      <div class="home-badges" aria-label="Informasi template">
+        <span class="signal-badge signal-badge--violet"><LucideIcon name="library" size={14} /> Empty</span>
+        <span class="signal-badge signal-badge--amber">Template</span>
+        <span class="signal-badge signal-badge--mint">Ready</span>
       </div>
-      <p class="home-overline">FULL-STACK DEVELOPER LEARNING LAB</p>
-      <h1 id="home-title">Belajar dari fondasi sampai project production dengan materi yang <span class="marker-underline">tersusun per sesi.</span></h1>
-      <p class="home-lead">Jalur utama memakai format 36 sesi seperti PPT kelas: agenda 180 menit, tujuan, alur praktik, materi sumber lengkap, latihan, checkpoint, dan refleksi. Semua PDF dan PPT yang Anda kirim menjadi sumber yang bisa ditelusuri.</p>
+      <p class="home-overline">FULL-STACK WORKSPACE TEMPLATE</p>
+      <h1 id="home-title">Workspace kosong dengan seluruh fondasi fitur siap dikembangkan.</h1>
+      <p class="home-lead">Semua konten pembelajaran, contoh, sumber, dan data lama telah dihapus. Struktur UI, tema, pencarian, penyimpanan lokal, backup, bookmark, catatan, progress, dan mode offline tetap tersedia.</p>
       <div class="home-actions">
-        <a class="button primary button-strong" href={catalog[0]!.url}><LucideIcon name="play" size={17}/><span>Mulai Sesi 01</span></a>
-        <a class="button button-quiet" href="/referensi/"><LucideIcon name="library" size={17}/><span>Buka semua sumber</span></a>
+        <a class="button primary button-strong" href="/project/"><LucideIcon name="folder-kanban" size={17}/><span>Mulai dari Project</span></a>
+        <a class="button button-quiet" href="/tentang/"><LucideIcon name="info" size={17}/><span>Lihat template</span></a>
       </div>
-      <dl class="curriculum-stats" aria-label="Ringkasan kurikulum">
-        <div><dt>{catalog.length}</dt><dd>Sesi utama</dd></div>
-        <div><dt>{fullstackChapters.length}</dt><dd>Bab sumber 2026</dd></div>
-        <div><dt>{fullstackWeeks.length}</dt><dd>Minggu roadmap</dd></div>
-        <div><dt>{totalSourceUnits}</dt><dd>Halaman / slide</dd></div>
+      <dl class="curriculum-stats" aria-label="Status template">
+        <div><dt>0</dt><dd>Konten</dd></div>
+        <div><dt>0</dt><dd>Materi</dd></div>
+        <div><dt>0</dt><dd>Contoh</dd></div>
+        <div><dt>∞</dt><dd>Ruang pengembangan</dd></div>
       </dl>
     </div>
-    <aside class="hero-workbench" aria-label="Pola belajar per sesi">
-      <div class="workbench-topline"><span><span class="status-dot"></span> FORMAT SESI</span><span>180 MIN</span></div>
+    <aside class="hero-workbench" aria-label="Status workspace">
+      <div class="workbench-topline"><span><span class="status-dot"></span> TEMPLATE</span><span>EMPTY</span></div>
       <div class="workbench-path">
-        <div class="path-node path-node--blue"><span>01</span><strong>Pahami</strong><small>konsep &amp; mental model</small></div><LucideIcon name="arrow-right" size={16}/>
-        <div class="path-node path-node--violet"><span>02</span><strong>Ketik ulang</strong><small>contoh sumber</small></div><LucideIcon name="arrow-right" size={16}/>
-        <div class="path-node path-node--orange"><span>03</span><strong>Modifikasi</strong><small>ubah requirement</small></div><LucideIcon name="arrow-right" size={16}/>
-        <div class="path-node path-node--green"><span>04</span><strong>Uji</strong><small>kasus &amp; checkpoint</small></div>
+        <div class="path-node path-node--blue"><span>01</span><strong>Tambah</strong><small>konten Anda</small></div><LucideIcon name="arrow-right" size={16}/>
+        <div class="path-node path-node--violet"><span>02</span><strong>Bangun</strong><small>fitur Anda</small></div><LucideIcon name="arrow-right" size={16}/>
+        <div class="path-node path-node--orange"><span>03</span><strong>Uji</strong><small>implementasi</small></div><LucideIcon name="arrow-right" size={16}/>
+        <div class="path-node path-node--green"><span>04</span><strong>Deploy</strong><small>versi production</small></div>
       </div>
-      <div class="workbench-terminal"><span class="terminal-prompt">$</span><span>go run .</span><span class="terminal-cursor"></span></div>
+      <div class="workbench-terminal"><span class="terminal-prompt">$</span><span>npm run dev</span><span class="terminal-cursor"></span></div>
     </aside>
   </section>
 
-  <section class="home-personal" aria-label="Progress belajar"><Personal mode="home" lessons={summaries} parts={parts} client:load /></section>
+  <section class="home-personal" aria-label="Data pribadi"><Personal mode="home" lessons={summaries} parts={parts} client:load /></section>
 
-  <section class="home-section" aria-labelledby="kurikulum">
-    <div class="section-heading section-heading--strong"><div><span class="section-number">01</span><h2 id="kurikulum">36 sesi utama</h2><p>Materi lama tidak lagi menjadi jalur terpisah. Semua topik utama dipaketkan ulang menjadi sesi belajar yang konsisten.</p></div><a class="inline-icon-link" href="/belajar/">Buka semua sesi <LucideIcon name="arrow-right" size={15}/></a></div>
+  <section class="home-section" aria-labelledby="fitur">
+    <div class="section-heading section-heading--strong">
+      <div><span class="section-number">01</span><h2 id="fitur">Fitur yang tetap tersedia</h2><p>Fondasi aplikasi lama dan fitur UI yang dapat digunakan kembali tanpa membawa konten lama.</p></div>
+    </div>
     <div class="roadmap-grid roadmap-grid--colorful">
-      {parts.map((part, index) => <a class={`roadmap-item roadmap-tone-${(index%6)+1}`} href={`/belajar/${part.id}/`}><div class="roadmap-card-top"><span class="roadmap-icon"><LucideIcon name={partIcons[index] ?? 'book-open'} size={19}/></span><span class="num">{String(index+1).padStart(2,'0')}</span></div><h3>{part.title}</h3><small>{part.end-part.start+1} sesi</small><span class="roadmap-arrow"><LucideIcon name="arrow-up-right" size={17}/></span></a>)}
+      {[
+        ['/roadmap/','Roadmap','Kelola struktur halaman dan alur kerja.','route'],
+        ['/project/','Project','Tempat utama untuk fitur dan project baru.','folder-kanban'],
+        ['/progress/','Progress','Penyimpanan progress dan backup JSON lokal.','chart'],
+        ['/bookmark/','Bookmark','Simpan halaman yang ingin ditandai.','bookmark'],
+        ['/notes/','Catatan','Catatan pribadi tersimpan di browser.','notebook-pen'],
+        ['/offline/','Offline','Mode offline untuk shell aplikasi.','hard-drive-download-download'],
+      ].map(([href,title,description,icon], index) => (
+        <a class={`roadmap-item roadmap-tone-${(index%6)+1}`} href={href}>
+          <div class="roadmap-card-top"><span class="roadmap-icon"><LucideIcon name={icon as any} size={19}/></span><span class="num">{String(index+1).padStart(2,'0')}</span></div>
+          <h3>{title}</h3><small>{description}</small><span class="roadmap-arrow"><LucideIcon name="arrow-up-right" size={17}/></span>
+        </a>
+      ))}
     </div>
   </section>
 
-  <section class="home-section build-section" aria-labelledby="praktik">
-    <div class="section-heading section-heading--strong"><div><span class="section-number">02</span><h2 id="praktik">Belajar sambil membangun</h2><p>Fitur belajar lama dan baru tetap tersedia di workspace.</p></div></div>
+  <section class="home-section build-section" aria-labelledby="empty-state">
+    <div class="section-heading section-heading--strong"><div><span class="section-number">02</span><h2 id="empty-state">Siap diisi</h2><p>Gunakan struktur ini sebagai titik awal untuk website, dashboard, dokumentasi, learning platform, atau aplikasi custom.</p></div></div>
     <div class="feature-board">
-      <a class="feature-card feature-card--project" href="/project/"><span class="feature-icon"><LucideIcon name="folder-kanban" size={22}/></span><span class="feature-kicker">PROJECT</span><h3>Task Tracker &amp; Portal Gampong</h3><p>Project untuk menerapkan backend, frontend, data, testing, security, dan deployment.</p><span class="feature-link">Buka project <LucideIcon name="arrow-up-right" size={15}/></span></a>
-      <a class="feature-card feature-card--weeks" href="/roadmap-26-minggu/"><span class="feature-icon"><LucideIcon name="calendar" size={22}/></span><span class="feature-kicker">ROADMAP</span><h3>26 minggu</h3><p>Jadwal praktik yang ditautkan ke sesi utama.</p><span class="feature-link">Lihat roadmap <LucideIcon name="arrow-up-right" size={15}/></span></a>
-      <a class="feature-card feature-card--practice" href="/latihan/"><span class="feature-icon"><LucideIcon name="target" size={22}/></span><span class="feature-kicker">LATIHAN</span><h3>Latihan &amp; quiz</h3><p>Kerjakan tanpa copy-paste, lalu gunakan checkpoint sebagai bukti kemampuan.</p><span class="feature-link">Mulai latihan <LucideIcon name="arrow-up-right" size={15}/></span></a>
-      <a class="feature-card feature-card--offline" href="/offline/"><span class="feature-icon"><LucideIcon name="hard-drive-download" size={22}/></span><span class="feature-kicker">OFFLINE</span><h3>Materi tanpa internet</h3><p>Simpan modul, catatan, bookmark, dan progress di perangkat.</p><span class="feature-link">Kelola offline <LucideIcon name="arrow-up-right" size={15}/></span></a>
+      <article class="feature-card feature-card--project"><span class="feature-icon"><LucideIcon name="folder-kanban" size={22}/></span><span class="feature-kicker">CONTENT</span><h3>Konten Anda</h3><p>Tambahkan halaman, data, komponen, dan alur aplikasi tanpa harus membersihkan konten lama.</p></article>
+      <article class="feature-card"><span class="feature-icon"><LucideIcon name="palette" size={22}/></span><span class="feature-kicker">UI</span><h3>Theme &amp; Responsive</h3><p>Theme system, dark mode, mobile navigation, focus mode, dan komponen UI tetap tersedia.</p></article>
+      <article class="feature-card"><span class="feature-icon"><LucideIcon name="database" size={22}/></span><span class="feature-kicker">LOCAL DATA</span><h3>Storage &amp; Backup</h3><p>Progress, bookmark, catatan, export, import, dan validasi data lokal tetap dipertahankan.</p></article>
     </div>
   </section>
-
-  <section class="home-section reference-ribbon" aria-labelledby="referensi-cepat"><div><span class="section-number">03</span><h2 id="referensi-cepat">Semua sumber tetap dapat ditelusuri</h2><p>PDF dan PPT tersedia sebagai sumber lengkap, sedangkan sesi memberikan urutan belajar.</p></div><div class="reference-links"><a href="/referensi/"><LucideIcon name="books" size={18}/><span>PDF &amp; PPT</span></a><a href="/glossary/"><LucideIcon name="book-open-text" size={18}/><span>Glossary</span></a><a href="/cheatsheet/"><LucideIcon name="scroll-text" size={18}/><span>Cheatsheet</span></a><a href="/notes/"><LucideIcon name="notebook-pen" size={18}/><span>Catatan</span></a></div></section>
-
-  <section class="release-note" aria-label="Pembaruan materi"><div class="release-date"><span>UPDATED</span><time datetime="2026-10-02">02.10.2026</time></div><div><strong>Curriculum release · 36 sesi + 8 sumber</strong><p>{totalSourceUnits} halaman/slide sumber, 51 bab buku 2026, roadmap 26 minggu, project, quiz, progress lokal, modal notification, search, offline mode, dan bookmark tersedia dalam satu workspace.</p></div><a class="button button-quiet" href="/referensi/">Lihat sumber <LucideIcon name="arrow-right" size={15}/></a></section>
 </Layout>

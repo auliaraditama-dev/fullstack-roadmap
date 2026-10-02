@@ -27,7 +27,7 @@ async function loadIndex() {
       available.value[entry.url] = await isAvailable(entry.url, records);
     }));
   } catch {
-    error.value = 'Indeks belum tersedia. Hubungkan internet atau unduh materi dari halaman Offline.';
+    error.value = 'Indeks kosong. Tambahkan konten ke template untuk mengaktifkan pencarian.';
   } finally {
     loading.value = false;
   }
@@ -64,9 +64,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <button class="search-trigger" type="button" aria-label="Cari materi" @click="open">
+  <button class="search-trigger" type="button" aria-label="Cari workspace" @click="open">
     <LucideIcon name="search" :size="17" />
-    <span>Cari materi…</span>
+    <span>Cari workspace…</span>
     <kbd>Ctrl K</kbd>
   </button>
 
@@ -79,12 +79,12 @@ onUnmounted(() => {
     </div>
 
     <label for="search-input" class="sr-only">Kata kunci pencarian</label>
-    <input id="search-input" ref="input" v-model="query" type="search" placeholder="Konsep, kode, latihan, atau istilah…" autocomplete="off">
+    <input id="search-input" ref="input" v-model="query" type="search" placeholder="Cari halaman atau fitur…" autocomplete="off">
 
     <p v-if="loading" role="status">Memuat indeks pencarian…</p>
     <p v-else-if="error" role="alert">{{ error }}</p>
-    <p v-else-if="!query.trim()" class="muted">Coba “slice”, “Vue”, atau “transaction”. Tekan / untuk membuka pencarian.</p>
-    <p v-else-if="!results.length" role="status">Tidak ada hasil. Gunakan istilah yang lebih singkat.</p>
+    <p v-else-if="!query.trim()" class="muted">Pencarian siap digunakan setelah konten ditambahkan. Tekan / untuk membuka pencarian.</p>
+    <p v-else-if="!results.length" role="status">Belum ada konten yang cocok.</p>
     <p v-else role="status" class="muted">{{ results.length }} hasil</p>
 
     <ul class="search-results">

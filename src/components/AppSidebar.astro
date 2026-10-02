@@ -1,6 +1,5 @@
 ---
 import LucideIcon from './LucideIcon.astro';
-import { catalog, parts } from '../lib/catalog';
 import { learningNavigation } from '../lib/navigation';
 
 interface Props {
@@ -8,47 +7,21 @@ interface Props {
   chapter?: number;
 }
 
-const { path, chapter } = Astro.props;
+const { path } = Astro.props;
 ---
 <aside id="sidebar" class="sidebar">
-  <button id="close-nav" class="mobile-toggle sidebar-close" aria-label="Tutup kurikulum">
+  <button id="close-nav" class="mobile-toggle sidebar-close" aria-label="Tutup navigasi">
     <LucideIcon name="x" />
     <span>Tutup</span>
   </button>
 
-  <nav aria-label="Menu belajar">
+  <nav aria-label="Menu utama">
     <a class:list={['side-home', { active: path === '/' }]} href="/">
       <LucideIcon name="home" size={17} />
-      <span>Ruang belajar</span>
-    </a>
-    <a class:list={['side-home', { active: path === '/belajar/' }]} href="/belajar/">
-      <LucideIcon name="library" size={17} />
-      <span>Semua materi</span>
+      <span>Ruang kerja</span>
     </a>
 
-    <div class="sidebar-label">36 SESI UTAMA</div>
-    {parts.map((part, index) => (
-      <details open={chapter ? chapter >= part.start && chapter <= part.end : index < 2}>
-        <summary>
-          <span class="part-number">{String(index + 1).padStart(2, '0')}</span>
-          <span>{part.title}</span>
-          <LucideIcon name="chevron-down" size={15} class="summary-chevron" />
-        </summary>
-        <ol start={part.start}>
-          {catalog.filter((item) => item.part === part.id).map((item) => (
-            <li>
-              <a href={item.url} aria-current={path === item.url ? 'page' : undefined} data-lesson-id={item.id}>
-                <span>S{String(item.chapter).padStart(2, '0')}</span>
-                <span class="lesson-title">{item.title}</span>
-                <span class="lesson-check" aria-hidden="true"><LucideIcon name="check" size={14} /></span>
-              </a>
-            </li>
-          ))}
-        </ol>
-      </details>
-    ))}
-
-    <div class="sidebar-label">PRAKTIK &amp; REFERENSI</div>
+    <div class="sidebar-label">WORKSPACE</div>
     {learningNavigation.map((item) => (
       <a class:list={['side-link', { active: path === item.href }]} href={item.href}>
         <LucideIcon name={item.icon} size={16} />
@@ -60,6 +33,6 @@ const { path, chapter } = Astro.props;
   <div class="sidebar-foot">
     <a href="/referensi/">Referensi</a>
     <a href="/tentang/">Tentang</a>
-    <p>Pahami. Praktik. Uji.</p>
+    <p>Bangun. Uji. Kembangkan.</p>
   </div>
 </aside>

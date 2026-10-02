@@ -94,7 +94,7 @@ async function remove(id: string) {
   try {
     await removeModule(id);
     await refresh();
-    message.value = 'Materi offline dihapus. Catatan dan progress tetap tersimpan.';
+    message.value = 'Salinan offline dihapus. Catatan dan progress tetap tersimpan.';
     error.value = '';
   } catch (cause) {
     error.value = storageError(cause);
@@ -103,8 +103,8 @@ async function remove(id: string) {
 
 async function clear() {
   if (!await modalConfirm({
-    title: 'Hapus materi offline?',
-    message: 'Semua salinan materi offline akan dihapus. Catatan dan progress belajar tetap tersimpan.',
+    title: 'Hapus salinan offline?',
+    message: 'Semua salinan offline akan dihapus. Catatan dan progress belajar tetap tersimpan.',
     confirmLabel: 'Hapus materi',
     cancelLabel: 'Batal',
     variant: 'danger',
@@ -130,19 +130,19 @@ async function persist() {
 
 <template>
   <section>
-    <p>Unduh saat online, lalu buka kembali materi tanpa koneksi. Catatan, quiz, dan progress tetap bekerja di perangkat ini.</p>
+    <p>Simpan shell aplikasi agar workspace tetap dapat dibuka tanpa koneksi. Data lokal tetap tersimpan di perangkat ini.</p>
 
     <div v-if="data" class="offline-download">
-      <label for="module">Materi yang akan disimpan</label>
+      <label for="module">Komponen yang akan disimpan</label>
       <select id="module" v-model="selected" :disabled="busy">
-        <option value="all">Seluruh materi</option>
+        <option value="all">Seluruh aplikasi</option>
         <option v-for="module in data.modules" :key="module.id" :value="module.id">{{ module.title }}</option>
       </select>
-      <p>Estimasi transfer: <strong>{{ format(size) }}</strong>. Berkas unik: {{ format(uniqueSize) }}. Transfer mencakup aset bersama pada setiap modul. Media dan PDF sumber termasuk paket referensi.</p>
+      <p>Estimasi transfer: <strong>{{ format(size) }}</strong>. Berkas unik: {{ format(uniqueSize) }}. Transfer mencakup aset aplikasi yang diperlukan untuk mode offline.</p>
       <div class="toolbar">
         <button class="primary" type="button" :disabled="busy" @click="download">
           <LucideIcon name="download" :size="16" />
-          <span>Download materi</span>
+          <span>Simpan aplikasi offline</span>
         </button>
         <button v-if="busy" type="button" @click="controller?.abort()">
           <LucideIcon name="x" :size="16" />
@@ -156,7 +156,7 @@ async function persist() {
     <p role="status">{{ message }}</p>
     <p v-if="error" role="alert" class="error">{{ error }}</p>
 
-    <h2>Materi di perangkat</h2>
+    <h2>Aplikasi di perangkat</h2>
     <ul class="row-list">
       <li v-for="module in data?.modules" :key="module.id">
         <span>
@@ -182,7 +182,7 @@ async function persist() {
       </button>
       <button type="button" :disabled="busy" @click="clear">
         <LucideIcon name="trash" :size="16" />
-        <span>Hapus materi offline</span>
+        <span>Hapus salinan offline</span>
       </button>
       <a class="button" href="/progress/#backup">
         <LucideIcon name="file-json" :size="16" />

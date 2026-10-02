@@ -13,15 +13,10 @@ export const headerNavigation: NavigationItem[] = [
 ];
 
 export const learningNavigation: NavigationItem[] = [
-  { href: '/belajar/', label: '36 Sesi Belajar', icon: 'library' },
-  { href: '/roadmap-26-minggu/', label: '51 Bab 2026', icon: 'book-open' },
-  { href: '/minggu/', label: 'Roadmap 26 minggu', icon: 'calendar' },
+  { href: '/roadmap/', label: 'Roadmap', icon: 'route' },
   { href: '/project/', label: 'Project', icon: 'folder-kanban' },
-  { href: '/latihan/', label: 'Latihan', icon: 'list-checks' },
-  { href: '/quiz/', label: 'Quiz', icon: 'circle-help' },
-  { href: '/cheatsheet/', label: 'Cheatsheet', icon: 'scroll-text' },
-  { href: '/glossary/', label: 'Glossary', icon: 'book-open-text' },
+  { href: '/progress/', label: 'Progress', icon: 'chart' },
   { href: '/bookmark/', label: 'Bookmark', icon: 'bookmark' },
   { href: '/notes/', label: 'Catatan pribadi', icon: 'notebook-pen' },
-  { href: '/offline/', label: 'Materi offline', icon: 'hard-drive-download' },
+  { href: '/offline/', label: 'Offline', icon: 'hard-drive-download' },
 ];

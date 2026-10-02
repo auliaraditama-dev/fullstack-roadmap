@@ -2,7 +2,6 @@
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import LucideIcon from './LucideIcon.vue';
 import { modalConfirm } from '../lib/dialog';
-import levels from '../data/levels.json';
 import {
   readData,
   readPreviousBackup,
@@ -119,7 +118,7 @@ async function confirmImport() {
 
 async function clear() {
   if (!await modalConfirm({
-    title: 'Hapus seluruh data belajar?',
+    title: 'Hapus seluruh data workspace?',
     message: 'Progress, quiz, bookmark, catatan, dan milestone lokal akan dihapus. Export cadangan terlebih dahulu jika masih diperlukan.',
     confirmLabel: 'Hapus semua data',
     cancelLabel: 'Batal',
@@ -128,7 +127,7 @@ async function clear() {
   try {
     await replaceData(emptyData());
     await load();
-    message.value = 'Data belajar dihapus.';
+    message.value = 'data workspace dihapus.';
   } catch (cause) {
     error.value = storageError(cause);
   }
@@ -158,16 +157,16 @@ function milestonePercent(groups: { number: number; checklist: string[] }[], pre
       <div>
         <span class="eyebrow">RUANG BELAJAR ANDA</span>
         <h2>{{ last ? 'Teruskan langkah terakhir.' : 'Mulai dari fondasi.' }}</h2>
-        <p>{{ last?.title ?? 'Mulai dari model input-process-output, pseudocode, lalu Go fundamental.' }}</p>
+        <p>{{ last?.title ?? 'Tambahkan halaman pertama ke workspace untuk mulai.' }}</p>
         <a class="button primary" :href="last?.url ?? lessons[0]?.url">
           <LucideIcon name="play" :size="16" />
-          <span>{{ last ? 'Lanjutkan belajar' : 'Mulai dari Sesi 01' }}</span>
+          <span>{{ last ? 'Lanjutkan belajar' : 'Mulai bekerja' }}</span>
         </a>
       </div>
       <div class="progress-figure">
         <strong>{{ percent }}<span>%</span></strong>
-        <span>Kurikulum selesai</span>
-        <progress :value="percent" max="100" aria-label="Kurikulum selesai"></progress>
+        <span>Workspace selesai</span>
+        <progress :value="percent" max="100" aria-label="Workspace selesai"></progress>
         <small>{{ lessons.filter((item) => data.progress[item.id]?.status === 'completed').length }} dari {{ lessons.length }} sesi</small>
       </div>
     </div>
@@ -183,7 +182,7 @@ function milestonePercent(groups: { number: number; checklist: string[] }[], pre
   <template v-else-if="mode === 'progress'">
     <div class="progress-heading">
       <strong>{{ percent }}%</strong>
-      <p>Kurikulum selesai. Status “Selesai” ditentukan oleh Anda setelah praktik dan checkpoint.</p>
+      <p>Workspace selesai. Status tersimpan secara lokal dan dapat Anda kelola kapan saja.</p>
     </div>
 
     <h2>Per bagian</h2>
@@ -202,14 +201,11 @@ function milestonePercent(groups: { number: number; checklist: string[] }[], pre
       </a>
     </div>
 
-    <h2>Project aktif</h2>
-    <p><a href="/project/task-tracker/">Task Tracker</a> · {{ milestonePercent(levels, 'task-level-') }}% checklist milestone selesai.</p>
-
     <h2>Checkpoint terakhir</h2>
     <p>{{ Object.values(data.checkpoints).filter(Boolean).length }} bukti pemahaman telah dicentang.</p>
     <a v-if="last" :href="last.url">Materi terakhir: {{ last.title }}</a>
 
-    <h2 id="backup">Backup data belajar</h2>
+    <h2 id="backup">Backup data workspace</h2>
     <p>Backup JSON mencakup catatan, progress, latihan, checkpoint, quiz, bookmark, dan milestone. Simpan di lokasi pribadi.</p>
     <div class="toolbar">
       <button type="button" :disabled="!ready" @click="exportAll">
@@ -249,7 +245,7 @@ function milestonePercent(groups: { number: number; checklist: string[] }[], pre
     <p>Penghapusan tidak dapat dibatalkan tanpa backup.</p>
     <button type="button" :disabled="!ready || importing" @click="clear">
       <LucideIcon name="trash" :size="16" />
-      <span>Hapus seluruh data belajar</span>
+      <span>Hapus seluruh data workspace</span>
     </button>
   </template>
 
@@ -265,7 +261,7 @@ function milestonePercent(groups: { number: number; checklist: string[] }[], pre
     <div class="toolbar">
       <button type="button" @click="exportAll">
         <LucideIcon name="download" :size="16" />
-        <span>Export catatan &amp; data belajar</span>
+        <span>Export catatan &amp; data workspace</span>
       </button>
       <a class="button" href="/progress/#backup">
         <LucideIcon name="upload" :size="16" />
