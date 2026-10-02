@@ -26,16 +26,19 @@ with zipfile.ZipFile(destination) as archive:
     prefix = root.name + '/'
     required = [
         'README.md', 'package.json', 'package-lock.json',
-        'src/data/lessons.json', 'src/data/source-pages.json', 'src/data/parts.json',
-        'src/data/weeks.json', 'src/data/levels.json', 'src/data/portal-levels.json',
-        'src/data/explanations.json', 'src/components/LearningGuide.astro', 'src/styles/learning.css',
-        'public/sources/Belajar_FullStack_Go_Vue_PostgreSQL_Dari_Fundamental_Color_Syntax.pdf',
-        'examples/go-algorithms/main.go', 'examples/go-api/main.go',
-        'examples/task-tracker/backend/cmd/api/main.go', 'examples/task-tracker/backend/cmd/api/http.go',
-        'examples/task-tracker/backend/cmd/api/tasks.go', 'examples/task-tracker/frontend/src/App.vue',
+        'astro.config.mjs', 'vercel.json',
+        'src/layouts/Layout.astro', 'src/pages/index.astro',
+        'src/pages/[...route].astro', 'src/lib/model.ts', 'src/lib/db.ts',
     ]
+    forbidden = (
+        'src/data/', 'public/sources/', 'public/downloads/', 'examples/',
+        'src/components/LearningGuide.astro',
+        'src/styles/learning.css',
+    )
     for required_path in required:
         assert prefix + required_path in names, required_path
+    for forbidden_path in forbidden:
+        assert not any(name.startswith(prefix + forbidden_path) or name == prefix + forbidden_path.rstrip('/') for name in names), forbidden_path
     markdown = [name for name in names if name.lower().endswith('.md')]
     assert markdown == [prefix + 'README.md'], markdown
     assert not any('/node_modules/' in name or '/dist/' in name or '/.git/' in name for name in names)

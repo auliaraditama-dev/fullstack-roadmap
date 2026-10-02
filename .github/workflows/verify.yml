@@ -20,35 +20,29 @@ jobs:
       - run: npm run build
         env:
           SITE_URL: ${{ vars.SITE_URL }}
+      - run: node scripts/vercel-output.mjs
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
-      - uses: actions/setup-go@v7
-        with:
-          go-version: '1.27.x'
-      - run: go test ./...
-        working-directory: examples/go-algorithms
-      - run: go test ./...
-        working-directory: examples/go-api
-      - run: go test ./...
-        working-directory: examples/task-tracker/backend
+      - run: npm run preview > /tmp/fullstack-roadmap-preview.log 2>&1 &
       - run: |
-          python scripts/package-examples.py
-          python - <<'PY'
-          import zipfile
-          from pathlib import Path
-          for path in Path('public/downloads').glob('*.zip'):
-              with zipfile.ZipFile(path) as archive:
-                  assert archive.testzip() is None
-          PY
-      - run: |
-          npm run preview &
-          node -e "const pause=()=>new Promise(r=>setTimeout(r,500));for(let i=0;i<30;i++){try{if((await fetch('http://127.0.0.1:4321')).ok)process.exit(0)}catch{}await pause()}process.exit(1)"
-          npm run audit:performance
-      - run: node scripts/vercel-output.mjs
+          node - <<'NODE'
+          const pause = () => new Promise((resolve) => setTimeout(resolve, 500));
+          for (let i = 0; i < 30; i += 1) {
+            try {
+              const response = await fetch('http://127.0.0.1:4321');
+              if (response.ok) process.exit(0);
+            } catch {}
+            await pause();
+          }
+          process.exit(1);
+          NODE
+      - run: npm run audit:performance
       - uses: actions/upload-artifact@v7
         with:
           name: verified-static-release
-          path: .vercel/output
+          path: |
+            dist
+            .vercel/output
           include-hidden-files: true
       - uses: actions/upload-artifact@v7
         if: always()
