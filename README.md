@@ -1,138 +1,66 @@
-# Full-Stack Developer Learning Lab 2026
+# Full-Stack Learning Lab 2026
 
-Static learning workspace berbasis Astro + Vue + TypeScript yang menggabungkan seluruh fitur roadmap lama dengan materi dari tiga PDF sumber yang disertakan di project.
+Workspace belajar yang mengemas seluruh materi PDF/PPT yang disertakan menjadi **36 sesi utama** dengan format belajar seperti deck kelas, tanpa gradient.
 
-## Materi yang tersedia
+## Basis materi
 
-Tiga dokumen sumber disimpan di `public/sources/` dan ditranskripsikan per halaman untuk keterlacakan:
+- 3 PDF roadmap/buku: 59 + 101 + 26 halaman.
+- 5 PPTX: Go-Lang Dasar, Laravel Dasar, dan Sesi 1–3.
+- Total sumber: 8 berkas dan 895 halaman/slide.
+- Materi buku 2026: 51 bab.
+- Roadmap praktik: 26 minggu.
 
-- **Belajar Full-Stack Go + Vue + PostgreSQL dari Fundamental** — 59 halaman.
-- **Buku Lengkap Full-Stack Developer 2026** — 101 halaman.
-- **Roadmap Belajar Full-Stack Developer 2026** — 26 halaman.
+File asli sumber tetap berada di `public/sources/` agar materi dapat ditelusuri dan dibuka kembali.
 
-Total **186 halaman sumber** dapat dibaca dari halaman Referensi. Track lama tetap tersedia: 26 unit Go/Vue/PostgreSQL, 10 bagian, 8 minggu, 10 quiz, Task Tracker, Portal Gampong, contoh project, progress, notes, bookmark, offline/PWA, search, glossary, cheatsheet, debugging guide, dan backup/import data belajar.
+## Struktur belajar
 
-Track 2026 menambahkan **51 bab** dalam 9 bagian: fondasi developer, web fundamental, data/PHP/Laravel, frontend modern, quality engineering, production, Go specialization, project/roadmap/portfolio, serta materi era digital 2026. Roadmap praktik **26 minggu** juga tersedia sebagai halaman tersendiri.
+1. Fondasi & problem solving — Sesi 01–05
+2. Web fundamental — Sesi 06–14
+3. PHP, data & Laravel — Sesi 15–23
+4. Frontend modern — Sesi 24–26
+5. Quality engineering — Sesi 27–29
+6. Production, Docker & CI/CD — Sesi 30–32
+7. Go backend specialization — Sesi 33–34
+8. Project, AI & karier — Sesi 35–36
 
-## UI/UX
+Setiap sesi memiliki 180 menit, agenda, tujuan, alur belajar, materi sumber lengkap, latihan, tugas, checkpoint, bookmark, progress, dan catatan. Sesi 01–03 memakai timeline yang mengikuti PPT yang dikirim; sesi berikutnya memakai pola sesi yang sama untuk materi roadmap/buku.
 
-UI menggunakan design token light/dark yang konsisten, kartu beraksen warna, layout responsif 320px sampai desktop lebar, keyboard focus, reduced motion, custom scrollbar/select/checkbox/radio, mobile dock, reading controls, dan syntax highlighting yang memiliki palette terpisah untuk light/dark.
+## Fitur yang dipertahankan
 
-Browser `alert()`, `confirm()`, dan `prompt()` tidak dipakai pada source UI. Konfirmasi/pemberitahuan kritis menggunakan modal aplikasi `DialogHost.vue` agar tampil konsisten dengan tema dan tetap dapat dioperasikan lewat keyboard.
+Search, quiz, progress lokal, notes, bookmark, offline mode, export/import backup, modal confirmation/notification, responsive layout, Lucide icons, Task Tracker, Portal Gampong, roadmap 26 minggu, 51 bab 2026, dan halaman referensi sumber.
 
-## Stack
+## UI
 
-| Komponen | Versi |
-|---|---:|
-| Node.js | >=24.16 <25 |
-| Astro | 7.3.5 |
-| @astrojs/vue | 7.0.3 |
-| Vue | 3.5.43 |
-| TypeScript | 6.0.3 |
-| idb | 8.0.3 |
-| Zod | 4.6.5 |
-| Vitest | 5.0.2 |
-| Playwright | 1.63.0 |
+- Tidak menggunakan CSS gradient.
+- Flat surfaces dengan kontras yang lebih tenang.
+- Responsive untuk mobile, tablet, dan desktop.
+- Reduced-motion support.
+- Source text memakai wrapping agar tidak memaksa horizontal scrolling.
 
-## Menjalankan project
+## Commands
 
-```sh
-npm ci
+```bash
+npm install
 npm run dev
-```
-
-Buka `http://127.0.0.1:4321`.
-
-Build production:
-
-```sh
-npm run build
-npm run preview
-```
-
-Untuk canonical/sitemap production:
-
-```text
-SITE_URL=https://domain-anda.example
-```
-
-## Quality gate
-
-Audit yang tidak membutuhkan dependency browser:
-
-```sh
+npm run validate:content
 npm run audit:static
-npm run validate:content
+npm run build
+npm run lint
+npm run typecheck
+npm run test
+npm run test:e2e
 ```
 
-Gate lengkap pada Node 24.16+:
+## Regenerate materi
 
-```sh
-npm ci
-npm run check
+Semua berkas sumber sudah dibundle di `public/sources/`. Untuk membuat ulang data sumber dan kurikulum:
+
+```bash
+python scripts/import-all-materials.py
 ```
 
-`npm run check` menjalankan audit statis, validasi konten, ESLint, typecheck Astro/Vue, Vitest, production build, dan Playwright E2E.
+`src/data/lessons.json` dan `src/data/catalog.json` adalah jalur sesi utama. Data project lama tetap dipertahankan di `src/data/levels.json` dan `src/data/portal-levels.json` karena itu fitur workspace, bukan kurikulum utama.
 
-## Data materi
+## Runtime
 
-```text
-src/data/lessons.json              26 unit track Go lama
-src/data/explanations.json         lapisan penjelasan mudah
-src/data/source-pages.json         transkripsi PDF Go 59 halaman
-src/data/source-library.json       3 PDF / 186 halaman
-src/data/fullstack-chapters.json   metadata 51 bab Buku Lengkap 2026
-src/data/fullstack-weeks.json      roadmap 26 minggu
-src/data/parts.json                10 bagian track lama
-src/data/weeks.json                track Go 8 minggu
-src/data/quizzes.json              10 quiz
-src/data/levels.json               Task Tracker
-src/data/portal-levels.json        Portal Gampong
-```
-
-Jika PDF di `public/sources/` diperbarui, jalankan:
-
-```sh
-python scripts/import-source-pdfs.py
-npm run validate:content
-```
-
-Script tersebut membangun ulang transkripsi 186 halaman, metadata 51 bab, dan roadmap 26 minggu dari PDF lokal yang sudah ada di project.
-
-## Penyimpanan dan offline
-
-Progress, quiz, bookmark, notes, milestone, dan preferensi baca disimpan lokal di browser. Backup dapat diekspor/import sebagai JSON. Offline manager memakai manifest dengan hash SHA-256 dan cache modular. Request API, request ber-Authorization, dan mutasi non-GET tidak dicache oleh service worker.
-
-## Security dan production
-
-Build menghasilkan CSP, COOP/CORP, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, sitemap, robots, search index, dan offline manifest. Source tidak memuat runtime CDN JS/CSS. Secret dan `.env` lokal tidak boleh masuk repository.
-
-## Struktur utama
-
-```text
-src/components/       UI Astro/Vue, termasuk modal DialogHost
-src/data/             seluruh materi terstruktur
-src/lib/              storage, navigation, dialog, offline, model
-src/pages/            halaman static Astro
-src/styles/           design system dan layout responsive
-examples/             Go API, Go algorithms, Task Tracker
-public/sources/       tiga PDF sumber
-scripts/              audit, validasi, build, import PDF, packaging
-```
-
-Release source tidak menyertakan `node_modules`, `dist`, `.astro`, `.vercel`, log, report test, cache, atau credential.
-
-## Audit release ini
-
-Perubahan utama release ini:
-
-- mempertahankan seluruh fitur track lama;
-- mengintegrasikan 3 PDF menjadi 186 halaman sumber;
-- menambahkan 51 bab Full-Stack Developer 2026 dan roadmap 26 minggu;
-- menambahkan halaman sumber generik dengan pencarian teks per halaman;
-- mengganti browser alert/confirm menjadi modal aplikasi;
-- memperluas UI berwarna tanpa mengorbankan kontras light/dark;
-- menambah pemeriksaan statis dan validasi konten untuk sumber baru;
-- menambah E2E untuk modal, 51 bab, 26 minggu, dan 3 sumber PDF.
-
-Pada environment penyusunan release, `node scripts/audit-static.mjs` dan `node scripts/validate-content.mjs` berhasil. Full lint/typecheck/build/E2E memerlukan dependency lengkap pada Node 24.16+ sesuai `package.json`.
+Project mengunci Node `>=24.16 <25`. Gunakan versi Node tersebut agar hasil build sesuai dengan lockfile proyek.

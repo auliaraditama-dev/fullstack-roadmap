@@ -1,127 +1,418 @@
 [
   {
     "number": 1,
-    "title": "Algoritma, variable, operator, if",
-    "output": "Program ganjil/genap dan klasifikasi nilai",
+    "title": "Fondasi & logika",
+    "output": "Sesi 1–2 + latihan algoritma",
     "lessons": [
-      1,
       2,
-      3,
-      4,
-      5,
-      6
+      3
     ],
     "checklist": [
-      "Bisa menulis input-output dan pseudocode sebelum coding.",
-      "Bisa membuat program ganjil/genap.",
-      "Bisa membuat klasifikasi nilai dengan if/else."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
     ]
   },
   {
     "number": 2,
-    "title": "for, array, slice, function",
-    "output": "Program total, min, max, dan search",
+    "title": "Go kontrol & data",
+    "output": "Sesi 3–5 + CLI mini apps",
     "lessons": [
-      7,
-      8,
-      9
+      3,
+      4
     ],
     "checklist": [
-      "Bisa menggunakan loop dan accumulator.",
-      "Bisa mencari min/max tanpa mengasumsikan data positif.",
-      "Bisa memecah logika ke function."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
     ]
   },
   {
     "number": 3,
-    "title": "Prima, average, testing, struct/error",
-    "output": "Tiga latihan inti tanpa melihat solusi",
+    "title": "Terminal, Git, PHP",
+    "output": "Sesi 6–7 + repository latihan",
     "lessons": [
-      10,
-      11,
-      12
+      4,
+      5
     ],
     "checklist": [
-      "Bisa menulis isPrime dari pseudocode.",
-      "Bisa menghitung average tanpa kehilangan desimal.",
-      "Bisa menulis table-driven test dan menangani edge case."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
     ]
   },
   {
     "number": 4,
-    "title": "Git, HTTP, JSON, Go HTTP",
-    "output": "GET/POST API in-memory",
+    "title": "OOP, HTML, CSS",
+    "output": "Sesi 8–9 + responsive page",
     "lessons": [
-      13,
-      14,
-      15
+      5,
+      6
     ],
     "checklist": [
-      "Bisa membuat commit dan branch Git.",
-      "Bisa menjelaskan request/response, method, status, dan JSON.",
-      "Bisa membuat endpoint GET/POST sederhana di Go."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
     ]
   },
   {
     "number": 5,
-    "title": "JavaScript fundamental + Vue",
-    "output": "Form + list + fetch API",
+    "title": "JavaScript & browser",
+    "output": "Sesi 10–11 + interactive UI",
+    "lessons": [
+      6,
+      7
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 6,
+    "title": "HTTP & accessibility",
+    "output": "Sesi 12–13 + audit UI/API",
+    "lessons": [
+      7,
+      8
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 7,
+    "title": "SQL & PDO",
+    "output": "Sesi 14–15 + mini blog",
+    "lessons": [
+      8,
+      9
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 8,
+    "title": "Composer & Laravel",
+    "output": "Sesi 16–17 + CRUD dasar",
+    "lessons": [
+      9,
+      10
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 9,
+    "title": "Arsitektur Laravel",
+    "output": "Sesi 18 + refactor kecil",
+    "lessons": [
+      10,
+      11
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 10,
+    "title": "Tooling & TypeScript",
+    "output": "Sesi 19 + 24 latihan TS",
+    "lessons": [
+      11,
+      12
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 11,
+    "title": "Vue 3",
+    "output": "Sesi 25 + mini dashboard",
+    "lessons": [
+      12,
+      13
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 12,
+    "title": "Inertia & state",
+    "output": "Sesi 26 + full-stack module",
+    "lessons": [
+      13,
+      14
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 13,
+    "title": "Testing",
+    "output": "Sesi 27 + regression tests",
+    "lessons": [
+      14,
+      15
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 14,
+    "title": "Security",
+    "output": "Sesi 28 + threat model",
+    "lessons": [
+      15,
+      16
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 15,
+    "title": "Performance & observability",
+    "output": "Sesi 29 + measured fix",
     "lessons": [
       16,
       17
     ],
     "checklist": [
-      "Bisa memakai array/object/function/async-await JavaScript.",
-      "Bisa membuat state, form, list, loading, dan error di Vue.",
-      "Bisa memanggil API dari Vue."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
     ]
   },
   {
-    "number": 6,
-    "title": "SQL + PostgreSQL + DBeaver",
-    "output": "CRUD SQL dan foreign key",
+    "number": 16,
+    "title": "Linux & web server",
+    "output": "Sesi 30 + staging lab",
+    "lessons": [
+      17,
+      18
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 17,
+    "title": "Deployment",
+    "output": "Sesi 31 + rollback checklist",
     "lessons": [
       18,
       19
     ],
     "checklist": [
-      "Bisa membuat schema users/tasks.",
-      "Bisa melakukan SELECT/INSERT/UPDATE/DELETE.",
-      "Bisa menggunakan foreign key dan JOIN dasar."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
     ]
   },
   {
-    "number": 7,
-    "title": "Go + PostgreSQL + Postman",
-    "output": "API CRUD tersimpan di database",
+    "number": 18,
+    "title": "Docker & CI/CD",
+    "output": "Sesi 31 + pipeline",
     "lessons": [
-      18,
       19,
+      20
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 19,
+    "title": "Backup & recovery",
+    "output": "Sesi 32 + restore drill",
+    "lessons": [
+      20,
       21
     ],
     "checklist": [
-      "Bisa memakai query parameterized.",
-      "Bisa menguji CRUD lewat Postman.",
-      "Data tetap tersimpan setelah server direstart."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
     ]
   },
   {
-    "number": 8,
-    "title": "Docker + integrasi full-stack",
-    "output": "Task Tracker berjalan end-to-end",
+    "number": 20,
+    "title": "Go specialization",
+    "output": "Sesi 33 + concurrency lab",
     "lessons": [
-      20,
       21,
+      22
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 21,
+    "title": "Backend Go",
+    "output": "Sesi 34 + API/DB",
+    "lessons": [
       22,
+      23
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 22,
+    "title": "Project foundation",
+    "output": "Sesi 35 + scope & ADR",
+    "lessons": [
       23,
+      24
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 23,
+    "title": "Project quality",
+    "output": "Sesi 35 + test/security/refactor",
+    "lessons": [
       24,
+      25
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 24,
+    "title": "Digital-era engineering",
+    "output": "Sesi 36 + AI/supply-chain/privacy",
+    "lessons": [
       25,
       26
     ],
     "checklist": [
-      "PostgreSQL dapat dijalankan dengan Docker Compose.",
-      "Vue → Go → PostgreSQL → JSON → Vue berjalan end-to-end.",
-      "Definition of done Task Tracker terpenuhi."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 25,
+    "title": "Portfolio & career",
+    "output": "Sesi 36 + case study",
+    "lessons": [
+      26,
+      27
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
+    ]
+  },
+  {
+    "number": 26,
+    "title": "Final checkpoint",
+    "output": "Sesi 1–36 review + project release",
+    "lessons": [
+      27,
+      28
+    ],
+    "checklist": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Uji kasus gagal",
+      "Simpan hasil di Git"
     ]
   }
 ]

@@ -26,7 +26,7 @@ const { path, chapter } = Astro.props;
       <span>Semua materi</span>
     </a>
 
-    <div class="sidebar-label">KURIKULUM</div>
+    <div class="sidebar-label">36 SESI UTAMA</div>
     {parts.map((part, index) => (
       <details open={chapter ? chapter >= part.start && chapter <= part.end : index < 2}>
         <summary>
@@ -38,7 +38,7 @@ const { path, chapter } = Astro.props;
           {catalog.filter((item) => item.part === part.id).map((item) => (
             <li>
               <a href={item.url} aria-current={path === item.url ? 'page' : undefined} data-lesson-id={item.id}>
-                <span>{String(item.chapter).padStart(2, '0')}</span>
+                <span>S{String(item.chapter).padStart(2, '0')}</span>
                 <span class="lesson-title">{item.title}</span>
                 <span class="lesson-check" aria-hidden="true"><LucideIcon name="check" size={14} /></span>
               </a>
@@ -60,6 +60,6 @@ const { path, chapter } = Astro.props;
   <div class="sidebar-foot">
     <a href="/referensi/">Referensi</a>
     <a href="/tentang/">Tentang</a>
-    <p>Belajar. Bangun. Pahami.</p>
+    <p>Pahami. Praktik. Uji.</p>
   </div>
 </aside>

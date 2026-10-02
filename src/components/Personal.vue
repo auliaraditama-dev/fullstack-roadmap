@@ -161,14 +161,14 @@ function milestonePercent(groups: { number: number; checklist: string[] }[], pre
         <p>{{ last?.title ?? 'Mulai dari model input-process-output, pseudocode, lalu Go fundamental.' }}</p>
         <a class="button primary" :href="last?.url ?? lessons[0]?.url">
           <LucideIcon name="play" :size="16" />
-          <span>{{ last ? 'Lanjutkan belajar' : 'Mulai dari awal' }}</span>
+          <span>{{ last ? 'Lanjutkan belajar' : 'Mulai dari Sesi 01' }}</span>
         </a>
       </div>
       <div class="progress-figure">
         <strong>{{ percent }}<span>%</span></strong>
         <span>Kurikulum selesai</span>
         <progress :value="percent" max="100" aria-label="Kurikulum selesai"></progress>
-        <small>{{ lessons.filter((item) => data.progress[item.id]?.status === 'completed').length }} dari {{ lessons.length }} bab</small>
+        <small>{{ lessons.filter((item) => data.progress[item.id]?.status === 'completed').length }} dari {{ lessons.length }} sesi</small>
       </div>
     </div>
     <div class="next-line">
@@ -225,7 +225,7 @@ function milestonePercent(groups: { number: number; checklist: string[] }[], pre
 
     <section v-if="pending" class="feedback">
       <h3>Periksa sebelum mengganti data</h3>
-      <p>{{ Object.keys(pending.progress).length }} status bab, {{ pending.notes.length }} catatan, {{ pending.bookmarks.length }} bookmark. Backup dibuat {{ new Date(pending.exportedAt).toLocaleString('id-ID') }}.</p>
+      <p>{{ Object.keys(pending.progress).length }} status sesi, {{ pending.notes.length }} catatan, {{ pending.bookmarks.length }} bookmark. Backup dibuat {{ new Date(pending.exportedAt).toLocaleString('id-ID') }}.</p>
       <p>Data lokal akan diganti. Data sebelumnya diexport sebagai cadangan.</p>
       <div class="toolbar">
         <button type="button" :disabled="importing" @click="confirmImport">

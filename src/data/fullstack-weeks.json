@@ -1,132 +1,132 @@
 [
   {
     "number": 1,
-    "focus": "Environment, terminal, Git",
-    "output": "Repo belajar + CLI drills"
+    "focus": "Fondasi & logika",
+    "output": "Sesi 1–2 + latihan algoritma"
   },
   {
     "number": 2,
-    "focus": "PHP variables, condition, loop",
-    "output": "20 latihan logika"
+    "focus": "Go kontrol & data",
+    "output": "Sesi 3–5 + CLI mini apps"
   },
   {
     "number": 3,
-    "focus": "Function, array, error",
-    "output": "CLI mini apps"
+    "focus": "Terminal, Git, PHP",
+    "output": "Sesi 6–7 + repository latihan"
   },
   {
     "number": 4,
-    "focus": "OOP + algoritma dasar",
-    "output": "Mini inventory CLI"
+    "focus": "OOP, HTML, CSS",
+    "output": "Sesi 8–9 + responsive page"
   },
   {
     "number": 5,
-    "focus": "HTML semantic",
-    "output": "Landing page"
+    "focus": "JavaScript & browser",
+    "output": "Sesi 10–11 + interactive UI"
   },
   {
     "number": 6,
-    "focus": "CSS responsive",
-    "output": "Responsive redesign"
+    "focus": "HTTP & accessibility",
+    "output": "Sesi 12–13 + audit UI/API"
   },
   {
     "number": 7,
-    "focus": "JavaScript fundamental",
-    "output": "Interactive UI"
+    "focus": "SQL & PDO",
+    "output": "Sesi 14–15 + mini blog"
   },
   {
     "number": 8,
-    "focus": "DOM, fetch, DevTools",
-    "output": "Frontend mini project"
+    "focus": "Composer & Laravel",
+    "output": "Sesi 16–17 + CRUD dasar"
   },
   {
     "number": 9,
-    "focus": "HTTP + JSON",
-    "output": "Request lab"
+    "focus": "Arsitektur Laravel",
+    "output": "Sesi 18 + refactor kecil"
   },
   {
     "number": 10,
-    "focus": "SQL CRUD",
-    "output": "Database exercises"
+    "focus": "Tooling & TypeScript",
+    "output": "Sesi 19 + 24 latihan TS"
   },
   {
     "number": 11,
-    "focus": "JOIN + schema design",
-    "output": "Mini schema gampong"
+    "focus": "Vue 3",
+    "output": "Sesi 25 + mini dashboard"
   },
   {
     "number": 12,
-    "focus": "PHP web + PDO",
-    "output": "Mini blog"
+    "focus": "Inertia & state",
+    "output": "Sesi 26 + full-stack module"
   },
   {
     "number": 13,
-    "focus": "Laravel routing/controller/Blade",
-    "output": "News app"
+    "focus": "Testing",
+    "output": "Sesi 27 + regression tests"
   },
   {
     "number": 14,
-    "focus": "Migration/Eloquent/relationship",
-    "output": "Data model app"
+    "focus": "Security",
+    "output": "Sesi 28 + threat model"
   },
   {
     "number": 15,
-    "focus": "Validation/auth/policy",
-    "output": "Protected CRUD"
+    "focus": "Performance & observability",
+    "output": "Sesi 29 + measured fix"
   },
   {
     "number": 16,
-    "focus": "Upload/mail/logging",
-    "output": "Admin module"
+    "focus": "Linux & web server",
+    "output": "Sesi 30 + staging lab"
   },
   {
     "number": 17,
-    "focus": "Queue/cache/API/testing",
-    "output": "Backend checkpoint"
+    "focus": "Deployment",
+    "output": "Sesi 31 + rollback checklist"
   },
   {
     "number": 18,
-    "focus": "Node/Vite + TypeScript",
-    "output": "TS exercises"
+    "focus": "Docker & CI/CD",
+    "output": "Sesi 31 + pipeline"
   },
   {
     "number": 19,
-    "focus": "Vue component/reactivity",
-    "output": "Vue mini app"
+    "focus": "Backup & recovery",
+    "output": "Sesi 32 + restore drill"
   },
   {
     "number": 20,
-    "focus": "Vue form/composable",
-    "output": "Dashboard UI"
+    "focus": "Go specialization",
+    "output": "Sesi 33 + concurrency lab"
   },
   {
     "number": 21,
-    "focus": "Laravel + Vue/Inertia",
-    "output": "Full-stack module"
+    "focus": "Backend Go",
+    "output": "Sesi 34 + API/DB"
   },
   {
     "number": 22,
-    "focus": "API integration/testing",
-    "output": "Full-stack checkpoint"
+    "focus": "Project foundation",
+    "output": "Sesi 35 + scope & ADR"
   },
   {
     "number": 23,
-    "focus": "Security audit",
-    "output": "Fix security checklist"
+    "focus": "Project quality",
+    "output": "Sesi 35 + test/security/refactor"
   },
   {
     "number": 24,
-    "focus": "Linux + deployment",
-    "output": "Staging deployment"
+    "focus": "Digital-era engineering",
+    "output": "Sesi 36 + AI/supply-chain/privacy"
   },
   {
     "number": 25,
-    "focus": "Docker + CI/CD + backup",
-    "output": "Automated pipeline"
+    "focus": "Portfolio & career",
+    "output": "Sesi 36 + case study"
   },
   {
     "number": 26,
-    "focus": "Go fundamental + reflection",
-    "output": "Go API mini project + portfolio"
+    "focus": "Final checkpoint",
+    "output": "Sesi 1–36 review + project release"
   }
 ]

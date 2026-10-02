@@ -1,62 +1,58 @@
 [
   {
-    "id": "orientasi",
-    "title": "Orientasi & problem solving",
+    "id": "fondasi",
+    "title": "Fondasi & problem solving",
     "start": 1,
-    "end": 2
+    "end": 5,
+    "accent": "cyan"
   },
   {
-    "id": "go-dasar",
-    "title": "Go fundamental",
-    "start": 3,
-    "end": 7
+    "id": "web",
+    "title": "Web fundamental",
+    "start": 6,
+    "end": 14,
+    "accent": "blue"
   },
   {
-    "id": "struktur-data",
-    "title": "Data, function & error",
-    "start": 8,
-    "end": 10
-  },
-  {
-    "id": "algoritma-testing",
-    "title": "Algoritma, debugging & testing",
-    "start": 11,
-    "end": 12
-  },
-  {
-    "id": "web-git",
-    "title": "Git & web fundamental",
-    "start": 13,
-    "end": 14
-  },
-  {
-    "id": "backend-go",
-    "title": "Backend Go",
+    "id": "backend",
+    "title": "PHP, data & Laravel",
     "start": 15,
-    "end": 15
+    "end": 23,
+    "accent": "emerald"
   },
   {
-    "id": "frontend-vue",
-    "title": "JavaScript & Vue 3",
-    "start": 16,
-    "end": 17
+    "id": "frontend",
+    "title": "Frontend modern",
+    "start": 24,
+    "end": 26,
+    "accent": "amber"
   },
   {
-    "id": "data-tools",
-    "title": "PostgreSQL & tooling",
-    "start": 18,
-    "end": 20
+    "id": "quality",
+    "title": "Quality engineering",
+    "start": 27,
+    "end": 29,
+    "accent": "rose"
   },
   {
-    "id": "integrasi-project",
-    "title": "Integrasi & project",
-    "start": 21,
-    "end": 24
+    "id": "production",
+    "title": "Production, Docker & CI/CD",
+    "start": 30,
+    "end": 32,
+    "accent": "violet"
   },
   {
-    "id": "referensi",
-    "title": "Cheat sheet & kelulusan",
-    "start": 25,
-    "end": 26
+    "id": "go-specialization",
+    "title": "Go backend specialization",
+    "start": 33,
+    "end": 34,
+    "accent": "indigo"
+  },
+  {
+    "id": "project-career",
+    "title": "Project, AI & karier",
+    "start": 35,
+    "end": 36,
+    "accent": "orange"
   }
 ]

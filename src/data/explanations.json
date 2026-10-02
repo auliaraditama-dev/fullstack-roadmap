@@ -1,613 +1,866 @@
 [
   {
-    "id": "bab-01",
-    "summary": "Bayangkan semua program sebagai mesin tiga tahap: menerima input, memprosesnya dengan aturan, lalu menghasilkan output. Pada aplikasi full-stack, mesin itu tersebar di browser, API Go, dan PostgreSQL.",
-    "mentalModel": "Form Vue adalah pintu masuk. Request HTTP membawa data ke Go. Go memvalidasi dan menjalankan aturan. PostgreSQL menyimpan state. Hasil kembali sebagai JSON lalu Vue memperbarui layar.",
-    "why": "Model ini membantu kamu mengetahui lapisan mana yang perlu diperiksa saat data salah, hilang, atau tidak tampil.",
+    "id": "sesi-01",
+    "summary": "Membangun pola pikir sistematis sebelum menyentuh syntax: pemrograman, input-process-output, algoritma, pseudocode, flowchart, kontrol, fungsi, array/list, latihan dan komunikasi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan logika pemrograman & algoritma dengan requirement aplikasi nyata.",
     "steps": [
-      "Tentukan input yang masuk.",
-      "Tulis proses atau aturan yang mengubah input.",
-      "Tentukan output yang harus terlihat.",
-      "Jika memakai database, tentukan data mana yang perlu disimpan.",
-      "Ikuti alur data dari Vue sampai kembali ke Vue."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Langsung belajar banyak framework ketika logika dasar masih membingungkan.",
-      "Menganggap frontend, backend, dan database sebagai tiga hal terpisah tanpa memahami alur datanya.",
-      "Memulai coding sebelum output yang diinginkan jelas."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Bisakah kamu menjelaskan alur satu form Vue sampai data tersimpan?",
-      "Jika output salah, lapisan mana saja yang akan kamu periksa?"
-    ],
-    "bridge": "Setelah alurnya jelas, Bab 2 melatih cara memecah masalah menjadi langkah yang bisa diterjemahkan ke kode."
+      "Bisa menjelaskan input → process → output dengan contoh sendiri.",
+      "Bisa menulis pseudocode sebelum coding.",
+      "Bisa men-trace solusi dengan data contoh."
+    ]
   },
   {
-    "id": "bab-02",
-    "summary": "Algoritma adalah urutan langkah yang cukup jelas untuk dijalankan komputer. Sebelum syntax, kamu perlu tahu input, output, data yang disimpan, kondisi, loop, edge case, dan cara menguji hasil.",
-    "mentalModel": "Anggap algoritma seperti resep. Komputer tidak menebak maksudmu; ia hanya mengikuti langkah yang kamu tulis.",
-    "why": "Pseudocode dan trace table membuat logika terlihat sebelum kamu berurusan dengan error syntax.",
+    "id": "sesi-02",
+    "summary": "Menyiapkan Go SDK dan workspace, memahami module, program pertama, variable, konstanta, tipe data, konversi, dan operator.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan pengenalan go & sintaks dasar dengan requirement aplikasi nyata.",
     "steps": [
-      "Tulis input dan output.",
-      "Pecah masalah menjadi langkah kecil.",
-      "Tandai bagian yang butuh if atau loop.",
-      "Tulis pseudocode.",
-      "Simulasikan dengan trace table.",
-      "Uji data normal dan edge case."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Langsung menulis kode saat belum tahu langkah penyelesaiannya.",
-      "Hanya mencoba satu input yang kebetulan benar.",
-      "Tidak melacak perubahan nilai variabel saat loop."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Bisakah kamu membuat trace table untuk mencari nilai terbesar?",
-      "Apa beda O(n) dan loop bersarang yang cenderung O(n²)?"
-    ],
-    "bridge": "Bab 3 memindahkan pola pikir algoritmik ini ke program Go pertama yang benar-benar bisa dijalankan."
+      "go version bekerja.",
+      "go mod init dan go run . dipahami.",
+      "Perbedaan var, :=, const, int, float64, string, bool dapat dijelaskan."
+    ]
   },
   {
-    "id": "bab-03",
-    "summary": "Tujuan awal bukan membuat program besar, tetapi memastikan toolchain Go bekerja dan memahami bentuk minimum program executable.",
-    "mentalModel": "go.mod adalah identitas module, package main menandai program executable, dan func main() adalah titik masuk saat program dijalankan.",
-    "why": "Environment yang stabil mengurangi kebingungan antara error kode dan error instalasi.",
+    "id": "sesi-03",
+    "summary": "Menerapkan if-else, switch, for, break, continue, array, slice, map, dan struct dalam program Go.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan kontrol aliran & struktur data go dengan requirement aplikasi nyata.",
     "steps": [
-      "Verifikasi go, code, dan git.",
-      "Buat folder latihan.",
-      "Jalankan go mod init.",
-      "Tulis package main, import fmt, dan func main().",
-      "Jalankan go run .",
-      "Rapikan dengan gofmt -w ."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Melanjutkan belajar ketika perintah go belum dikenali.",
-      "Membuat banyak project acak tanpa satu struktur latihan yang rapi.",
-      "Mengabaikan gofmt lalu sibuk pada formatting manual."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Apa fungsi go.mod?",
-      "Mengapa func main() penting pada executable Go?"
-    ],
-    "bridge": "Bab 4 mulai mengisi program dengan data: variable, tipe, konstanta, dan operator."
+      "Dapat memilih struktur kontrol sesuai kebutuhan.",
+      "Dapat menjelaskan perbedaan array, slice, map, dan struct.",
+      "Dapat membuat program daftar data sederhana."
+    ]
   },
   {
-    "id": "bab-04",
-    "summary": "Variable menyimpan nilai yang bisa berubah, konstanta menyimpan nilai tetap, dan tipe data menentukan operasi apa yang masuk akal untuk nilai tersebut.",
-    "mentalModel": "Variable seperti kotak berlabel. Tipe data menentukan jenis isi kotak dan operasi yang aman dilakukan pada isi itu.",
-    "why": "Memahami tipe dan operator adalah dasar untuk kondisi, loop, perhitungan rata-rata, dan pengecekan bilangan prima.",
+    "id": "sesi-04",
+    "summary": "Mendalami function Go: parameter, return value, multiple return, named return, variadic, function value, closure, recursive function, defer, panic, recover, dan komentar.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan function, scope, multiple return & error di go dengan requirement aplikasi nyata.",
     "steps": [
-      "Pilih tipe sesuai data.",
-      "Gunakan deklarasi yang paling jelas untuk konteksnya.",
-      "Kenali zero value saat belum memberi nilai awal.",
-      "Gunakan const untuk nilai tetap.",
-      "Pahami perbedaan / dan % pada integer."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Mengira pembagian int selalu menghasilkan desimal.",
-      "Menggunakan variable untuk nilai yang seharusnya konstan.",
-      "Lupa bahwa zero value bisa memengaruhi logika awal program."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Berapa hasil 10/3 jika keduanya int?",
-      "Mengapa operator % penting untuk soal prima?"
-    ],
-    "bridge": "Bab 5 memakai variable dan tipe untuk membaca input serta melakukan konversi tipe dengan benar."
+      "Function kecil dapat dibuat dari requirement.",
+      "Error/hasil tambahan dapat dikembalikan secara eksplisit.",
+      "Scope dan lifecycle nilai dapat dilacak."
+    ]
   },
   {
-    "id": "bab-05",
-    "summary": "Program menjadi interaktif saat bisa membaca input, menyimpannya ke variable, lalu mengubah tipe bila perhitungan membutuhkan representasi yang berbeda.",
-    "mentalModel": "Input masuk sebagai nilai yang harus ditempatkan di lokasi variable yang tepat; output adalah cara program menjelaskan hasilnya kembali kepada pengguna.",
-    "why": "Konversi tipe mencegah hasil salah, terutama pada pembagian integer yang seharusnya menghasilkan desimal.",
+    "id": "sesi-05",
+    "summary": "Menyelesaikan fondasi Go dari struct/method hingga interface, pointer, package/import, access modifier, initialization, blank identifier, error interface dan custom error.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan struct, interface, pointer, package & error dengan requirement aplikasi nyata.",
     "steps": [
-      "Siapkan variable tujuan.",
-      "Baca input ke variable.",
-      "Validasi atau pahami tipe data yang masuk.",
-      "Konversi ke tipe yang dibutuhkan sebelum operasi.",
-      "Format output agar mudah dibaca."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Menganggap 5/2 otomatis menjadi 2.5.",
-      "Menggunakan format Printf yang tidak sesuai tipe.",
-      "Tidak memahami bahwa fmt.Scan membutuhkan lokasi variable."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Mengapa float64(total)/float64(jumlah) diperlukan untuk rata-rata?",
-      "Apa fungsi & pada fmt.Scan di contoh dasar?"
-    ],
-    "bridge": "Bab 6 menggunakan nilai boolean untuk memilih jalur program dengan percabangan."
+      "Dapat menjelaskan kapan memakai pointer.",
+      "Dapat menjelaskan interface sebagai kontrak perilaku.",
+      "Dapat menyusun package kecil tanpa duplikasi main function."
+    ]
   },
   {
-    "id": "bab-06",
-    "summary": "Percabangan membuat program memilih aksi berdasarkan kondisi true atau false. if cocok untuk kondisi bertingkat; switch cocok saat membandingkan beberapa kemungkinan nilai atau kasus.",
-    "mentalModel": "Bayangkan percabangan sebagai persimpangan jalan: kondisi menentukan jalur mana yang dilewati dan jalur lain dilewati begitu saja.",
-    "why": "Sebagian besar validasi, aturan bisnis, dan klasifikasi di backend dibangun dari logika kondisi.",
+    "id": "sesi-06",
+    "summary": "Sesi ini menggabungkan materi Lingkungan kerja developer, Git dan GitHub menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan lingkungan kerja developer & git/github dengan requirement aplikasi nyata.",
     "steps": [
-      "Tuliskan kondisi sebagai ekspresi boolean.",
-      "Mulai dari kasus paling spesifik bila memakai else if.",
-      "Gunakan && saat semua syarat harus benar.",
-      "Gunakan || saat salah satu syarat cukup.",
-      "Sediakan else/default jika ada kondisi yang belum tercakup."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Urutan else if membuat kondisi umum menang sebelum kondisi khusus.",
-      "Tertukar antara && dan ||.",
-      "Menganggap semua input pasti masuk ke salah satu kondisi tanpa default."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Apa beda && dan ||?",
-      "Bagaimana menentukan urutan kondisi kategori nilai?"
-    ],
-    "bridge": "Bab 7 mengulang keputusan dan perhitungan dengan loop for."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-07",
-    "summary": "Loop for mengulang pekerjaan. Counter mengontrol iterasi, accumulator menyimpan hasil yang terus bertambah, break menghentikan loop, dan continue melompat ke iterasi berikutnya.",
-    "mentalModel": "Pada setiap iterasi, tanyakan tiga hal: nilai sebelum langkah, pekerjaan yang dilakukan, dan nilai setelah langkah.",
-    "why": "Loop adalah dasar untuk membaca slice, menghitung total, mengecek pembagi, dan mengolah data dari database/API.",
+    "id": "sesi-07",
+    "summary": "Sesi ini menggabungkan materi Fundamental programming dengan PHP, Algoritma, problem solving, dan struktur data menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan php fundamental & problem solving dengan requirement aplikasi nyata.",
     "steps": [
-      "Tentukan kondisi mulai.",
-      "Tentukan kapan loop berhenti.",
-      "Pastikan ada perubahan yang mendekatkan ke kondisi berhenti.",
-      "Gunakan accumulator jika hasil harus dikumpulkan.",
-      "Trace beberapa iterasi dengan kertas saat bingung."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Infinite loop karena counter tidak berubah.",
-      "Off-by-one karena batas < dan <= tertukar.",
-      "Accumulator di-reset di dalam loop sehingga hasil hilang."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Berapa nilai total setelah loop 1 sampai 5?",
-      "Kapan break lebih tepat daripada continue?"
-    ],
-    "bridge": "Bab 8 menggabungkan loop dengan kumpulan data: array, slice, string, dan map."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-08",
-    "summary": "Array memiliki panjang tetap dalam tipenya, sedangkan slice lebih fleksibel untuk kumpulan data. Map menyimpan pasangan key-value. String perlu dipahami sebagai byte/rune saat berurusan dengan Unicode.",
-    "mentalModel": "Slice seperti jendela dinamis ke kumpulan data; map seperti kamus yang mencari nilai lewat key, bukan index posisi.",
-    "why": "Hampir semua aplikasi mengolah kumpulan data, jadi kemampuan range, len, append, slicing, dan lookup map sangat sering dipakai.",
+    "id": "sesi-08",
+    "summary": "Sesi ini menggabungkan materi OOP dan clean code dasar, HTML semantik menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan oop & clean code dasar dengan requirement aplikasi nyata.",
     "steps": [
-      "Gunakan slice untuk daftar yang ukurannya berubah.",
-      "Loop dengan range untuk membaca index/value.",
-      "Gunakan _ jika index atau value sengaja tidak dipakai.",
-      "Periksa len sebelum akses index berisiko.",
-      "Gunakan pola value, ok untuk map ketika perlu tahu key ada atau tidak."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Mengakses index di luar panjang slice.",
-      "Mengira len(string) selalu sama dengan jumlah karakter manusia.",
-      "Menganggap nilai zero dari map berarti key pasti ada."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Apa beda array dan slice?",
-      "Mengapa value, ok berguna saat membaca map?"
-    ],
-    "bridge": "Bab 9 memecah logika pengolahan data menjadi function yang dapat diuji dan digunakan ulang."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-09",
-    "summary": "Function memberi nama pada satu tanggung jawab. Parameter membawa input, return membawa hasil, scope membatasi tempat variable dapat diakses, dan multiple return sering dipakai untuk hasil + error.",
-    "mentalModel": "Function adalah mesin kecil dengan kontrak: input apa yang diterima dan output apa yang dijanjikan.",
-    "why": "Memecah program menjadi function membuat kode lebih mudah dibaca, diuji, dan diubah tanpa merusak bagian lain.",
+    "id": "sesi-09",
+    "summary": "Sesi ini menggabungkan materi CSS modern dan responsive design menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan css modern & responsive design dengan requirement aplikasi nyata.",
     "steps": [
-      "Beri nama berdasarkan tanggung jawab.",
-      "Tentukan parameter minimum yang dibutuhkan.",
-      "Tentukan tipe return yang jelas.",
-      "Tangani error segera setelah pemanggilan yang bisa gagal.",
-      "Pecah main jika mulai berisi terlalu banyak langkah."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Function melakukan terlalu banyak hal sekaligus.",
-      "Mengabaikan error return.",
-      "Mengakses variable di luar scope tempat ia dibuat."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Mengapa Go sering mengembalikan hasil dan error sekaligus?",
-      "Bagaimana decomposition membantu pengujian?"
-    ],
-    "bridge": "Bab 10 menambahkan struct, method, pointer, dan pola error handling yang lebih dekat dengan bentuk backend nyata."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-10",
-    "summary": "Struct mengelompokkan field yang berkaitan, method menempelkan perilaku pada tipe, pointer memberi akses ke lokasi nilai, dan error handling menjaga kegagalan tetap eksplisit.",
-    "mentalModel": "Struct adalah bentuk data, method adalah perilaku yang relevan dengan bentuk itu, pointer adalah cara merujuk nilai yang sama tanpa selalu menyalinnya.",
-    "why": "Model API, data database, dan service Go banyak memakai struct, method, pointer receiver, serta error return.",
+    "id": "sesi-10",
+    "summary": "Sesi ini menggabungkan materi JavaScript fundamental menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan javascript fundamental dengan requirement aplikasi nyata.",
     "steps": [
-      "Buat struct untuk data yang punya beberapa field terkait.",
-      "Pilih value atau pointer sesuai kebutuhan perubahan/copy.",
-      "Gunakan method saat perilaku secara alami terkait tipe.",
-      "Periksa err segera setelah operasi yang dapat gagal.",
-      "Hentikan alur atau kembalikan error saat state tidak valid."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Menggunakan pointer tanpa memahami siapa yang boleh mengubah nilai.",
-      "Mengabaikan err demi kode terlihat singkat.",
-      "Membuat method untuk logika yang sebenarnya tidak terkait tipe."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Apa beda &x dan *p?",
-      "Kapan pointer memungkinkan function mengubah nilai pemanggil?"
-    ],
-    "bridge": "Bab 11 menggabungkan seluruh fundamental menjadi tiga latihan inti yang menguji problem solving nyata."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-11",
-    "summary": "Tiga latihan inti menguji pola yang berbeda: prima memakai pencarian pembagi, rata-rata memakai accumulator + konversi tipe, dan maksimum memakai kandidat awal + perbandingan berulang.",
-    "mentalModel": "Jangan hafal solusi. Hafal pola berpikir: validasi input → pilih state awal → loop → update state → kembalikan hasil.",
-    "why": "Jika kamu bisa menyelesaikan ketiganya dari pseudocode sampai test, fondasi algoritmamu cukup kuat untuk masuk ke backend dan integrasi.",
+    "id": "sesi-11",
+    "summary": "Sesi ini menggabungkan materi Browser, DOM, DevTools, dan debugging, HTTP, URL, JSON, cookie, session, CORS, caching menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan browser, dom, devtools & debugging dengan requirement aplikasi nyata.",
     "steps": [
-      "Tulis versi paling sederhana yang benar.",
-      "Tambahkan edge case seperti n<2 atau slice kosong.",
-      "Pilih state awal yang valid dari data.",
-      "Trace loop dengan contoh kecil.",
-      "Baru optimalkan setelah hasil benar.",
-      "Tambahkan test untuk kasus batas."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Memulai maksimum dari 0 sehingga data negatif menghasilkan jawaban salah.",
-      "Membagi total int dengan jumlah int lalu kehilangan desimal.",
-      "Mengoptimalkan isPrime sebelum memahami versi dasarnya."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Mengapa max sebaiknya mulai dari numbers[0]?",
-      "Mengapa pemeriksaan prima cukup sampai i*i <= n pada versi lebih efisien?"
-    ],
-    "bridge": "Bab 12 memastikan kamu dapat membuktikan solusi benar dan menemukan bug saat asumsi tidak sesuai kenyataan."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-12",
-    "summary": "Debugging dimulai dengan mengklasifikasikan masalah: compile error, runtime error, atau logic error. Setelah itu reproduksi, baca pesan, cek state, ubah satu hal, lalu tambahkan test regresi.",
-    "mentalModel": "Debugging bukan menebak. Ini proses mengurangi ruang kemungkinan sampai penyebab yang salah ditemukan.",
-    "why": "Kemampuan membaca error dan menulis test membuat kamu tidak bergantung pada trial-and-error acak.",
+    "id": "sesi-12",
+    "summary": "Sesi ini menggabungkan materi HTTP, URL, JSON, cookie, session, CORS, caching, Accessibility, SEO, performance, dan UX menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan http, json, cookie, session, cors & caching dengan requirement aplikasi nyata.",
     "steps": [
-      "Reproduksi dengan input terkecil.",
-      "Baca error pertama yang relevan.",
-      "Tentukan kategori error.",
-      "Periksa nilai sebelum titik gagal.",
-      "Buat satu hipotesis dan satu perubahan.",
-      "Tambahkan test ketika bug sudah diperbaiki."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Mengubah banyak hal sekaligus.",
-      "Hanya membaca baris terakhir stack/error message.",
-      "Memperbaiki bug tanpa test sehingga regresi mudah kembali."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Apa beda runtime dan logic error?",
-      "Mengapa table-driven test cocok untuk banyak input fungsi yang sama?"
-    ],
-    "bridge": "Bab 13 membawa kebiasaan eksperimen itu ke Git agar setiap perubahan dapat dilacak."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-13",
-    "summary": "Git menyimpan riwayat lokal melalui working tree, staging area, dan commit. Branch memisahkan pekerjaan, sedangkan remote GitHub digunakan untuk sinkronisasi dan kolaborasi.",
-    "mentalModel": "Working tree = yang sedang kamu ubah, staging = yang dipilih untuk snapshot berikutnya, commit = snapshot bernama.",
-    "why": "Riwayat yang rapi memudahkan kembali ke kondisi sebelumnya, review perubahan, dan bekerja aman pada fitur baru.",
+    "id": "sesi-13",
+    "summary": "Sesi ini menggabungkan materi Accessibility, SEO, performance, dan UX, Database relasional dan SQL menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan accessibility, seo, performance & ux dengan requirement aplikasi nyata.",
     "steps": [
-      "Cek git status sebelum add.",
-      "Review git diff.",
-      "Stage perubahan yang memang satu tujuan.",
-      "Commit dengan pesan yang menjelaskan niat.",
-      "Gunakan branch untuk pekerjaan terpisah.",
-      "Push/pull setelah memahami perubahan lokal dan remote."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "git add . tanpa review perubahan.",
-      "Commit file .env atau credential.",
-      "Menganggap GitHub adalah Git itu sendiri."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Apa beda working tree, staging, dan commit?",
-      "File apa yang tidak boleh masuk repository publik?"
-    ],
-    "bridge": "Bab 14 menjelaskan bahasa komunikasi yang dipakai frontend dan backend: HTTP, JSON, REST, dan API."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-14",
-    "summary": "HTTP mengatur request/response. Method menyatakan tujuan operasi, status code menjelaskan hasilnya, JSON membawa data, dan REST membantu merancang URL berdasarkan resource.",
-    "mentalModel": "URL menunjuk resource, method menjelaskan apa yang ingin dilakukan terhadap resource, status memberi tahu hasilnya.",
-    "why": "Tanpa model ini, error integrasi sering salah didiagnosis sebagai masalah Vue atau Go padahal kontrak HTTP yang keliru.",
+    "id": "sesi-14",
+    "summary": "Sesi ini menggabungkan materi Database relasional dan SQL menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan database relasional & sql dengan requirement aplikasi nyata.",
     "steps": [
-      "Tentukan resource dan URL.",
-      "Pilih method sesuai aksi.",
-      "Gunakan status code yang sesuai hasil.",
-      "Kirim/terima JSON dengan bentuk konsisten.",
-      "Bedakan error client 4xx dan server 5xx."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Memakai POST untuk semua aksi.",
-      "Selalu mengembalikan 200 walaupun validasi gagal.",
-      "Menaruh kata kerja pada semua URL alih-alih memakai method HTTP."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Apa beda 401 dan 403?",
-      "Method apa yang cocok untuk perubahan sebagian resource?"
-    ],
-    "bridge": "Bab 15 menerapkan kontrak HTTP itu dengan net/http di Go."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-15",
-    "summary": "Server Go menerima request melalui handler, menulis response, dapat mengencode JSON, memvalidasi method, dan nantinya memisahkan tanggung jawab ke handler, service, repository, model/DTO, serta middleware.",
-    "mentalModel": "Handler adalah pintu HTTP, service memegang aturan bisnis, repository berbicara ke database, middleware menangani kebutuhan lintas fitur.",
-    "why": "Pemisahan tanggung jawab mencegah satu handler menjadi tempat semua logic menumpuk ketika project membesar.",
+    "id": "sesi-15",
+    "summary": "Sesi ini menggabungkan materi PHP untuk web tanpa framework, Composer, dependency, namespace, autoload menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan php web tanpa framework & pdo dengan requirement aplikasi nyata.",
     "steps": [
-      "Buat server minimal lebih dulu.",
-      "Tambahkan endpoint JSON.",
-      "Validasi method/input.",
-      "Pisahkan aturan bisnis saat handler mulai rumit.",
-      "Pisahkan akses database dari aturan bisnis.",
-      "Gunakan middleware untuk concern lintas route."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Mengabaikan error dari operasi server/database.",
-      "Menaruh seluruh SQL, validasi, dan formatting di satu handler besar.",
-      "Membuat terlalu banyak layer pada latihan kecil tanpa kebutuhan nyata."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Apa tanggung jawab handler dibanding service?",
-      "Mengapa Content-Type JSON perlu jelas?"
-    ],
-    "bridge": "Bab 16 menyiapkan JavaScript yang dibutuhkan agar frontend Vue tidak terasa seperti magic."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-16",
-    "summary": "Vue berdiri di atas JavaScript. Kamu perlu nyaman dengan const/let, array/object, function, map/filter/reduce, destructuring, spread, async/await, dan fetch.",
-    "mentalModel": "Vue menambahkan reaktivitas dan template; logika data tetap JavaScript biasa.",
-    "why": "Jika JavaScript dasarnya lemah, kesalahan di Vue sulit dibedakan antara masalah framework dan masalah bahasa.",
+    "id": "sesi-16",
+    "summary": "Sesi ini menggabungkan materi Composer, dependency, namespace, autoload menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan composer, dependency, namespace & autoload dengan requirement aplikasi nyata.",
     "steps": [
-      "Gunakan const secara default dan let saat nilai binding harus berubah.",
-      "Latih function biasa dan arrow function.",
-      "Pahami transformasi array dengan map/filter/reduce.",
-      "Gunakan destructuring/spread untuk membaca dan membuat object baru.",
-      "Gunakan async/await untuk alur fetch yang jelas.",
-      "Periksa response.ok sebelum membaca hasil sebagai sukses."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Mengubah data tanpa memahami reference/object behavior.",
-      "Mengabaikan HTTP error karena fetch hanya reject pada error jaringan tertentu.",
-      "Menggunakan array method tanpa memahami input-output callback."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Apa beda map dan filter?",
-      "Mengapa response.ok perlu diperiksa?"
-    ],
-    "bridge": "Bab 17 menempelkan JavaScript ini ke UI reaktif menggunakan Vue 3."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-17",
-    "summary": "Vue menghubungkan state ke template. ref membuat state reaktif, directive seperti v-if/v-for mengatur tampilan, v-model mengikat form, dan lifecycle seperti onMounted cocok untuk memuat data awal.",
-    "mentalModel": "Template adalah fungsi dari state: ketika state berubah, Vue memperbarui bagian DOM yang bergantung padanya.",
-    "why": "Model reaktif membuat UI loading, error, empty state, form, dan list dapat dikelola tanpa manipulasi DOM manual.",
+    "id": "sesi-17",
+    "summary": "Sesi ini menggabungkan materi Laravel 13 - fondasi sampai fitur backend utama menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan laravel 13: fondasi sampai backend utama dengan requirement aplikasi nyata.",
     "steps": [
-      "Simpan state yang berubah dalam ref/reactive.",
-      "Render kondisi loading/error/data secara eksplisit.",
-      "Gunakan :key stabil pada v-for.",
-      "Gunakan v-model untuk input form.",
-      "Panggil API pada lifecycle yang sesuai.",
-      "Pisahkan logic ke composable saat komponen mulai besar."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Menganggap ref sama dengan nilai biasa lalu lupa .value di script.",
-      "Tidak memiliki state loading/error/empty yang jelas.",
-      "Menggunakan index array sebagai key untuk data yang dapat berubah urutan."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Apa fungsi ref?",
-      "Mengapa UI perlu membedakan loading, error, empty, dan success?"
-    ],
-    "bridge": "Bab 18 memberikan penyimpanan permanen menggunakan PostgreSQL dan SQL."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-18",
-    "summary": "PostgreSQL menyimpan data relasional dalam table, row, column, primary key, dan foreign key. CRUD dilakukan dengan SQL; transaction menjaga beberapa perubahan sebagai satu unit.",
-    "mentalModel": "Database adalah sumber state persisten. Primary key mengenali row, foreign key menghubungkan row antar table, dan transaction menjaga konsistensi perubahan terkait.",
-    "why": "Backend tanpa penyimpanan persisten kehilangan data ketika proses berhenti. SQL memberi kontrol eksplisit terhadap data yang dibaca dan diubah.",
+    "id": "sesi-18",
+    "summary": "Sesi ini menggabungkan materi Arsitektur Laravel yang sehat menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan arsitektur laravel: clean structure, di & container dengan requirement aplikasi nyata.",
     "steps": [
-      "Desain table dan constraint.",
-      "Gunakan primary key.",
-      "Tambahkan foreign key untuk relasi.",
-      "Tulis SELECT/INSERT/UPDATE/DELETE eksplisit.",
-      "Gunakan parameter query dari driver.",
-      "Gunakan transaction saat beberapa perubahan harus sukses bersama."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Menggabungkan input pengguna langsung ke string SQL.",
-      "Menghapus/mengubah data tanpa WHERE yang benar.",
-      "Mengabaikan constraint dan mencoba memvalidasi semuanya hanya di frontend."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Mengapa parameter query penting?",
-      "Kapan transaction dibutuhkan?"
-    ],
-    "bridge": "Bab 19 memperkenalkan tools untuk mengamati database, request API, dan browser secara langsung."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-19",
-    "summary": "DBeaver membantu melihat dan menjalankan SQL, Postman/Insomnia menguji API terpisah dari frontend, dan Browser DevTools menunjukkan DOM, console, network, storage, serta responsive layout.",
-    "mentalModel": "Tools observability membuat fakta terlihat. Jangan menebak lapisan mana yang salah jika Network atau SQL Editor bisa membuktikannya.",
-    "why": "Memisahkan pengujian database, API, dan frontend mempercepat debugging integrasi.",
+    "id": "sesi-19",
+    "summary": "Sesi ini menggabungkan materi Node.js, npm, dan Vite untuk tooling, TypeScript menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan node.js, npm & vite untuk tooling dengan requirement aplikasi nyata.",
     "steps": [
-      "Uji query di DBeaver.",
-      "Uji endpoint di Postman/Insomnia.",
-      "Lihat Network untuk request dari Vue.",
-      "Bandingkan payload dan response.",
-      "Periksa Console untuk error JS.",
-      "Periksa Application untuk storage/cache."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Mengandalkan GUI database tanpa belajar SQL.",
-      "Menyimpulkan Vue error sebelum melihat response API.",
-      "Tidak memeriksa method, status, payload, dan header di Network."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Panel DevTools mana untuk melihat request/response?",
-      "Mengapa API sebaiknya bisa diuji sebelum frontend selesai?"
-    ],
-    "bridge": "Bab 20 membuat environment service lebih konsisten menggunakan Docker."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-20",
-    "summary": "Docker membungkus aplikasi/service dalam image dan menjalankannya sebagai container. Port menghubungkan host-container, volume menyimpan data, dan environment variable mengatur konfigurasi.",
-    "mentalModel": "Image adalah blueprint; container adalah instance yang sedang berjalan; volume adalah tempat data persisten di luar lifecycle container.",
-    "why": "Docker membuat setup PostgreSQL dan service lain lebih konsisten antar mesin dan lebih mudah diulang.",
+    "id": "sesi-20",
+    "summary": "Sesi ini menggabungkan materi Laravel 13 - fondasi sampai fitur backend utama menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan laravel routing, controller, view & request dengan requirement aplikasi nyata.",
     "steps": [
-      "Pahami image vs container.",
-      "Map port host ke container.",
-      "Gunakan volume untuk data database.",
-      "Gunakan environment variable untuk konfigurasi.",
-      "Mulai dengan docker compose up -d.",
-      "Periksa status dan log sebelum menyalahkan aplikasi."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Menganggap menghapus container otomatis menghapus volume.",
-      "Menyimpan secret langsung di image/source.",
-      "Bingung antara port host dan port di dalam container."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Apa beda image dan container?",
-      "Mengapa PostgreSQL butuh volume bila datanya harus bertahan?"
-    ],
-    "bridge": "Bab 21 menyatukan Vue, Go, dan PostgreSQL menjadi satu alur data end-to-end."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-21",
-    "summary": "Integrasi penuh berarti satu aksi pengguna melewati Vue → HTTP → Go → SQL → PostgreSQL lalu hasil kembali sebagai JSON ke Vue.",
-    "mentalModel": "Setiap lapisan punya kontrak. Ketika satu kontrak berubah, lapisan sebelum dan sesudahnya harus tetap sepakat tentang bentuk data dan status kegagalan.",
-    "why": "Memahami alur ini membuat kamu bisa melacak bug integrasi secara sistematis, bukan menebak-nebak.",
+    "id": "sesi-21",
+    "summary": "Sesi ini menggabungkan materi Laravel 13 - fondasi sampai fitur backend utama, Arsitektur Laravel yang sehat menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan laravel storage, response, encryption, cookie & redirect dengan requirement aplikasi nyata.",
     "steps": [
-      "Definisikan bentuk request JSON.",
-      "Validasi di Go.",
-      "Gunakan SQL parameterized.",
-      "Kembalikan status dan JSON yang tepat.",
-      "Perbarui state Vue dari response.",
-      "Uji gagal dan sukses pada setiap batas lapisan."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Frontend dan backend memakai nama field berbeda.",
-      "UI menganggap request sukses tanpa memeriksa status.",
-      "Backend menerima data tanpa validasi karena frontend sudah memvalidasi."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Jelaskan perjalanan task baru dari form sampai tampil kembali.",
-      "Di lapisan mana validasi tetap harus dilakukan walau frontend sudah punya validasi?"
-    ],
-    "bridge": "Bab 22 menjadikan alur integrasi ini sebagai mini project Task Tracker yang utuh."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-22",
-    "summary": "Task Tracker adalah latihan end-to-end: desain schema, CRUD API Go, uji API, bangun UI Vue, tangani loading/error/empty state, lalu jalankan service dengan Docker.",
-    "mentalModel": "Project kecil yang selesai lebih berguna daripada arsitektur besar yang belum terbukti. Bangun vertikal satu fitur dari database sampai UI, lalu ulangi.",
-    "why": "Mini project memaksa semua konsep sebelumnya bekerja bersama dan menunjukkan celah pemahaman yang tidak terlihat saat latihan terpisah.",
+    "id": "sesi-22",
+    "summary": "Sesi ini menggabungkan materi Laravel 13 - fondasi sampai fitur backend utama, Arsitektur Laravel yang sehat menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan laravel middleware, csrf, session & error handling dengan requirement aplikasi nyata.",
     "steps": [
-      "Buat schema tasks.",
-      "Implementasikan GET/POST dahulu.",
-      "Uji endpoint tanpa frontend.",
-      "Bangun list + form Vue.",
-      "Tambahkan PATCH/DELETE.",
-      "Tambahkan loading/error/empty state.",
-      "Tambahkan test dan Docker.",
-      "Tinjau definition of done."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Membangun frontend dan backend sekaligus tanpa kontrak API jelas.",
-      "Menambah fitur baru sebelum CRUD dasar stabil.",
-      "Mengabaikan state gagal karena hanya menguji happy path."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Apa definition of done minimum Task Tracker?",
-      "Urutan implementasi apa yang membuat debugging paling mudah?"
-    ],
-    "bridge": "Bab 23 mengubah materi menjadi ritme belajar mingguan dengan checkpoint konkret."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-23",
-    "summary": "Jadwal belajar bukan target membaca, tetapi target kemampuan. Setiap minggu punya fokus, output, dan checkpoint yang harus bisa dibuktikan lewat latihan atau project.",
-    "mentalModel": "Ukur progres dari apa yang bisa kamu buat dan jelaskan, bukan dari jumlah halaman yang selesai dibaca.",
-    "why": "Checkpoint mencegah kamu maju terlalu cepat dengan fondasi yang masih rapuh.",
+    "id": "sesi-23",
+    "summary": "Sesi ini menggabungkan materi Laravel 13 - fondasi sampai fitur backend utama, Arsitektur Laravel yang sehat menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan laravel backend: eloquent, validation, auth, authorization & api dengan requirement aplikasi nyata.",
     "steps": [
-      "Tentukan waktu belajar realistis.",
-      "Selesaikan output minggu itu.",
-      "Ulang bab yang checkpoint-nya belum kuat.",
-      "Simpan latihan dengan Git.",
-      "Gunakan review mingguan untuk melihat pola error."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Mengejar jadwal walau checkpoint belum tercapai.",
-      "Menganggap membaca ulang sama dengan praktik.",
-      "Tidak menyimpan latihan sehingga progres sulit ditinjau."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Apa bukti bahwa satu minggu benar-benar selesai?",
-      "Kapan kamu sebaiknya mengulang materi sebelum lanjut?"
-    ],
-    "bridge": "Bab 24 memberi bank latihan bertingkat untuk menguji kemampuan tanpa bergantung pada contoh."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-24",
-    "summary": "Bank latihan bergerak dari variable/operator, percabangan, loop, slice, function/algoritma sampai web/backend. Kunci pendekatan digunakan setelah kamu benar-benar mencoba.",
-    "mentalModel": "Latihan adalah tempat membangun retrieval dan problem solving. Jika selalu melihat solusi terlalu cepat, otak tidak sempat membangun pola penyelesaian sendiri.",
-    "why": "Soal bertingkat menunjukkan apakah fundamental bisa dipakai pada konteks baru, bukan hanya pada contoh yang sama persis.",
+    "id": "sesi-24",
+    "summary": "Sesi ini menggabungkan materi TypeScript menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan typescript dengan requirement aplikasi nyata.",
     "steps": [
-      "Kerjakan tanpa melihat kunci.",
-      "Tulis input-output-pseudocode.",
-      "Trace jika loop membingungkan.",
-      "Uji edge case.",
-      "Baru bandingkan dengan kunci pendekatan.",
-      "Refactor setelah solusi benar."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Membuka kunci setelah hanya mencoba sebentar.",
-      "Menghafal jawaban dan mengira itu pemahaman.",
-      "Tidak mendefinisikan aturan untuk kasus ambigu seperti second largest dengan duplikat."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Bisakah kamu menjelaskan solusi sebelum mengetik kode?",
-      "Apa yang harus kamu tentukan untuk secondLargest ketika data berisi duplikat?"
-    ],
-    "bridge": "Lampiran cheat sheet berikutnya dipakai sebagai referensi cepat setelah konsep sudah dipahami."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-a",
-    "summary": "Cheat Sheet Go adalah pengingat bentuk syntax inti: variable, const, if, loop, range, slice, append, map, function, struct, pointer, dan error check.",
-    "mentalModel": "Gunakan cheat sheet untuk mengingat bentuk, bukan mengganti pemahaman tentang kapan dan mengapa syntax dipakai.",
-    "why": "Referensi cepat mengurangi gangguan kecil saat praktik tanpa membuat kamu berhenti terlalu lama mencari syntax dasar.",
+    "id": "sesi-25",
+    "summary": "Sesi ini menggabungkan materi Vue 3 menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan vue 3 fundamental dengan requirement aplikasi nyata.",
     "steps": [
-      "Cari bentuk syntax yang lupa.",
-      "Ketik ulang, jangan hanya copy-paste.",
-      "Sesuaikan nama variable dan tipe dengan masalahmu.",
-      "Jalankan gofmt dan test setelah perubahan."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Menggunakan template tanpa memahami input/output function.",
-      "Copy-paste pointer/error handling tanpa tahu maknanya."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Bisakah kamu menjelaskan semua baris template console?",
-      "Kapan function untuk slice harus memeriksa len(values)==0?"
-    ],
-    "bridge": "Cheat Sheet B merangkum perintah Git, SQL, HTTP, dan Docker yang sering dipakai selama integrasi."
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   },
   {
-    "id": "bab-b",
-    "summary": "Cheat Sheet B merangkum workflow Git, pola CRUD SQL, method/status HTTP, dan perintah Docker Compose, lalu menutup dengan checklist kelulusan fundamental.",
-    "mentalModel": "Cheat sheet adalah dashboard operasi: cepat melihat perintah yang dibutuhkan sambil tetap memahami konsep di baliknya.",
-    "why": "Checklist akhir membantu membedakan 'sudah membaca' dari 'sudah mampu menjelaskan, membuat, menguji, dan memperbaiki'.",
+    "id": "sesi-26",
+    "summary": "Sesi ini menggabungkan materi Laravel + Vue + Inertia, State management dan data fetching menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan laravel + vue + inertia & state management dengan requirement aplikasi nyata.",
     "steps": [
-      "Gunakan Git untuk menyimpan progres.",
-      "Gunakan SQL parameterized dari backend.",
-      "Pilih method/status HTTP sesuai aksi.",
-      "Gunakan Docker Compose untuk service.",
-      "Tinjau checklist fundamental secara jujur."
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
     "mistakes": [
-      "Menganggap checklist selesai karena pernah melihat materinya.",
-      "Menghafal command tanpa tahu efeknya terhadap repository/database/container."
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
     ],
     "check": [
-      "Bisakah kamu menjelaskan alur Vue → HTTP → Go → SQL → PostgreSQL → JSON → Vue?",
-      "Bisakah kamu menyelesaikan tiga latihan inti tanpa menyalin solusi?"
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
+  },
+  {
+    "id": "sesi-27",
+    "summary": "Sesi ini menggabungkan materi Testing strategy menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan testing strategy dengan requirement aplikasi nyata.",
+    "steps": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
     ],
-    "bridge": "Setelah checklist dasar kuat, lanjutkan Task Tracker dan track lanjutan sebagai tempat memperdalam skill."
+    "mistakes": [
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
+    ],
+    "check": [
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
+  },
+  {
+    "id": "sesi-28",
+    "summary": "Sesi ini menggabungkan materi Web security wajib dan OWASP mindset menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan web security & owasp mindset dengan requirement aplikasi nyata.",
+    "steps": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
+    ],
+    "mistakes": [
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
+    ],
+    "check": [
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
+  },
+  {
+    "id": "sesi-29",
+    "summary": "Sesi ini menggabungkan materi Performance engineering, Observability dan debugging production menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan performance engineering & observability dengan requirement aplikasi nyata.",
+    "steps": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
+    ],
+    "mistakes": [
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
+    ],
+    "check": [
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
+  },
+  {
+    "id": "sesi-30",
+    "summary": "Sesi ini menggabungkan materi Linux dan server dasar, DNS, domain, HTTPS, web server menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan linux, dns, https & web server dengan requirement aplikasi nyata.",
+    "steps": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
+    ],
+    "mistakes": [
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
+    ],
+    "check": [
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
+  },
+  {
+    "id": "sesi-31",
+    "summary": "Sesi ini menggabungkan materi Deployment Laravel, Docker, CI/CD menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan deployment laravel, docker & ci/cd dengan requirement aplikasi nyata.",
+    "steps": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
+    ],
+    "mistakes": [
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
+    ],
+    "check": [
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
+  },
+  {
+    "id": "sesi-32",
+    "summary": "Sesi ini menggabungkan materi Backup dan disaster recovery menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan backup, disaster recovery & production operations dengan requirement aplikasi nyata.",
+    "steps": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
+    ],
+    "mistakes": [
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
+    ],
+    "check": [
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
+  },
+  {
+    "id": "sesi-33",
+    "summary": "Sesi ini menggabungkan materi Fondasi Go, Concurrency Go menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan fondasi go specialization & concurrency dengan requirement aplikasi nyata.",
+    "steps": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
+    ],
+    "mistakes": [
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
+    ],
+    "check": [
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
+  },
+  {
+    "id": "sesi-34",
+    "summary": "Sesi ini menggabungkan materi Backend Go, Laravel vs Go: memilih berdasarkan kebutuhan menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan backend go & laravel vs go dengan requirement aplikasi nyata.",
+    "steps": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
+    ],
+    "mistakes": [
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
+    ],
+    "check": [
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
+  },
+  {
+    "id": "sesi-35",
+    "summary": "Sesi ini menggabungkan materi Project utama: Portal Gampong bertumbuh 15 level, Roadmap 26 minggu, Rutinitas belajar mingguan, Sistem checkpoint dan asesmen diri, Debugging framework, Clean code dan refactoring, Materi lanjutan setelah roadmap inti, Yang tidak perlu dipelajari sekaligus, Portfolio yang menunjukkan kemampuan nyata menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan project utama, roadmap, checkpoint, debugging & refactoring dengan requirement aplikasi nyata.",
+    "steps": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
+    ],
+    "mistakes": [
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
+    ],
+    "check": [
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
+  },
+  {
+    "id": "sesi-36",
+    "summary": "Sesi ini menggabungkan materi AI-assisted development yang bertanggung jawab, Software supply chain dan dependency hygiene, Privacy, data minimization, dan secure-by-design, Cloud fundamentals tanpa vendor lock-in awal, API economy, integrations, webhooks, dan interoperabilitas, Dokumentasi, kolaborasi remote, dan engineering workflow, Karier belajar berkelanjutan di era teknologi cepat menjadi alur belajar tiga jam dengan format Pahami → Ketik ulang → Modifikasi → Hands-on → Uji → Refleksi.",
+    "mentalModel": "Pahami → ketik ulang → modifikasi → uji. Fokus pada alasan setiap langkah, bukan hafalan syntax.",
+    "why": "Konsep sesi ini dipakai lagi pada sesi berikutnya dan pada project utama.",
+    "bridge": "Hubungkan ai, supply chain, privacy, cloud, api, workflow & karier dengan requirement aplikasi nyata.",
+    "steps": [
+      "Pahami konsep",
+      "Ketik ulang contoh",
+      "Modifikasi requirement",
+      "Hands-on",
+      "Uji kasus normal/batas/gagal",
+      "Refleksi dan commit"
+    ],
+    "mistakes": [
+      "Copy-paste tanpa memahami bentuk dan alasan.",
+      "Mengubah banyak hal sekaligus saat debugging."
+    ],
+    "check": [
+      "Bisa menjelaskan konsep tanpa catatan.",
+      "Bisa membuat contoh kecil dari nol.",
+      "Bisa membaca error dan menguji kasus gagal."
+    ]
   }
 ]
